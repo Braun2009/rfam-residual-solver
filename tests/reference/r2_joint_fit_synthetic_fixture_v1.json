@@ -1,0 +1,192 @@
+{
+  "schema": "rfam.r2-joint-fit-synthetic-fixture/v1",
+  "watermark": "SYNTHETIC_NONPHYSICAL_TEST_ONLY",
+  "status": "static-objective-wiring-fixture-no-mechanism-evaluation-no-fit",
+  "origin": {
+    "kind": "repository-authored-static-synthetic-fixture",
+    "physical_measurements_present": false,
+    "detailed_mechanism_output_present": false,
+    "cantera_output_present": false,
+    "rfam_model_output_present": false,
+    "fit_executed": false
+  },
+  "units": {
+    "time": "s",
+    "temperature": "K",
+    "pressure": "Pa",
+    "heat_release_rate": "W/m3",
+    "species_composition": "mass-fraction"
+  },
+  "energy_basis_id": "formation-inclusive-total-species-enthalpy-298.15K-v1",
+  "species_order": [
+    "C3H8",
+    "O2",
+    "CO",
+    "CO2",
+    "H2O",
+    "N2"
+  ],
+  "parameter_order": [
+    "R1_A_SI",
+    "R1_Ea_J_per_mol",
+    "R1_order_C3H8",
+    "R1_order_O2",
+    "R2_A_SI",
+    "R2_Ea_J_per_mol"
+  ],
+  "synthetic_trial_parameter_vector": [
+    1000000000000.0,
+    125000.0,
+    0.25,
+    1.5,
+    100000000000.0,
+    80000.0
+  ],
+  "prediction_origin": "hand-authored-objective-wiring-values-not-derived-from-parameter-vector",
+  "cases": [
+    {
+      "case_id": "SYNTHETIC_TRAIN_001",
+      "split": "training",
+      "condition": {
+        "initial_temperature_k": 1200.0,
+        "initial_pressure_pa": 2000000.0,
+        "equivalence_ratio": 0.8,
+        "diluent_mass_fraction": 0.1,
+        "initial_mass_fractions": [0.21558331672432693, 0.6844166832756731, 0.0, 0.0, 0.0, 0.1]
+      },
+      "sample_times_s": [0.0, 0.0001, 0.0003, 0.001],
+      "reference": {
+        "ignition_delay_s": 0.0003,
+        "qdot_w_m3": [0.0, 200000000.0, 800000000.0, 100000000.0],
+        "temperature_k": [1200.0, 1220.0, 1500.0, 1800.0],
+        "mass_fractions": {
+          "C3H8": [0.21558331672432693, 0.14, 0.06, 0.005],
+          "O2": [0.6844166832756731, 0.65, 0.25, 0.02],
+          "CO": [0.0, 0.01, 0.12, 0.02],
+          "CO2": [0.0, 0.002, 0.04, 0.18],
+          "H2O": [0.0, 0.02, 0.18, 0.34]
+        }
+      },
+      "prediction": {
+        "ignition_delay_s": 0.00032,
+        "qdot_w_m3": [0.0, 210000000.0, 780000000.0, 110000000.0],
+        "temperature_k": [1200.0, 1225.0, 1490.0, 1790.0],
+        "mass_fractions": {
+          "C3H8": [0.21558331672432693, 0.138, 0.062, 0.006],
+          "O2": [0.6844166832756731, 0.648, 0.26, 0.022],
+          "CO": [0.0, 0.012, 0.11, 0.025],
+          "CO2": [0.0, 0.0025, 0.038, 0.175],
+          "H2O": [0.0, 0.021, 0.175, 0.335]
+        }
+      }
+    },
+    {
+      "case_id": "SYNTHETIC_TRAIN_002",
+      "split": "training",
+      "condition": {
+        "initial_temperature_k": 1400.0,
+        "initial_pressure_pa": 4000000.0,
+        "equivalence_ratio": 1.1,
+        "diluent_mass_fraction": 0.0,
+        "initial_mass_fractions": [0.30221639519879417, 0.6977836048012057, 0.0, 0.0, 0.0, 0.0]
+      },
+      "sample_times_s": [0.0, 0.0001, 0.0003, 0.001],
+      "reference": {
+        "ignition_delay_s": 0.0001,
+        "qdot_w_m3": [0.0, 900000000.0, 500000000.0, 50000000.0],
+        "temperature_k": [1400.0, 1600.0, 1950.0, 2050.0],
+        "mass_fractions": {
+          "C3H8": [0.30221639519879417, 0.15, 0.02, 0.002],
+          "O2": [0.6977836048012057, 0.5, 0.08, 0.01],
+          "CO": [0.0, 0.08, 0.15, 0.03],
+          "CO2": [0.0, 0.01, 0.12, 0.22],
+          "H2O": [0.0, 0.1, 0.35, 0.42]
+        }
+      },
+      "prediction": {
+        "ignition_delay_s": 0.000095,
+        "qdot_w_m3": [0.0, 870000000.0, 520000000.0, 55000000.0],
+        "temperature_k": [1400.0, 1585.0, 1940.0, 2040.0],
+        "mass_fractions": {
+          "C3H8": [0.30221639519879417, 0.155, 0.022, 0.003],
+          "O2": [0.6977836048012057, 0.51, 0.085, 0.012],
+          "CO": [0.0, 0.075, 0.145, 0.035],
+          "CO2": [0.0, 0.012, 0.115, 0.215],
+          "H2O": [0.0, 0.095, 0.345, 0.415]
+        }
+      }
+    },
+    {
+      "case_id": "SYNTHETIC_HOLDOUT_001",
+      "split": "holdout",
+      "condition": {
+        "initial_temperature_k": 1000.0,
+        "initial_pressure_pa": 1000000.0,
+        "equivalence_ratio": 0.6,
+        "diluent_mass_fraction": 0.2,
+        "initial_mass_fractions": [0.15287714503215633, 0.6471228549678436, 0.0, 0.0, 0.0, 0.2]
+      },
+      "sample_times_s": [0.0, 0.0001, 0.0003, 0.001],
+      "reference": {
+        "ignition_delay_s": 0.0008,
+        "qdot_w_m3": [0.0, 50000000.0, 200000000.0, 400000000.0],
+        "temperature_k": [1000.0, 1002.0, 1020.0, 1300.0],
+        "mass_fractions": {
+          "C3H8": [0.15287714503215633, 0.099, 0.09, 0.04],
+          "O2": [0.6471228549678436, 0.618, 0.59, 0.4],
+          "CO": [0.0, 0.0005, 0.01, 0.08],
+          "CO2": [0.0, 0.0001, 0.002, 0.03],
+          "H2O": [0.0, 0.001, 0.015, 0.12]
+        }
+      },
+      "prediction": {
+        "ignition_delay_s": 0.00075,
+        "qdot_w_m3": [0.0, 45000000.0, 190000000.0, 380000000.0],
+        "temperature_k": [1000.0, 1003.0, 1025.0, 1280.0],
+        "mass_fractions": {
+          "C3H8": [0.15287714503215633, 0.0985, 0.089, 0.043],
+          "O2": [0.6471228549678436, 0.617, 0.585, 0.41],
+          "CO": [0.0, 0.0007, 0.012, 0.075],
+          "CO2": [0.0, 0.00015, 0.0025, 0.028],
+          "H2O": [0.0, 0.0012, 0.017, 0.115]
+        }
+      }
+    },
+    {
+      "case_id": "SYNTHETIC_HOLDOUT_002",
+      "split": "holdout",
+      "condition": {
+        "initial_temperature_k": 1600.0,
+        "initial_pressure_pa": 6000000.0,
+        "equivalence_ratio": 1.4,
+        "diluent_mass_fraction": 0.0,
+        "initial_mass_fractions": [0.3553501465300116, 0.6446498534699884, 0.0, 0.0, 0.0, 0.0]
+      },
+      "sample_times_s": [0.0, 0.0001, 0.0003, 0.001],
+      "reference": {
+        "ignition_delay_s": 0.00005,
+        "qdot_w_m3": [0.0, 1200000000.0, 300000000.0, 20000000.0],
+        "temperature_k": [1600.0, 1900.0, 2200.0, 2300.0],
+        "mass_fractions": {
+          "C3H8": [0.3553501465300116, 0.12, 0.01, 0.001],
+          "O2": [0.6446498534699884, 0.35, 0.04, 0.005],
+          "CO": [0.0, 0.18, 0.1, 0.02],
+          "CO2": [0.0, 0.03, 0.2, 0.31],
+          "H2O": [0.0, 0.22, 0.4, 0.45]
+        }
+      },
+      "prediction": {
+        "ignition_delay_s": 0.000055,
+        "qdot_w_m3": [0.0, 1150000000.0, 320000000.0, 25000000.0],
+        "temperature_k": [1600.0, 1875.0, 2180.0, 2285.0],
+        "mass_fractions": {
+          "C3H8": [0.3553501465300116, 0.125, 0.012, 0.002],
+          "O2": [0.6446498534699884, 0.36, 0.045, 0.007],
+          "CO": [0.0, 0.17, 0.105, 0.025],
+          "CO2": [0.0, 0.035, 0.19, 0.305],
+          "H2O": [0.0, 0.21, 0.39, 0.445]
+        }
+      }
+    }
+  ]
+}

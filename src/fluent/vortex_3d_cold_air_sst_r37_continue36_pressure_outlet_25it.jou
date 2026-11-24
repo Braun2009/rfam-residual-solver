@@ -1,0 +1,15 @@
+; Vortex 3D cold-air SST r37: pressure-outlet farfield continuation at CFL=1.
+; Source r35 passed mesh/check, standard initialization and 5 iterations.
+; Early outlet reverse flow is expected while the outer field adjusts.  Keep
+; conservative Courant=1 and no reinitialization; write r37 artifacts only.
+
+(format #t "\nVORTEX_R37_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_init36_r35/cold_air_sst_5it.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_init36_r35/cold_air_sst_5it.dat.h5
+(format #t "\nVORTEX_R37_R35_CASE_DATA_READ_OK\n")
+/solve/iterate 25
+(format #t "\nVORTEX_R37_ITERATE_25_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_continue36_r37/cold_air_sst_30it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_continue36_r37/cold_air_sst_30it.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R37_PRESSURE_OUTLET_36PHYS_OK\n")
+/exit yes

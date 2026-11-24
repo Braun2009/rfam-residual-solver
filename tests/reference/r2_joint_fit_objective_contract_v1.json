@@ -1,0 +1,316 @@
+{
+  "schema": "rfam.r2-joint-fit-objective-contract/v1",
+  "contract_version": 1,
+  "status": "blocked-synthetic-objective-wiring-only",
+  "scope": "mechanism-agnostic-joint-r1-r2-objective-schema-no-fit-no-physical-validation",
+  "approvals": {
+    "detailed_mechanism_selected_for_fit": false,
+    "experimental_training_data_selected": false,
+    "experimental_holdout_data_selected": false,
+    "physical_right_to_fit_resolved": false,
+    "physical_right_to_redistribute_resolved": false,
+    "optimizer_execution_approved": false,
+    "parameter_publication_approved": false,
+    "physical_validation_approved": false,
+    "hem_chemistry_enabled": false,
+    "fluent_execution_approved": false,
+    "reacting_hot_start_approved": false,
+    "production_ready": false
+  },
+  "artifact": {
+    "id": "synthetic_objective_fixture",
+    "path": "tests/reference/r2_joint_fit_synthetic_fixture_v1.json",
+    "sha256": "6cef95b7fd3d56eee4a009214a5205d539c69681712e3088be6b7418a1b2199c",
+    "byte_count": 6652,
+    "kind": "repository-authored-synthetic-nonphysical-objective-wiring-fixture"
+  },
+  "mechanism_adapter": {
+    "reference_backend": "provider-agnostic-no-detailed-mechanism-selected",
+    "candidate_backend": "runner-adapter-not-implemented-by-this-contract",
+    "reactor_model": "adiabatic-constant-pressure-gas-phase-0d",
+    "species_order": ["C3H8", "O2", "CO", "CO2", "H2O", "N2"],
+    "reaction_topology": {
+      "R1": "C3H8 + 3.5 O2 -> 3 CO + 4 H2O",
+      "R2": "CO + 0.5 O2 <=> CO2",
+      "R2_reverse_rate": "derived-from-the-same-thermodynamic-basis-by-detailed-balance",
+      "R2_forward_orders": {"CO": 1.0, "O2": 0.5},
+      "independently_fitted_reverse_parameters": false
+    },
+    "required_runner_inputs": [
+      "ordered-parameter-vector",
+      "initial-temperature-k",
+      "initial-pressure-pa",
+      "equivalence-ratio",
+      "diluent-mass-fraction",
+      "ordered-initial-mass-fraction-vector",
+      "ordered-sample-times-s",
+      "energy-basis-id"
+    ],
+    "required_runner_outputs": [
+      "ignition-delay-s",
+      "qdot-w-m3-history",
+      "temperature-k-history",
+      "C3H8-mass-fraction-history",
+      "O2-mass-fraction-history",
+      "CO-mass-fraction-history",
+      "CO2-mass-fraction-history",
+      "H2O-mass-fraction-history"
+    ],
+    "runner_failure_policy": "nonfinite-missing-misaligned-or-out-of-domain-output-invalidates-candidate",
+    "posthoc_reference_or_partition_changes_allowed": false
+  },
+  "domain": {
+    "phase_scope": "gas-phase-only-no-vle-no-quality-no-solid",
+    "initial_temperature_k": [900.0, 1700.0],
+    "initial_pressure_pa": [1000000.0, 6000000.0],
+    "equivalence_ratio": [0.6, 1.4],
+    "diluent_mass_fraction": [0.0, 0.2],
+    "initial_composition": {
+      "basis": "mass-fraction",
+      "species_order": ["C3H8", "O2", "CO", "CO2", "H2O", "N2"],
+      "sum_tolerance": 1e-12,
+      "diluent_species": "N2",
+      "diluent_definition": "diluent-mass-fraction-equals-initial-N2-mass-fraction",
+      "equivalence_ratio_definition": "(Y_C3H8/Y_O2)/(MW_C3H8/(3.5*MW_O2))",
+      "runner_state_authority": "ordered-initial-mass-fraction-vector-no-reconstruction-or-override-from-metadata",
+      "molecular_weights_kg_per_kmol": {"C3H8": 44.09562, "O2": 31.998},
+      "metadata_consistency_absolute_tolerance": 1e-12
+    },
+    "sample_time_s": [0.0, 0.001],
+    "out_of_domain_policy": "fail-closed-no-extrapolation",
+    "rfam_hem_owner": "rho-e-Y-flash-remains-sole-owner-outside-this-gas-only-contract"
+  },
+  "partitions": {
+    "training_case_ids": ["SYNTHETIC_TRAIN_001", "SYNTHETIC_TRAIN_002"],
+    "holdout_case_ids": ["SYNTHETIC_HOLDOUT_001", "SYNTHETIC_HOLDOUT_002"],
+    "disjoint_required": true,
+    "frozen_before_selection": true,
+    "holdout_objective_calls_during_parameter_selection": 0,
+    "holdout_role": "report-once-after-training-selection-never-select-form-weights-bounds-or-parameters"
+  },
+  "observables_and_basis": {
+    "observable_order": ["ignition_delay", "qdot", "temperature", "C3H8", "O2", "CO", "CO2", "H2O"],
+    "ignition_delay": {
+      "unit": "s",
+      "definition": "time-of-global-maximum-dT-dt-on-native-trajectory-before-output-resampling",
+      "comparison": "natural-log-ratio"
+    },
+    "qdot": {
+      "unit": "W/m3",
+      "sign": "positive-for-net-exothermic-heat-release",
+      "definition": "minus-sum-species-total-molar-enthalpy-times-net-molar-production-rate"
+    },
+    "temperature": {"unit": "K", "comparison": "fixed-sample-time-history"},
+    "species": {
+      "unit": "mass-fraction",
+      "comparison": "fixed-sample-time-history",
+      "names": ["C3H8", "O2", "CO", "CO2", "H2O"]
+    },
+    "energy_basis": {
+      "id": "formation-inclusive-total-species-enthalpy-298.15K-v1",
+      "reference_temperature_k": 298.15,
+      "species_enthalpy_kind": "formation-inclusive-total-molar-enthalpy",
+      "common_reference_and_prediction_basis_required": true,
+      "basis_offset_fitting_allowed": false
+    }
+  },
+  "metrics_weights_tolerances": {
+    "case_component_metric": "mean-squared-normalized-residual-on-declared-grid",
+    "ignition_delay_metric": "squared-natural-log-ratio-divided-by-sigma-log-squared",
+    "split_aggregation": "arithmetic-mean-of-case-objectives-in-frozen-case-order",
+    "reduction": "IEEE-754-binary64-math-fsum-in-observable-order",
+    "normalization_scales": {
+      "ignition_delay_sigma_log": 0.1,
+      "qdot_w_m3": 100000000.0,
+      "temperature_k": 20.0,
+      "C3H8_mass_fraction": 0.01,
+      "O2_mass_fraction": 0.01,
+      "CO_mass_fraction": 0.01,
+      "CO2_mass_fraction": 0.01,
+      "H2O_mass_fraction": 0.01
+    },
+    "component_weights": {
+      "ignition_delay": 0.2,
+      "qdot": 0.2,
+      "temperature": 0.15,
+      "C3H8": 0.1,
+      "O2": 0.1,
+      "CO": 0.1,
+      "CO2": 0.075,
+      "H2O": 0.075
+    },
+    "weights_sum_exactly_one": true,
+    "synthetic_regression_tolerances": {
+      "recomputed_objective_absolute": 1e-12,
+      "training_objective_maximum": 0.2,
+      "holdout_objective_maximum": 0.5
+    },
+    "physical_acceptance_tolerances": {
+      "status": "unselected-blocking",
+      "must_be_frozen_before_any_physical_fit": [
+        "training-objective-threshold",
+        "independent-holdout-objective-threshold",
+        "per-observable-error-thresholds",
+        "ignition-detection-censoring-policy",
+        "experimental-and-model-uncertainty-mapping"
+      ]
+    }
+  },
+  "parameter_bounds": {
+    "rate_definition": "q_forward=A*T^beta*exp(-Ea/(R*T))*product(c_i^order_i)",
+    "concentration_unit": "mol/m3",
+    "A_unit_rule": "(mol/m3)^(1-sum-reactant-orders)/s",
+    "fixed_parameters": {
+      "R1_beta": 0.0,
+      "R2_beta": 0.0,
+      "R2_order_CO": 1.0,
+      "R2_order_O2": 0.5,
+      "R2_reverse_policy": "detailed-balance-not-independently-fitted"
+    },
+    "ordered_fit_parameters": [
+      {"name": "R1_A_SI", "reaction": "R1", "role": "pre-exponential-factor", "lower": 100000.0, "upper": 1e20, "transform": "log10", "units": "A-unit-rule"},
+      {"name": "R1_Ea_J_per_mol", "reaction": "R1", "role": "activation-energy", "lower": 0.0, "upper": 300000.0, "transform": "linear", "units": "J/mol"},
+      {"name": "R1_order_C3H8", "reaction": "R1", "role": "C3H8-forward-order", "lower": 0.0, "upper": 2.0, "transform": "linear", "units": "dimensionless"},
+      {"name": "R1_order_O2", "reaction": "R1", "role": "O2-forward-order", "lower": 0.0, "upper": 2.5, "transform": "linear", "units": "dimensionless"},
+      {"name": "R2_A_SI", "reaction": "R2", "role": "pre-exponential-factor", "lower": 100000.0, "upper": 1e20, "transform": "log10", "units": "A-unit-rule"},
+      {"name": "R2_Ea_J_per_mol", "reaction": "R2", "role": "activation-energy", "lower": 0.0, "upper": 300000.0, "transform": "linear", "units": "J/mol"}
+    ],
+    "bounds_status": "synthetic-protocol-bounds-not-physical-priors-or-production-authority"
+  },
+  "optimizer_protocol": {
+    "status": "specified-not-executed",
+    "selection_split": "training-only",
+    "coordinate_space": "each-transformed-parameter-affinely-normalized-to-[0,1]",
+    "start_sequence": {
+      "first": "all-coordinate-midpoint",
+      "remaining": "first-16-unscrambled-Halton-points-no-skip",
+      "halton_indices": [1, 16],
+      "halton_radical_inverse_index_origin": 1,
+      "halton_definition": "radical-inverse-base-b-of-positive-integer-index-using-least-significant-base-b-digits",
+      "midpoint_is_separate_from_halton_sequence": true,
+      "bases_in_parameter_order": [2, 3, 5, 7, 11, 13],
+      "transformed_bound_mapping": "x=lower+u*(upper-lower)-with-u-in-[0,1]-and-log10-bounds-for-log10-parameters",
+      "random_seed": null
+    },
+    "search": {
+      "algorithm": "bounded-coordinate-pattern-search-v1",
+      "coordinate_order": ["R1_A_SI", "R1_Ea_J_per_mol", "R1_order_C3H8", "R1_order_O2", "R2_A_SI", "R2_Ea_J_per_mol"],
+      "direction_order": ["positive", "negative"],
+      "initial_normalized_step": 0.25,
+      "step_contraction": 0.5,
+      "minimum_normalized_step": 0.0009765625,
+      "maximum_objective_evaluations_per_start": 20000,
+      "parallel_objective_evaluations": 1,
+      "candidate_generation": "for-each-coordinate-evaluate-in-bound-plus-then-minus-from-the-coordinate-entry-incumbent",
+      "out_of_bound_candidate_policy": "skip-without-runner-call-or-evaluation-count",
+      "coordinate_acceptance": "after-both-directions-choose-lowest-valid-objective-then-lexicographically-smallest-transformed-vector-and-update-before-next-coordinate",
+      "sweep_and_contraction": "a-sweep-visits-every-coordinate-once-contract-step-only-after-a-full-sweep-with-no-accepted-coordinate",
+      "post_acceptance_progression": "continue-with-next-coordinate-at-the-same-step-no-coordinate-restart",
+      "evaluation_count": "each-unique-runner-call-including-start-point-counts-once-cached-duplicate-points-neither-run-nor-count",
+      "cache_scope": "per-start-cleared-before-each-start",
+      "evaluation_limit_policy": "stop-before-a-coordinate-if-all-of-its-uncached-in-bound-direction-candidates-cannot-fit-in-the-remaining-budget",
+      "termination": "stop-when-next-contracted-step-would-be-below-minimum-or-evaluation-limit-policy-triggers",
+      "improvement_rule": "strictly-lower-binary64-objective",
+      "invalid_start_policy": "terminate-that-start-without-neighbor-search",
+      "global_start_selection": "after-all-starts-choose-lowest-valid-objective-then-lexicographically-smallest-transformed-vector",
+      "final_tie_break": "lowest-objective-then-lexicographically-smallest-transformed-vector"
+    },
+    "failed_candidate_policy": "invalid-candidate-never-replaces-incumbent-all-invalid-blocks-fit",
+    "holdout_evaluation": "exactly-once-after-parameter-vector-is-frozen",
+    "optimizer_executed": false
+  },
+  "identifiability_uncertainty": {
+    "status": "not-evaluated-blocking",
+    "scaled_residual_order": "training-case-order-then-observable-order-then-sample-time-order",
+    "scaled_residual_definition": {
+      "ignition_delay_row": "sqrt(component_weight/number_of_training_cases)*log(tau_prediction/tau_reference)/ignition_delay_sigma_log",
+      "history_row": "sqrt(component_weight/(number_of_training_cases*number_of_case_sample_times))*(prediction-reference)/normalization_scale",
+      "identity": "math.fsum(square(each-scaled-residual-row))-equals-training-objective",
+      "holdout_rows_excluded": true
+    },
+    "local_sensitivity": {
+      "method": "central-difference-in-normalized-transformed-coordinates",
+      "step": 0.0001,
+      "one_sided_at_bounds": true,
+      "boundary_rule": "use-central-plus-minus-step-when-both-in-[0,1]-otherwise-first-order-base-to-inward-point-at-exactly-one-step",
+      "failed_base_or_perturbation_policy": "stop-identifiability-no-rank-or-uncertainty-claim"
+    },
+    "identifiability_requirements": {
+      "svd_relative_rank_tolerance": 1e-08,
+      "singular_value_order": "descending",
+      "rank_definition": "count-singular-values-strictly-greater-than-largest-times-relative-rank-tolerance",
+      "required_rank": 6,
+      "condition_number_definition": "largest-divided-by-sixth-singular-value-full-rank-only-otherwise-infinite",
+      "maximum_condition_number": 100000000.0,
+      "parameter_correlation_definition": "covariance_ij/sqrt(covariance_ii*covariance_jj)-with-positive-diagonal-required",
+      "maximum_absolute_parameter_correlation": 0.98,
+      "rank_deficiency_policy": "stop-no-parameter-publication"
+    },
+    "uncertainty_requirements": {
+      "confidence_level": 0.95,
+      "covariance_definition": "full-rank-gauss-newton-s2-times-V-diag(1/singular_value_squared)-V-transpose",
+      "residual_variance_definition": "s2=sum-of-scaled-training-residual-squares/(row-count-parameter-count)-requiring-row-count-greater-than-parameter-count",
+      "rank_or_variance_failure_policy": "reviewed-nonidentifiability-result-no-interval-or-parameter-publication",
+      "required_outputs": [
+        "scaled-sensitivity-matrix",
+        "singular-values-and-rank",
+        "parameter-covariance-or-reviewed-nonidentifiability-result",
+        "marginal-and-joint-parameter-intervals",
+        "training-and-holdout-predictive-intervals",
+        "domain-of-applicability"
+      ],
+      "synthetic-fixture-uncertainty-is-physical-evidence": false
+    }
+  },
+  "provenance_rights": {
+    "input_class": "SYNTHETIC_NONPHYSICAL_TEST_ONLY",
+    "synthetic_fixture_local_contract_test_use": true,
+    "physical_mechanism_artifact_bound": false,
+    "physical_experimental_artifact_bound": false,
+    "physical_fit_use_permission_bound": false,
+    "physical_redistribution_permission_bound": false,
+    "required_before_physical_fit": [
+      "versioned-detailed-mechanism-with-explicit-fit-use-disposition",
+      "rights-cleared-experimental-training-artifacts-with-uncertainty",
+      "independent-rights-cleared-holdout-artifacts-with-uncertainty",
+      "immutable-source-hashes-and-citations",
+      "reviewed-common-units-rate-and-enthalpy-basis"
+    ],
+    "synthetic_fixture_must_not_be_relabelled_as_reference_mechanism_or_experiment": true
+  },
+  "synthetic_expectation": {
+    "training_cases": 2,
+    "holdout_cases": 2,
+    "training_objective": 0.1828606650975268,
+    "holdout_objective": 0.3172436827245746,
+    "case_objectives": {
+      "SYNTHETIC_TRAIN_001": 0.18394503921249497,
+      "SYNTHETIC_TRAIN_002": 0.18177629098255865,
+      "SYNTHETIC_HOLDOUT_001": 0.1734317579624942,
+      "SYNTHETIC_HOLDOUT_002": 0.46105560748665503
+    },
+    "fit_executed": false,
+    "physical_validation_claimed": false,
+    "parameter_vector_publishable": false
+  },
+  "cross_scope": {
+    "same_mechanism_equivalence": "separate-required-implementation-gate-not-replaced",
+    "physical_r2_calibration": "blocked-until-rights-clear-mechanism-and-experiments-exist",
+    "kij": "not-a-chemistry-fit-parameter",
+    "hem": "rho-e-Y-flash-state-ownership-unchanged",
+    "condensed_carbon": "excluded-no-quantitative-soot-claim",
+    "fluent": "not-invoked-not-approved"
+  },
+  "stop_conditions": [
+    "any approval flag true",
+    "artifact id path hash size or kind drift",
+    "duplicate JSON key unknown field or nonfinite number",
+    "training and holdout overlap reorder or posthoc change",
+    "holdout used during parameter form weight bound or parameter selection",
+    "unit rate law enthalpy basis observable metric weight tolerance or domain drift",
+    "parameter bound optimizer identifiability or uncertainty protocol drift",
+    "physical source right-to-fit or redistribution asserted without bound artifacts",
+    "synthetic fixture represented as mechanism experiment fit physical validation or production evidence",
+    "attempt to enable HEM Fluent hot-start or production capability"
+  ]
+}

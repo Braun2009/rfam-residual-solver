@@ -1,0 +1,15 @@
+; Vortex 3D cold-air SST r43: pressure-outlet farfield continuation at CFL=1.
+; Source r39/iter55 is numerically stable but not mass-closed yet.  The outlet
+; contains bidirectional external-domain adjustment flow, so retain CFL=1 and
+; advance one bounded segment only.  No initialization or source modification.
+
+(format #t "\nVORTEX_R43_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_continue36_r39/cold_air_sst_55it.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_continue36_r39/cold_air_sst_55it.dat.h5
+(format #t "\nVORTEX_R43_R39_CASE_DATA_READ_OK\n")
+/solve/iterate 25
+(format #t "\nVORTEX_R43_ITERATE_25_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_continue36_r43/cold_air_sst_80it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_continue36_r43/cold_air_sst_80it.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R43_PRESSURE_OUTLET_36PHYS_OK\n")
+/exit yes

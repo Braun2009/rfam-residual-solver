@@ -1,0 +1,1326 @@
+{
+  "schema": "rfam.r2-joint-fit-synthetic-execution-result/v1",
+  "status": "blocked-synthetic-optimizer-execution-only",
+  "watermark": "SYNTHETIC_NONPHYSICAL_TEST_ONLY",
+  "authorities": {
+    "execution_contract": {
+      "path": "tests/reference/r2_joint_fit_synthetic_execution_contract_v1.json",
+      "sha256": "4c3db0f2711a00d93d8bdff4b08a72df41107db1a930cd072cc10fa7d4b0e268",
+      "byte_count": 6028
+    },
+    "frozen_v3": {
+      "objective_contract": {
+        "path": "tests/reference/r2_joint_fit_objective_contract_v1.json",
+        "sha256": "4e15ed2c7cca709b5bd54f04faa6cd2db50347e31dacc9676213b3fe375679e7",
+        "byte_count": 15830
+      },
+      "synthetic_fixture": {
+        "path": "tests/reference/r2_joint_fit_synthetic_fixture_v1.json",
+        "sha256": "6cef95b7fd3d56eee4a009214a5205d539c69681712e3088be6b7418a1b2199c",
+        "byte_count": 6652
+      },
+      "objective_validator": {
+        "path": "tools/validate_r2_joint_fit_objective.py",
+        "sha256": "7e04bc983e3f3312b0fed1afb3433ca83fcdb4d93e88fd0c73fa526d1ce5bb50",
+        "byte_count": 35024
+      },
+      "objective_test": {
+        "path": "tests/test_r2_joint_fit_objective_contract.py",
+        "sha256": "ec0005ccba7715dd00d6eddeaa9b5297ef9a2c3bea9a446c87cfff37fab5c3a8",
+        "byte_count": 13622
+      },
+      "objective_documentation": {
+        "path": "docs/r2_joint_fit_objective_contract.md",
+        "sha256": "cece29648591d19f498608dee9bf0f3510d82199f710ec506b56a4cf77197538",
+        "byte_count": 6529
+      }
+    }
+  },
+  "runner": {
+    "adapter_id": "fixture-anchored-affine-response-v1",
+    "affine_formula": "anchor_prediction+slope*(u-anchor_u)",
+    "parameter_order": [
+      "R1_A_SI",
+      "R1_Ea_J_per_mol",
+      "R1_order_C3H8",
+      "R1_order_O2",
+      "R2_A_SI",
+      "R2_Ea_J_per_mol"
+    ],
+    "required_case_request_fields": [
+      "ordered-parameter-vector",
+      "initial-temperature-k",
+      "initial-pressure-pa",
+      "equivalence-ratio",
+      "diluent-mass-fraction",
+      "ordered-initial-mass-fraction-vector",
+      "ordered-sample-times-s",
+      "energy-basis-id"
+    ],
+    "initial_state_authority": "ordered-initial-mass-fraction-vector-no-reconstruction",
+    "case_requests_per_training_call": 2,
+    "case_requests_per_holdout_call": 2,
+    "anchor_normalized_coordinates": [
+      0.466666666666667,
+      0.416666666666667,
+      0.125,
+      0.6,
+      0.4,
+      0.266666666666667
+    ],
+    "selection_training_calls": 3284,
+    "holdout_calls_during_selection": 0,
+    "holdout_calls_after_selection": 1,
+    "identifiability_training_calls": 13,
+    "total_calls": 3298
+  },
+  "optimizer": {
+    "algorithm": "bounded-coordinate-pattern-search-v1",
+    "start_count": 17,
+    "selected_start_index": 12,
+    "selected_start_kind": "halton-12",
+    "selected_normalized_coordinates": [
+      0.3662109375,
+      0.616898148148148,
+      0.024921875,
+      0.34992825255102,
+      0.899954803719008,
+      0.766826923076923
+    ],
+    "selected_transformed_parameters": [
+      10.4931640625,
+      185069.444444444,
+      0.0498437500000001,
+      0.874820631377551,
+      18.4993220557851,
+      230048.076923077
+    ],
+    "selected_parameter_vector": [
+      31128920656.1108,
+      185069.444444444,
+      0.0498437500000001,
+      0.874820631377551,
+      3.15734511898738e+18,
+      230048.076923077
+    ],
+    "training_objective": 0.170813797398293,
+    "training_case_objectives": {
+      "SYNTHETIC_TRAIN_001": 0.159851303814028,
+      "SYNTHETIC_TRAIN_002": 0.181776290982559
+    },
+    "global_selection": "after-all-starts-choose-lowest-valid-objective-then-lexicographically-smallest-transformed-vector",
+    "per_start": [
+      {
+        "start_index": 0,
+        "start_kind": "midpoint",
+        "start_normalized_coordinates": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.6162109375,
+          0.025390625,
+          0.349609375,
+          0.900390625,
+          0.7666015625
+        ],
+        "objective": 0.170813810098197,
+        "valid": true,
+        "runner_evaluations": 185,
+        "cache_hits": 13,
+        "out_of_bound_skips": 7,
+        "completed_sweeps": 17,
+        "step_contractions": 8,
+        "accepted_coordinates": 30,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 458,
+        "trace_sha256": "401a9d8d85e42bbcff8e4427593e102f6bd56d2388b63ea392fbc1496a540e22"
+      },
+      {
+        "start_index": 1,
+        "start_kind": "halton-1",
+        "start_normalized_coordinates": [
+          0.5,
+          0.333333333333333,
+          0.2,
+          0.142857142857143,
+          0.0909090909090909,
+          0.0769230769230769
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.616536458333333,
+          0.0251953125,
+          0.349888392857143,
+          0.900479403409091,
+          0.766376201923077
+        ],
+        "objective": 0.170813802792037,
+        "valid": true,
+        "runner_evaluations": 198,
+        "cache_hits": 29,
+        "out_of_bound_skips": 14,
+        "completed_sweeps": 20,
+        "step_contractions": 8,
+        "accepted_coordinates": 33,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 529,
+        "trace_sha256": "d607569fc4ca891691022f4e258a98924f2288cf22f3911b9b2989eda797bced"
+      },
+      {
+        "start_index": 2,
+        "start_kind": "halton-2",
+        "start_normalized_coordinates": [
+          0.25,
+          0.666666666666667,
+          0.4,
+          0.285714285714286,
+          0.181818181818182,
+          0.153846153846154
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.616861979166667,
+          0.025,
+          0.350167410714286,
+          0.899591619318182,
+          0.767127403846154
+        ],
+        "objective": 0.170813803876176,
+        "valid": true,
+        "runner_evaluations": 194,
+        "cache_hits": 34,
+        "out_of_bound_skips": 13,
+        "completed_sweeps": 20,
+        "step_contractions": 8,
+        "accepted_coordinates": 24,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 521,
+        "trace_sha256": "6910f2c46176878161fa78add58344adde313ccf26a2b22d7d674b9e308acbfb"
+      },
+      {
+        "start_index": 3,
+        "start_kind": "halton-3",
+        "start_normalized_coordinates": [
+          0.75,
+          0.111111111111111,
+          0.6,
+          0.428571428571429,
+          0.272727272727273,
+          0.230769230769231
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.616970486111111,
+          0.0248046875000001,
+          0.350446428571429,
+          0.899680397727273,
+          0.766902043269231
+        ],
+        "objective": 0.170813805241951,
+        "valid": true,
+        "runner_evaluations": 205,
+        "cache_hits": 16,
+        "out_of_bound_skips": 8,
+        "completed_sweeps": 19,
+        "step_contractions": 8,
+        "accepted_coordinates": 33,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 510,
+        "trace_sha256": "48d01eb63d27851a5cfff6d4f8ce8ae45e92fa03bd0cffbe4fc2dd90296f604f"
+      },
+      {
+        "start_index": 4,
+        "start_kind": "halton-4",
+        "start_normalized_coordinates": [
+          0.125,
+          0.444444444444444,
+          0.8,
+          0.571428571428571,
+          0.363636363636364,
+          0.307692307692308
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.616319444444444,
+          0.024609375,
+          0.349748883928571,
+          0.899769176136364,
+          0.766676682692308
+        ],
+        "objective": 0.170813804301769,
+        "valid": true,
+        "runner_evaluations": 206,
+        "cache_hits": 23,
+        "out_of_bound_skips": 12,
+        "completed_sweeps": 20,
+        "step_contractions": 8,
+        "accepted_coordinates": 35,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 533,
+        "trace_sha256": "1b1d1ce0e7430fb7adc114073f73e601a2d9c4a1459559dd1fe51967e15d37a7"
+      },
+      {
+        "start_index": 5,
+        "start_kind": "halton-5",
+        "start_normalized_coordinates": [
+          0.625,
+          0.777777777777778,
+          0.04,
+          0.714285714285714,
+          0.454545454545455,
+          0.384615384615385
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.616644965277778,
+          0.0253515625,
+          0.350027901785714,
+          0.899857954545455,
+          0.766451322115385
+        ],
+        "objective": 0.170813799653845,
+        "valid": true,
+        "runner_evaluations": 184,
+        "cache_hits": 31,
+        "out_of_bound_skips": 14,
+        "completed_sweeps": 19,
+        "step_contractions": 8,
+        "accepted_coordinates": 30,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 501,
+        "trace_sha256": "2f0f5030396d8f4eb57531322fb39757fac99a918debb7d507064f9309a1cc44"
+      },
+      {
+        "start_index": 6,
+        "start_kind": "halton-6",
+        "start_normalized_coordinates": [
+          0.375,
+          0.222222222222222,
+          0.24,
+          0.857142857142857,
+          0.545454545454545,
+          0.461538461538462
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.616753472222222,
+          0.02515625,
+          0.350306919642857,
+          0.899946732954545,
+          0.766225961538462
+        ],
+        "objective": 0.170813801549574,
+        "valid": true,
+        "runner_evaluations": 185,
+        "cache_hits": 21,
+        "out_of_bound_skips": 11,
+        "completed_sweeps": 18,
+        "step_contractions": 8,
+        "accepted_coordinates": 27,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 476,
+        "trace_sha256": "722721e742121cb6ed929a6463d984ed9bf833f4237223f23fab2232fd1e65ee"
+      },
+      {
+        "start_index": 7,
+        "start_kind": "halton-7",
+        "start_normalized_coordinates": [
+          0.875,
+          0.555555555555556,
+          0.44,
+          0.0204081632653061,
+          0.636363636363636,
+          0.538461538461539
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.617078993055556,
+          0.0249609375,
+          0.350486288265306,
+          0.900035511363636,
+          0.766977163461539
+        ],
+        "objective": 0.170813805843457,
+        "valid": true,
+        "runner_evaluations": 184,
+        "cache_hits": 32,
+        "out_of_bound_skips": 13,
+        "completed_sweeps": 19,
+        "step_contractions": 8,
+        "accepted_coordinates": 30,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 502,
+        "trace_sha256": "c883943fd05307c8542269514517d6cfeb6a1472313313a1ffeb99f384e892a0"
+      },
+      {
+        "start_index": 8,
+        "start_kind": "halton-8",
+        "start_normalized_coordinates": [
+          0.0625,
+          0.888888888888889,
+          0.64,
+          0.163265306122449,
+          0.727272727272727,
+          0.615384615384615
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.616427951388889,
+          0.0247656250000001,
+          0.349788743622449,
+          0.900124289772727,
+          0.766751802884615
+        ],
+        "objective": 0.17081379935002,
+        "valid": true,
+        "runner_evaluations": 197,
+        "cache_hits": 17,
+        "out_of_bound_skips": 15,
+        "completed_sweeps": 19,
+        "step_contractions": 8,
+        "accepted_coordinates": 34,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 504,
+        "trace_sha256": "dc671b2ce84087ac31603138b52996c91ba4f66f99054c564e37bfba7d141080"
+      },
+      {
+        "start_index": 9,
+        "start_kind": "halton-9",
+        "start_normalized_coordinates": [
+          0.5625,
+          0.037037037037037,
+          0.84,
+          0.306122448979592,
+          0.818181818181818,
+          0.692307692307692
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.617115162037037,
+          0.0245703125000001,
+          0.350067761479592,
+          0.900213068181818,
+          0.766526442307692
+        ],
+        "objective": 0.170813806240225,
+        "valid": true,
+        "runner_evaluations": 189,
+        "cache_hits": 38,
+        "out_of_bound_skips": 14,
+        "completed_sweeps": 20,
+        "step_contractions": 8,
+        "accepted_coordinates": 33,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 529,
+        "trace_sha256": "e7cea6f9b5c4b2f27df1e8c4ee76329aea8c6edc18d202190b71605dc5cecbd9"
+      },
+      {
+        "start_index": 10,
+        "start_kind": "halton-10",
+        "start_normalized_coordinates": [
+          0.3125,
+          0.37037037037037,
+          0.08,
+          0.448979591836735,
+          0.909090909090909,
+          0.769230769230769
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.61646412037037,
+          0.0253125,
+          0.350346779336735,
+          0.900301846590909,
+          0.766301081730769
+        ],
+        "objective": 0.170813805225903,
+        "valid": true,
+        "runner_evaluations": 171,
+        "cache_hits": 33,
+        "out_of_bound_skips": 13,
+        "completed_sweeps": 18,
+        "step_contractions": 8,
+        "accepted_coordinates": 21,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 468,
+        "trace_sha256": "479a7187d16438290bb999d5d61c314c264b6f0a18b78bb91211691721ef63ff"
+      },
+      {
+        "start_index": 11,
+        "start_kind": "halton-11",
+        "start_normalized_coordinates": [
+          0.8125,
+          0.703703703703704,
+          0.28,
+          0.591836734693878,
+          0.00826446280991736,
+          0.846153846153846
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.616789641203704,
+          0.0251171875,
+          0.349649234693878,
+          0.899866025309917,
+          0.767052283653846
+        ],
+        "objective": 0.170813801442757,
+        "valid": true,
+        "runner_evaluations": 202,
+        "cache_hits": 22,
+        "out_of_bound_skips": 17,
+        "completed_sweeps": 20,
+        "step_contractions": 8,
+        "accepted_coordinates": 34,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 527,
+        "trace_sha256": "dd909227b8e4d0c78ab821b1ec6530a427b5d034d7e67d375485126379322f45"
+      },
+      {
+        "start_index": 12,
+        "start_kind": "halton-12",
+        "start_normalized_coordinates": [
+          0.1875,
+          0.148148148148148,
+          0.48,
+          0.73469387755102,
+          0.0991735537190083,
+          0.923076923076923
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.616898148148148,
+          0.024921875,
+          0.34992825255102,
+          0.899954803719008,
+          0.766826923076923
+        ],
+        "objective": 0.170813797398293,
+        "valid": true,
+        "runner_evaluations": 193,
+        "cache_hits": 34,
+        "out_of_bound_skips": 14,
+        "completed_sweeps": 20,
+        "step_contractions": 8,
+        "accepted_coordinates": 33,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 529,
+        "trace_sha256": "49248a012573731eeca40cb7ff19238eda59035caca1f449c6630eff1246acde"
+      },
+      {
+        "start_index": 13,
+        "start_kind": "halton-13",
+        "start_normalized_coordinates": [
+          0.6875,
+          0.481481481481481,
+          0.68,
+          0.877551020408163,
+          0.190082644628099,
+          0.00591715976331361
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.616247106481481,
+          0.0247265625,
+          0.350207270408163,
+          0.900043582128099,
+          0.766659347263314
+        ],
+        "objective": 0.170813802401862,
+        "valid": true,
+        "runner_evaluations": 207,
+        "cache_hits": 20,
+        "out_of_bound_skips": 14,
+        "completed_sweeps": 20,
+        "step_contractions": 8,
+        "accepted_coordinates": 38,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 534,
+        "trace_sha256": "a27d4694e2853dc3ee24ddbd62aab699718773733185529ddd845622f2a342a7"
+      },
+      {
+        "start_index": 14,
+        "start_kind": "halton-14",
+        "start_normalized_coordinates": [
+          0.4375,
+          0.814814814814815,
+          0.88,
+          0.0408163265306122,
+          0.28099173553719,
+          0.0828402366863905
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.616572627314815,
+          0.02453125,
+          0.350386639030612,
+          0.90013236053719,
+          0.766433986686391
+        ],
+        "objective": 0.170813805150547,
+        "valid": true,
+        "runner_evaluations": 198,
+        "cache_hits": 30,
+        "out_of_bound_skips": 13,
+        "completed_sweeps": 20,
+        "step_contractions": 8,
+        "accepted_coordinates": 35,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 532,
+        "trace_sha256": "fe2ec4ee08699768b90fda48e5aec9483bf45b40d6bd70e019d8d8dd06a20d34"
+      },
+      {
+        "start_index": 15,
+        "start_kind": "halton-15",
+        "start_normalized_coordinates": [
+          0.9375,
+          0.259259259259259,
+          0.12,
+          0.183673469387755,
+          0.371900826446281,
+          0.159763313609467
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.616681134259259,
+          0.0252734375,
+          0.349689094387755,
+          0.900221138946281,
+          0.766208626109467
+        ],
+        "objective": 0.170813803827298,
+        "valid": true,
+        "runner_evaluations": 201,
+        "cache_hits": 17,
+        "out_of_bound_skips": 11,
+        "completed_sweeps": 19,
+        "step_contractions": 8,
+        "accepted_coordinates": 38,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 512,
+        "trace_sha256": "b813ab75bb55fabd6c920afd8b217100a8ff9ac0ef0e3aebf0d1a55d12eaac7c"
+      },
+      {
+        "start_index": 16,
+        "start_kind": "halton-16",
+        "start_normalized_coordinates": [
+          0.03125,
+          0.592592592592593,
+          0.32,
+          0.326530612244898,
+          0.462809917355372,
+          0.236686390532544
+        ],
+        "selected_normalized_coordinates": [
+          0.3662109375,
+          0.617006655092593,
+          0.025078125,
+          0.349968112244898,
+          0.900309917355372,
+          0.766959828032544
+        ],
+        "objective": 0.170813801763567,
+        "valid": true,
+        "runner_evaluations": 185,
+        "cache_hits": 22,
+        "out_of_bound_skips": 10,
+        "completed_sweeps": 18,
+        "step_contractions": 8,
+        "accepted_coordinates": 26,
+        "termination": "minimum-step-reached",
+        "trace_event_count": 476,
+        "trace_sha256": "43f14b869c1188eb94132fc1baa2b1ae07d6e4e281ae9145a8a8d1fb0fad3914"
+      }
+    ]
+  },
+  "holdout": {
+    "evaluation_count": 1,
+    "objective": 0.317243682724575,
+    "case_objectives": {
+      "SYNTHETIC_HOLDOUT_001": 0.173431757962494,
+      "SYNTHETIC_HOLDOUT_002": 0.461055607486655
+    },
+    "used_during_selection": false
+  },
+  "identifiability": {
+    "status": "synthetic-full-rank",
+    "coordinate_basis": "normalized-transformed-parameter-u",
+    "row_count": 58,
+    "parameter_count": 6,
+    "difference_modes": [
+      "central",
+      "central",
+      "central",
+      "central",
+      "central",
+      "central"
+    ],
+    "runner_calls": 13,
+    "sensitivity_matrix": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.158113883008419,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.158113883008419,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.158113883008419,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.136930639380837,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.136930639380837,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.136930639373054
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "gram_matrix": [
+      [
+        0.025,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.025,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.025,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0187500000012449,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0187500000012449,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0187499999991132
+      ]
+    ],
+    "jacobi_sweeps": 0,
+    "singular_values": [
+      0.158113883008419,
+      0.158113883008419,
+      0.158113883008419,
+      0.136930639380837,
+      0.136930639380837,
+      0.136930639373054
+    ],
+    "rank": 6,
+    "required_rank": 6,
+    "condition_number": 1.15470053840656,
+    "maximum_condition_number": 100000000.0,
+    "residual_sum_squares": 0.170813797398293,
+    "residual_variance": 0.00328488071919795,
+    "covariance_matrix": [
+      [
+        0.131395228767918,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.131395228767918,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.131395228767918,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.175193638345592,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.175193638345592,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.175193638365509
+      ]
+    ],
+    "correlation_matrix": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "maximum_absolute_offdiagonal_correlation": 0.0,
+    "rank_condition_correlation_pass": true,
+    "uncertainty_outputs": {
+      "status": "not-publishable-synthetic-covariance-diagnostic-only",
+      "marginal_and_joint_parameter_intervals": "not-computed-no-frozen-coverage-distribution-rule",
+      "training_and_holdout_predictive_intervals": "not-computed-no-frozen-observation-uncertainty-model",
+      "domain_of_applicability": "not-established-by-synthetic-fixture",
+      "physical_evidence": false
+    }
+  },
+  "claims": {
+    "synthetic_optimizer_executed": true,
+    "physical_optimizer_executed": false,
+    "physical_fit_executed": false,
+    "parameter_vector_publishable": false,
+    "synthetic_identifiability_is_physical_evidence": false,
+    "physical_uncertainty_claimed": false,
+    "runner_equivalent_to_rfam_or_cantera": false,
+    "hem_chemistry_enabled": false,
+    "fluent_execution_approved": false,
+    "reacting_hot_start_approved": false,
+    "production_ready": false
+  },
+  "scope_limits": [
+    "synthetic affine fixture only; no RFAM or Cantera kinetics executed",
+    "no detailed mechanism or experimental training or holdout data selected",
+    "covariance is a deterministic software diagnostic, not physical uncertainty",
+    "parameter and predictive intervals remain undefined and unpublished",
+    "no HEM Fluent hot-start or production capability change"
+  ]
+}

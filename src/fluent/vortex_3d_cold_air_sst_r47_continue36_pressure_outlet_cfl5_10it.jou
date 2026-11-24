@@ -1,0 +1,15 @@
+; Vortex 3D cold-air SST r47: short pressure-outlet CFL=5 stability probe.
+; Source is r46, an independent CFL-only configuration from r39 iter55.
+; The CFL=1 path reached the Fluent turbulence-viscosity limiter without mass
+; closure, so this is a bounded 10-step diagnostic only.  No initialization.
+
+(format #t "\nVORTEX_R47_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_cfl5_config_r46/cold_air_sst_courant5_configured.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_cfl5_config_r46/cold_air_sst_courant5_configured.dat.h5
+(format #t "\nVORTEX_R47_R46_CASE_DATA_READ_OK\n")
+/solve/iterate 10
+(format #t "\nVORTEX_R47_ITERATE_10_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_cfl5_probe36_r47/cold_air_sst_65it_cfl5.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_cfl5_probe36_r47/cold_air_sst_65it_cfl5.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R47_PRESSURE_OUTLET_CFL5_36PHYS_OK\n")
+/exit yes

@@ -1,0 +1,17 @@
+; Vortex 3D cold-air SST r61: pressure-outlet continuation with paired SST init defaults.
+; Source r59 uses standard-init k=1e-4 m2/s2 and omega=0.6575704158 1/s,
+; implying ambient mu_t/mu=10 at 300 K / one atmosphere.  Independent r60
+; audit confirmed a finite viscosity-ratio maximum (~733, below Fluent 1e5)
+; after five CFL=1 iterations, unlike prior default-initialization branches.
+; Continue one bounded 25-iteration segment without reinitialization.
+
+(format #t "\nVORTEX_R61_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_initturb_init36_r59/cold_air_sst_5it.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_initturb_init36_r59/cold_air_sst_5it.dat.h5
+(format #t "\nVORTEX_R61_R59_CASE_DATA_READ_OK\n")
+/solve/iterate 25
+(format #t "\nVORTEX_R61_ITERATE_25_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_initturb_continue36_r61/cold_air_sst_30it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_initturb_continue36_r61/cold_air_sst_30it.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R61_PRESSURE_OUTLET_INITTURB_36PHYS_OK\n")
+/exit yes

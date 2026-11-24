@@ -1,0 +1,232 @@
+{
+  "schema": "rfam.r2-c3mech-candidate-screen-contract/v2",
+  "contract_version": 2,
+  "status": "blocked-offline-valid-prefix-diagnostic-only",
+  "scope": "rights-bound-c3mech-six-case-full-protocol-out-of-envelope-and-valid-prefix-only-diagnostic-no-fit-no-selection",
+  "artifacts": [
+    {
+      "id": "rights_report",
+      "path": "tmp/a408-c3mech-v4.0.1-propane-mechanism-rights-screen-v1-20260728.md",
+      "sha256": "6779ae447b8ae27d49f4b1011e91ab0747dc8c91435f44d5effcdf6cad5fd26f",
+      "size": 9722,
+      "kind": "artifact-specific-rights-and-scope-screen"
+    },
+    {
+      "id": "c3mech_license",
+      "path": "tmp/c3mech-v4.0.1-rights-screen/LICENSE",
+      "sha256": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661",
+      "size": 18650,
+      "kind": "cc-by-4.0-license"
+    },
+    {
+      "id": "cantera_wheel",
+      "path": "tmp/cantera-3.2.0-cp312-cp312-win_amd64.whl",
+      "sha256": "258b95a4e29f9afd50788eab284e88440174302123c8b3a4a3a493904b40e238",
+      "size": 5291378,
+      "kind": "downloaded-cantera-wheel-provenance-artifact-not-installed-tree-equivalence-proof"
+    },
+    {
+      "id": "mechanism_44i0",
+      "path": "tmp/c3mech-v4.0.1-rights-screen/C3MechV4.0.1_44I0_C0-C3-C4_LT-HT_Cantera.yaml",
+      "sha256": "d5cec179ffbb6221b1b91264e1439ec850658dd97a0298054c8dbc336f3ab148",
+      "size": 2227356,
+      "kind": "exact-c3mech-v4.0.1-lt-ht-cantera-yaml"
+    },
+    {
+      "id": "mechanism_3r00",
+      "path": "tmp/c3mech-v4.0.1-rights-screen/C3MechV4.0.1_3R00_C0-C3-C4_HT_Cantera.yaml",
+      "sha256": "e307306e8fe9497ebc5a88f32545936c6f65a12c131c90ec30cff18fdf3a3e9d",
+      "size": 1483615,
+      "kind": "exact-c3mech-v4.0.1-ht-cantera-yaml"
+    },
+    {
+      "id": "reference_generator",
+      "path": "realFluidAllMach/scripts/generate_r2_c3mech_candidate_reference.py",
+      "sha256": "d8d4d3ad9cc4207039c49f9d2174d8e28ca8db601bea077a85d955d11d55bb5c",
+      "size": 22366,
+      "kind": "partitioned-fail-closed-cantera-v2-reference-generator"
+    },
+    {
+      "id": "training_cases",
+      "path": "realFluidAllMach/tests/reference/r2_c3mech_training_cases_v1.json",
+      "sha256": "2baf34d21180d9b81c2abe841a00ae8bf263f15cd0abbf949ac9ba36f92d6601",
+      "size": 895,
+      "kind": "physically-separated-training-case-manifest"
+    },
+    {
+      "id": "holdout_cases",
+      "path": "realFluidAllMach/tests/reference/r2_c3mech_holdout_cases_v1.json",
+      "sha256": "cb63bfd73fdf7cc56eb179ee95d84be185c7397406f25b93183588bb8b4d4785",
+      "size": 899,
+      "kind": "physically-separated-holdout-case-manifest"
+    },
+    {
+      "id": "screen_plan",
+      "path": "realFluidAllMach/tests/reference/r2_c3mech_candidate_screen_plan_v2.json",
+      "sha256": "ccef1959d057a5618114511cda9ef3762979be7e897dc9d092af6c1c90ccb95b",
+      "size": 6734,
+      "kind": "pre-trajectory-role-lock-full-protocol-and-prefix-evidence-policy"
+    },
+    {
+      "id": "reference_44i0_training",
+      "path": "tmp/a408-r2-c3mech-44i0-training-v2.json",
+      "sha256": "a1298082963b4adafc5d02de38450e663f2483704847bc827c1f4585939ee853",
+      "size": 16668,
+      "kind": "generated-training-reference-v2"
+    },
+    {
+      "id": "reference_44i0_holdout",
+      "path": "tmp/a408-r2-c3mech-44i0-holdout-v2.json",
+      "sha256": "4961e2e76f0a7fe4b54ba1ea67d9dace7896416ed2b8633b56474a7046f342ac",
+      "size": 16323,
+      "kind": "generated-post-lock-holdout-reference-v2"
+    },
+    {
+      "id": "reference_3r00_training",
+      "path": "tmp/a408-r2-c3mech-3r00-training-v2.json",
+      "sha256": "42e7aeedb90b9ceadc782fa5680eb633314da2c227cc424dce395b4e19238a52",
+      "size": 16651,
+      "kind": "generated-training-reference-v2"
+    },
+    {
+      "id": "reference_3r00_holdout",
+      "path": "tmp/a408-r2-c3mech-3r00-holdout-v2.json",
+      "sha256": "bfda66faacc8335eff0c76e313ade9994d19b37ae800bc4214548c7da232f98d",
+      "size": 16300,
+      "kind": "generated-post-lock-holdout-reference-v2"
+    },
+    {
+      "id": "screen_tool",
+      "path": "realFluidAllMach/tools/screen_r2_c3mech_candidate.py",
+      "sha256": "74aedf67c5f3af784009871021c0e1dcf7e8a523c2ad843fc4fc9edec09e86b9",
+      "size": 36701,
+      "kind": "training-before-holdout-valid-prefix-rfam-comparator"
+    },
+    {
+      "id": "rfam_protocol_module",
+      "path": "realFluidAllMach/tools/run_r2_0d_rfam_protocol.py",
+      "sha256": "5a4642c37ce4b07ca97db82a6af218d39e039b8a73e417d20efb6094d43f58a8",
+      "size": 20748,
+      "kind": "transitive-strict-rfam-output-parser"
+    },
+    {
+      "id": "rfam_runner_source",
+      "path": "realFluidAllMach/tools/r2_0d_rfam_runner.cpp",
+      "sha256": "2f6acfe72015b4de91fe1ade806ea8f6d30bf8d9049fb7d89dc936e546eeabbb",
+      "size": 27822,
+      "kind": "fixed-reviewed-two-step-runner-source"
+    },
+    {
+      "id": "rfam_runner_executable",
+      "path": "realFluidAllMach/build-phase-foundation/rfam_r2_0d_runner",
+      "sha256": "4858ae43b17bec7cccf2f6ba3a75659f0e92ed092635be6d3b61b107e1d8a1d1",
+      "size": 93312,
+      "kind": "fixed-reviewed-linux-elf-behavior"
+    },
+    {
+      "id": "screen_output",
+      "path": "tmp/a408-r2-c3mech-candidate-screen-v2.json",
+      "sha256": "b363dcef385452825a39596e9b85de28072df280285c9494438e1c151605aced",
+      "size": 21868,
+      "kind": "deterministic-blocked-full-protocol-and-prefix-screen-result-v2"
+    }
+  ],
+  "runtime_identity": {
+    "python_executable": "C:\\Users\\guhai\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "python_sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+    "python_size": 104952,
+    "cantera_version": "3.2.0",
+    "cantera_wheel": "F:\\tmp\\cantera-3.2.0-cp312-cp312-win_amd64.whl",
+    "cantera_wheel_sha256": "258b95a4e29f9afd50788eab284e88440174302123c8b3a4a3a493904b40e238",
+    "cantera_wheel_size": 5291378,
+    "cantera_module": "F:\\tmp\\cantera-3.2.0-python312\\cantera\\__init__.py",
+    "cantera_module_sha256": "a793b6d7643cc875ef0e0bbe5e3051f538af08418242aa87eb6cc7f995e34396",
+    "cantera_module_size": 1014,
+    "cantera_extension": "F:\\tmp\\cantera-3.2.0-python312\\cantera\\_cantera.cp312-win_amd64.pyd",
+    "cantera_extension_sha256": "00f00749cc90b76a7266656fd02e6a7d40be82e7d7e1389472ad285123064e9d",
+    "cantera_extension_size": 6564352,
+    "execution_authority": "bound-installed-module-and-extension",
+    "wheel_to_installed_tree_equivalence_proven": false
+  },
+  "partition_access": {
+    "role_lock_artifact_id": "screen_plan",
+    "role_lock_basis": "rights-and-intended-scope-only-before-trajectory-results",
+    "training_reference_artifact_ids": [
+      "reference_44i0_training",
+      "reference_3r00_training"
+    ],
+    "holdout_reference_artifact_ids": [
+      "reference_44i0_holdout",
+      "reference_3r00_holdout"
+    ],
+    "holdout_opened_after_training_comparison": true,
+    "training_or_holdout_may_change_roles": false,
+    "selection_executed": false,
+    "fit_executed": false
+  },
+  "mechanism_roles": {
+    "primary_model_id": "44I0",
+    "primary_role": "primary-lt-ht-reference-candidate-not-selected",
+    "comparator_model_id": "3R00",
+    "comparator_role": "bounded-ht-comparator-not-selected",
+    "selected_model_id": null
+  },
+  "reaction_count_semantics": {
+    "44I0": {
+      "author_header_count": 3964,
+      "yaml_entry_count": 4080,
+      "cantera_loaded_count": 4080
+    },
+    "3R00": {
+      "author_header_count": 2521,
+      "yaml_entry_count": 2626,
+      "cantera_loaded_count": 2626
+    },
+    "execution_authority": "ordered top-level YAML reaction entries loaded by Cantera",
+    "header_and_execution_counts_interchangeable": false
+  },
+  "evidence_boundary": {
+    "full_fixed_protocol_status": "OUT_OF_MECHANISM_THERMO_ENVELOPE",
+    "full_fixed_protocol_case_count": 12,
+    "first_crossing_evidence_present": true,
+    "first_crossing_publishable_chemistry_state": false,
+    "prefix_diagnostic_status": "blocked-valid-prefix-only-no-extrapolation",
+    "c3mech_thermo_max_k": 2000.0,
+    "rfam_thermo_comparison_min_k": 300.0,
+    "rfam_thermo_comparison_max_k": 3400.0,
+    "paired_noninitial_trajectory_sample_count": 0,
+    "trajectory_shape_comparison_available": false,
+    "trajectory_error_metrics": null,
+    "initial_state_only_is_not_kinetics_evidence": true,
+    "ignition_delay_comparison_is_diagnostic_only": true,
+    "initial_qdot_comparison_is_diagnostic_only": true,
+    "outside_envelope_samples_scored": false,
+    "extrapolation_approved": false
+  },
+  "approvals": {
+    "mechanism_selected_for_fit": false,
+    "experimental_data_selected": false,
+    "fit_executed": false,
+    "holdout_used_for_selection": false,
+    "physical_validation_approved": false,
+    "production_ready": false,
+    "reacting_hot_start_approved": false
+  },
+  "limitations": [
+    "the full fixed protocol leaves the C3Mech thermo envelope in all twelve model-case realizations",
+    "the prefix diagnostic has no jointly eligible noninitial sample and therefore publishes null trajectory error metrics",
+    "the wheel is a bound provenance artifact, while the installed module and extension are execution authority; wheel-to-installed-tree equivalence is not proven",
+    "same six cases and fixed output times as the UCSD route screen, but deterministic bounded IDT semantics are explicitly different",
+    "the reaction-count discrepancy is scoped, not converted into count equivalence",
+    "no experimental values, fitting, mechanism selection, reduction, HEM, Fluent, hot-start or production authority"
+  ],
+  "supersession": {
+    "disposition": "v1-superseded-before-acceptance-do-not-review-or-concatenate",
+    "contract_path": "realFluidAllMach/tests/reference/r2_c3mech_candidate_screen_contract_v1.json",
+    "contract_sha256": "ced87cc7c9c746cedfccec622879b2c8c55de9714e3d15f910e475851bf1f70e",
+    "screen_path": "tmp/a408-r2-c3mech-candidate-screen-v1.json",
+    "screen_sha256": "d5e03ee7b04c68d98ed1226624e3a54cdb99e2cf7e612dffe1ed5b05e8f062ab",
+    "report_path": "tmp/a408-r2-c3mech-candidate-screen-v1-20260728.md",
+    "report_sha256": "06ed2a110b27e108752e3339ee0026710b8e47de728697a31f8991c29a7bc97c"
+  }
+}

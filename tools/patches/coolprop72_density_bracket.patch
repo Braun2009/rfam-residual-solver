@@ -1,0 +1,66 @@
+--- a/src/Backends/Helmholtz/HelmholtzEOSMixtureBackend.cpp
++++ b/src/Backends/Helmholtz/HelmholtzEOSMixtureBackend.cpp
+@@ -2699,8 +2699,61 @@
+                                               vec_to_string(static_cast<std::vector<double>>(mole_fractions), "%0.12g").c_str()));
+         }
+     } else {
+-        throw CoolProp::ValueError(format("One stationary point (not good) for T=%g,p=%g,z=%s", T, p,
+-                                          vec_to_string(static_cast<std::vector<double>>(mole_fractions), "%0.12g").c_str()));
++        // RFAM patch v1: a failed stationary-point search does not establish
++        // that no density root exists. Bracket the pressure roots directly,
++        // retain positive-compressibility roots and select minimum Gibbs.
++        // Require identical roots on successive refined scans. This runs
++        // inside the existing Gernert stability/flash algorithm, so it does
++        // not impose a bulk phase or bypass phase separation.
++        double maximum = rhomolar_max;
++        for (int expand = 0; expand < 10 && resid.call(maximum) < 0; ++expand) maximum *= 1.05;
++        if (!(maximum > 0) || !ValidNumber(maximum) || resid.call(maximum) <= 0)
++            throw CoolProp::ValueError("RFAM density scan: unbounded pressure root");
++        std::vector<double> previous;
++        for (int intervals : {256, 512, 1024, 2048}) {
++            std::vector<double> nodes;
++            for (int i = 0; i <= intervals; ++i) {
++                double fraction = static_cast<double>(i) / intervals;
++                nodes.push_back(1e-10 * std::pow(maximum / 1e-10, fraction));
++                nodes.push_back(1e-10 + (maximum - 1e-10) * fraction);
++            }
++            if (light > 0 && light < maximum) nodes.push_back(light);
++            if (heavy > 0 && heavy < maximum) nodes.push_back(heavy);
++            std::sort(nodes.begin(), nodes.end());
++            nodes.erase(std::unique(nodes.begin(), nodes.end()), nodes.end());
++            std::vector<double> roots;
++            double last = nodes.front(), lastValue = resid.call(last);
++            for (std::size_t i = 1; i < nodes.size(); ++i) {
++                double value = resid.call(nodes[i]);
++                if (!ValidNumber(value) || !ValidNumber(lastValue))
++                    throw CoolProp::ValueError("RFAM density scan: nonfinite EOS sample");
++                if (value == 0 || lastValue == 0 || std::signbit(value) != std::signbit(lastValue)) {
++                    double root = value == 0 ? nodes[i] : lastValue == 0 ? last
++                        : Brent(resid, last, nodes[i], DBL_EPSILON, 1e-10, 200);
++                    if (std::abs(resid.call(root)) > 1e-8)
++                        throw CoolProp::ValueError("RFAM density scan: pressure closure failed");
++                    if (resid.deriv(root) > 0
++                        && (roots.empty() || std::abs(root - roots.back()) > 1e-8 * std::max(root, 1.0)))
++                        roots.push_back(root);
++                }
++                last = nodes[i]; lastValue = value;
++            }
++            bool same = !roots.empty() && roots.size() == previous.size();
++            if (same) for (std::size_t i = 0; i < roots.size(); ++i)
++                if (std::abs(roots[i] - previous[i]) > 1e-8 * std::max(roots[i], 1.0)) same = false;
++            if (same) {
++                double selected = roots.front(), gibbs = calc_gibbsmolar_nocache(T, selected);
++                if (!ValidNumber(gibbs)) throw CoolProp::ValueError("RFAM density scan: nonfinite Gibbs energy");
++                for (std::size_t i = 1; i < roots.size(); ++i) {
++                    double candidate = calc_gibbsmolar_nocache(T, roots[i]);
++                    if (!ValidNumber(candidate)) throw CoolProp::ValueError("RFAM density scan: nonfinite Gibbs energy");
++                    if (candidate < gibbs) { gibbs = candidate; selected = roots[i]; }
++                }
++                return selected;
++            }
++            previous = roots;
++        }
++        throw CoolProp::ValueError("RFAM density scan: roots did not converge under refinement");
+     }
+ };
+ 

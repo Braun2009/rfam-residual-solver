@@ -1,0 +1,218 @@
+{
+  "schema": "rfam.o2-c3h8-topology-envelope-contract/v1",
+  "contract_version": 1,
+  "status": "offline-model-risk-gate-blocked",
+  "scope": "current-rfam-pr-o2-c3h8-predicted-trajectory-uncertainty-tube-no-physical-vlle",
+  "authorities": {
+    "trajectory_reference": {
+      "id": "predicted-trajectory",
+      "path": "realFluidAllMach/tests/reference/o2_c3h8_predicted_trajectory_512_v1.csv",
+      "sha256": "a6d498887225a685b2f7b5d40248913ad2e7ba93158e12bbe64963a01783cdc0",
+      "byte_count": 37328
+    },
+    "model_risk_registry": {
+      "id": "model-risk-registry",
+      "path": "realFluidAllMach/tests/reference/o2_c3h8_topology_model_risk_v1.json",
+      "sha256": "3ef2f001f56af5cbdb8fa851992736ec517cb17c5ed1656f32b85d9946d072b2",
+      "byte_count": 3361
+    },
+    "trajectory_probe_build": {
+      "platform": "WSL-Ubuntu-20.04-x86_64",
+      "compiler_path": "/usr/bin/x86_64-linux-gnu-g++-9",
+      "compiler_sha256": "0c0b987719385f8e242819dfef6a3e97b4b2540ce4035dbc11565df2966bd69e",
+      "compiler_version": "x86_64-linux-gnu-g++-9 (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0",
+      "language": "c++17",
+      "optimization": "-O2",
+      "openmp": "-fopenmp",
+      "include_directories": [
+        "realFluidAllMach/src",
+        "realFluidAllMach/src/thermo",
+        "realFluidAllMach/src/thermo/MixingRules",
+        "realFluidAllMach/src/thermo/EquationOfState",
+        "realFluidAllMach/src/thermo/RootSelection",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium"
+      ],
+      "source_bundle_algorithm": "sha256(path-nul-size-u64be-bytes)",
+      "source_files": [
+        "realFluidAllMach/tools/hem_inlet_mixing_path_probe.cpp",
+        "realFluidAllMach/src/thermo/ThermoDataProvenance.C",
+        "realFluidAllMach/src/thermo/ThermoDataProvenance.H",
+        "realFluidAllMach/src/thermo/SpeciesRegistry.H",
+        "realFluidAllMach/src/thermo/NASA7Thermo.H",
+        "realFluidAllMach/src/thermo/PengRobinsonAlpha.H",
+        "realFluidAllMach/src/thermo/EquationOfState/PengRobinsonEOS.C",
+        "realFluidAllMach/src/thermo/EquationOfState/PengRobinsonEOS.H",
+        "realFluidAllMach/src/thermo/MixingRules/VdWOneFluidMixing.C",
+        "realFluidAllMach/src/thermo/MixingRules/VdWOneFluidMixing.H",
+        "realFluidAllMach/src/thermo/MixingRules/SpeciesCriticalDB.C",
+        "realFluidAllMach/src/thermo/MixingRules/SpeciesCriticalDB.H",
+        "realFluidAllMach/src/thermo/MixingRules/BinaryInteractionDB.C",
+        "realFluidAllMach/src/thermo/MixingRules/BinaryInteractionDB.H",
+        "realFluidAllMach/src/thermo/RootSelection/CubicRoots.C",
+        "realFluidAllMach/src/thermo/RootSelection/CubicRoots.H",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/PRMixtureKernel.C",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/PRMixtureKernel.H",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/PRTPFlash.C",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/PRTPFlash.H",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/ConservedPhaseMixture.H",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/TabulatedIdealCaloric.C",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/TabulatedIdealCaloric.H",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/PRPhaseCaloric.C",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/PRPhaseCaloric.H",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/PRPHFlash.C",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/PRPHFlash.H"
+      ],
+      "source_bundle_sha256": "69edadb5d4885a1bdc262af3e1de7ad81d360810ba43882f44d23dca2851766a",
+      "expected_executable_sha256": "8e9a5b79c6edaa39f5aa6d01f8453665cdabae9d302b3f258856946eb0f7c4c6"
+    },
+    "topology_probe_build": {
+      "platform": "WSL-Ubuntu-20.04-x86_64",
+      "compiler_path": "/usr/bin/x86_64-linux-gnu-g++-9",
+      "compiler_sha256": "0c0b987719385f8e242819dfef6a3e97b4b2540ce4035dbc11565df2966bd69e",
+      "compiler_version": "x86_64-linux-gnu-g++-9 (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0",
+      "language": "c++17",
+      "optimization": "-O2",
+      "openmp": "-fopenmp",
+      "include_directories": [
+        "realFluidAllMach/src",
+        "realFluidAllMach/src/thermo",
+        "realFluidAllMach/src/thermo/MixingRules",
+        "realFluidAllMach/src/thermo/EquationOfState",
+        "realFluidAllMach/src/thermo/RootSelection",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium"
+      ],
+      "source_bundle_algorithm": "sha256(path-nul-size-u64be-bytes)",
+      "source_files": [
+        "realFluidAllMach/tools/pr_binary_phase_topology_probe.cpp",
+        "realFluidAllMach/src/thermo/ThermoDataProvenance.C",
+        "realFluidAllMach/src/thermo/ThermoDataProvenance.H",
+        "realFluidAllMach/src/thermo/SpeciesRegistry.H",
+        "realFluidAllMach/src/thermo/NASA7Thermo.H",
+        "realFluidAllMach/src/thermo/PengRobinsonAlpha.H",
+        "realFluidAllMach/src/thermo/EquationOfState/PengRobinsonEOS.C",
+        "realFluidAllMach/src/thermo/EquationOfState/PengRobinsonEOS.H",
+        "realFluidAllMach/src/thermo/MixingRules/VdWOneFluidMixing.C",
+        "realFluidAllMach/src/thermo/MixingRules/VdWOneFluidMixing.H",
+        "realFluidAllMach/src/thermo/MixingRules/SpeciesCriticalDB.C",
+        "realFluidAllMach/src/thermo/MixingRules/SpeciesCriticalDB.H",
+        "realFluidAllMach/src/thermo/MixingRules/BinaryInteractionDB.C",
+        "realFluidAllMach/src/thermo/MixingRules/BinaryInteractionDB.H",
+        "realFluidAllMach/src/thermo/RootSelection/CubicRoots.C",
+        "realFluidAllMach/src/thermo/RootSelection/CubicRoots.H",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/PRMixtureKernel.C",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/PRMixtureKernel.H",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/PRTPFlash.C",
+        "realFluidAllMach/src/thermo/PhaseEquilibrium/PRTPFlash.H"
+      ],
+      "source_bundle_sha256": "fc8b1e05d9e140b055c209b7b92af21a44db6caaab599800cb830635f535d176",
+      "expected_executable_sha256": "e48518f7bc36a24f28ec8b67bd8d83e0858c4bb50143c42a1371b281664a9ddc"
+    }
+  },
+  "trajectory": {
+    "artifact_id": "predicted-trajectory",
+    "schema": "rfam.hem-inlet-mixing-path-diagnostic/v1",
+    "scan_intervals": 512,
+    "rows": 225,
+    "uncommittable_status_policy": "OUT_OF_ENVELOPE"
+  },
+  "uncertainty_intervals": {
+    "basis": "declared-screening-intervals-not-physical-uncertainty",
+    "kij_offset": [
+      -0.005,
+      0.005
+    ],
+    "temperature_k_offset": [
+      -0.2,
+      0.2
+    ],
+    "pressure_pa_offset": [
+      -50000.0,
+      50000.0
+    ],
+    "overall_z_o2_offset": [
+      -0.002,
+      0.002
+    ]
+  },
+  "numerical_interpolation_error_intervals": {
+    "basis": "absolute-bounds-added-by-minkowski-sum",
+    "kij_offset": [
+      -0.00001,
+      0.00001
+    ],
+    "temperature_k_offset": [
+      -0.01,
+      0.01
+    ],
+    "pressure_pa_offset": [
+      -1000.0,
+      1000.0
+    ],
+    "overall_z_o2_offset": [
+      -0.00001,
+      0.00001
+    ]
+  },
+  "sampling": {
+    "group_key": [
+      "pressure_pa",
+      "kij"
+    ],
+    "order_key": "fuel_mass_fraction",
+    "segment_bound": "axis-aligned-hull-of-adjacent-effective-anchor-intervals",
+    "sample_points_per_axis": [
+      "lower",
+      "midpoint",
+      "upper"
+    ],
+    "closed_interval_intersection": true,
+    "uncertainty_widening_must_be_monotone": true
+  },
+  "supported_screen_envelope": {
+    "pressure_pa": [
+      4000000.0,
+      6000000.0
+    ],
+    "temperature_k": [
+      110.0,
+      300.0
+    ],
+    "kij": [
+      -0.05,
+      0.15
+    ],
+    "overall_z_o2": [
+      0.0,
+      1.0
+    ]
+  },
+  "risk_policy": {
+    "registry_artifact_id": "model-risk-registry",
+    "intersection_or_approach_status": "THREE_PHASE_REQUIRED",
+    "outside_or_uncommittable_status": "OUT_OF_ENVELOPE",
+    "clear_status": "SCREEN_ONLY_NO_MODEL_RISK_DETECTED",
+    "status_precedence": [
+      "THREE_PHASE_REQUIRED",
+      "OUT_OF_ENVELOPE",
+      "SCREEN_ONLY_NO_MODEL_RISK_DETECTED"
+    ],
+    "physical_vlle_claim": false,
+    "z_localization_policy": "conservative-all-compositions-until-validated"
+  },
+  "approvals": {
+    "physical_vlle_validated": false,
+    "kij_fitted": false,
+    "three_phase_owner_implemented": false,
+    "hem_enabled": false,
+    "fluent_execution_approved": false,
+    "hot_start_approved": false,
+    "production_ready": false
+  },
+  "limitations": [
+    "the registry records possible-three-phase model risk, not physical VLLE",
+    "overall composition is conservatively unlocalized and therefore spans zero through one",
+    "the declared intervals are screening inputs and are not fitted parameter or measurement uncertainty",
+    "a clear screen does not prove global phase-topology uniqueness or physical validity",
+    "no kij fit, three-phase owner, HEM capability, Fluent execution, hot-start, or production flag is enabled"
+  ]
+}

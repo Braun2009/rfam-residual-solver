@@ -1,0 +1,56 @@
+---
+mechanism: TwoStepCO
+# C3H8/O2 two-step candidate mechanism.
+# R1 retains the Jones-Lindstedt-style global orders. R2 is explicitly
+# reversible and uses stoichiometric mass-action orders so kr=kf/Kc satisfies
+# detailed balance. A2/Ea2 still require independent kinetic validation.
+# Units: A [mol,m,s,K], Ea [J/mol], MW [kg/mol], hf [J/mol]
+
+species:
+  - name: C3H8
+    MW: 0.04409562
+    hf: -103850.0
+  - name: O2
+    MW: 0.0319988
+    hf: 0.0
+  - name: CO
+    MW: 0.0280101
+    hf: -110530.0
+  - name: CO2
+    MW: 0.0440095
+    hf: -393510.0
+  - name: H2O
+    MW: 0.01801528
+    hf: -241820.0
+  - name: N2
+    MW: 0.0280134
+    hf: 0.0
+
+reactions:
+  - name: R1_fuel_combustion
+    A: 1.0e10
+    n: 0.0
+    Ea: 125520.0
+    DH: -1.19502e6
+    conc_exp:
+      C3H8: 0.1
+      O2:   1.65
+    stoich:
+      C3H8: -1.0
+      O2:   -3.5
+      CO:   +3.0
+      H2O:  +4.0
+
+  - name: R2_CO_oxidation
+    A: 2.0e12
+    n: 0.0
+    Ea: 167360.0
+    DH: -2.8298e5
+    reversible: true
+    conc_exp:
+      CO:  1.0
+      O2:  0.5
+    stoich:
+      CO:  -1.0
+      O2:  -0.5
+      CO2: +1.0

@@ -1,0 +1,35 @@
+; Vortex 3D cold-air SST r11: 36 physical core staged continuation.
+; Read r10 state at iteration 26 and continue without initialization.
+; Four independent checkpoints provide bounded-loss recovery and preserve all r8-r10 evidence.
+; This remains ideal-air, density-based implicit SST commissioning only.
+
+(format #t "\nVORTEX_R11_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_r10/cold_air_sst_26it.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_r10/cold_air_sst_26it.dat.h5
+(format #t "\nVORTEX_R11_R10_CASE_DATA_READ_OK\n")
+
+; Iterations 27-51
+/solve/iterate 25
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_r11/cold_air_sst_51it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_r11/cold_air_sst_51it.dat.h5
+(format #t "\nVORTEX_R11_CHECKPOINT_51IT_OK\n")
+
+; Iterations 52-76
+/solve/iterate 25
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_r11/cold_air_sst_76it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_r11/cold_air_sst_76it.dat.h5
+(format #t "\nVORTEX_R11_CHECKPOINT_76IT_OK\n")
+
+; Iterations 77-101
+/solve/iterate 25
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_r11/cold_air_sst_101it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_r11/cold_air_sst_101it.dat.h5
+(format #t "\nVORTEX_R11_CHECKPOINT_101IT_OK\n")
+
+; Iterations 102-126
+/solve/iterate 25
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_r11/cold_air_sst_126it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_r11/cold_air_sst_126it.dat.h5
+(format #t "\nVORTEX_R11_CHECKPOINT_126IT_OK\n")
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R11_36PHYS_OK\n")
+/exit yes

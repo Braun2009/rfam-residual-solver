@@ -1,0 +1,17 @@
+; Vortex 3D cold-air SST r65: bounded post-hybrid initialization comparison.
+; Source r63 is a completed 36-rank hybrid-initialized pressure-outlet case
+; using the r58 low-turbulence initialization provenance.  Independent r64
+; audit found ~4.7% initial mass imbalance and no mu_t/mu limiter, but Mach
+; reached 0.5, so this is only a five-iteration relaxation diagnostic.
+; Do not initialize again, alter the mesh, or overwrite r63.
+
+(format #t "\nVORTEX_R65_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid_initturb_init36_r63/cold_air_sst_hybrid_initialized.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid_initturb_init36_r63/cold_air_sst_hybrid_initialized.dat.h5
+(format #t "\nVORTEX_R65_R63_CASE_DATA_READ_OK\n")
+/solve/iterate 5
+(format #t "\nVORTEX_R65_ITERATE_5_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid_initturb_continue36_r65/cold_air_sst_hybrid_5it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid_initturb_continue36_r65/cold_air_sst_hybrid_5it.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R65_PRESSURE_OUTLET_HYBRID_INITTURB_36PHYS_OK\n")
+/exit yes

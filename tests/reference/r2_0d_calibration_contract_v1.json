@@ -1,0 +1,191 @@
+{
+  "schema": "rfam.r2-0d-calibration-contract/v1",
+  "contract_version": 1,
+  "status": "blocked",
+  "scope": "local-cantera-0d-protocol-only-no-fitting-or-physical-validation",
+  "approvals": {
+    "local_reference_selected_for_fit": false,
+    "detailed_mechanism_selected_for_fit": false,
+    "experimental_data_selected": false,
+    "r2_fitting_approved": false,
+    "physical_validation_approved": false,
+    "production_ready": false,
+    "reacting_hot_start_approved": false
+  },
+  "upstream": [
+    {
+      "id": "wp2_same_mechanism_instantaneous_reference",
+      "path": "tests/reference/r2_instantaneous_reference_v1.json",
+      "sha256": "8bd3f2c05d70bb59af7668aa37c35bab3726c79d5ea8f3b650ba065980c1840a",
+      "scope": "implementation-equivalence-only"
+    },
+    {
+      "id": "wp2_detailed_mechanism_candidate",
+      "path": "tests/reference/r2_physics_candidate_v1.json",
+      "sha256": "cdd6046bab363ca5c9b0c637d341b9ff4ca3501b6e0f9dd142fdca1d17ba59d5",
+      "scope": "blocked-provenance-screening-only"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "local_cantera_mechanism",
+      "path": "tests/reference/cantera_gri30_v3_0.yaml",
+      "sha256": "06650b1e0ee0012f6903d5328b1bb218cb6007d07f8ebe375d18f24811039345",
+      "kind": "checked-in-local-cantera-ideal-gas-mechanism"
+    },
+    {
+      "id": "reference_generator",
+      "path": "scripts/generate_r2_0d_calibration_reference.py",
+      "sha256": "43ad404b9eb63a1fb6dd343023a6f726cb5efd4f3e84229c9a50336fb460ed49",
+      "kind": "local-cantera-0d-reference-generator"
+    },
+    {
+      "id": "reference_output",
+      "path": "tests/reference/r2_0d_cantera_reference_v1.json",
+      "sha256": "11d1135a0d0beae0138a3b1dbdde9cae6ccdcee092c103d537311e72f497981d",
+      "kind": "generated-local-cantera-0d-reference"
+    }
+  ],
+  "local_reference": {
+    "mechanism": {
+      "id": "gri-mech-3.0-local-protocol-reference",
+      "status": "local-reference-only-not-selected-for-fit",
+      "phase_model": "ideal-gas",
+      "fit_use_allowed": false,
+      "license_status": "not-reviewed-by-this-contract",
+      "excluded_domains": [
+        "cryogenic-injection",
+        "vapor-liquid-equilibrium",
+        "near-critical-real-fluid",
+        "solid-risk",
+        "two-phase-quality"
+      ]
+    },
+    "runtime": {
+      "cantera_version": "3.1.0",
+      "python_executable": "/usr/bin/python3.8",
+      "python_sha256": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06",
+      "cantera_module": "/home/nvoyager/.local/lib/python3.8/site-packages/cantera/__init__.py",
+      "cantera_module_sha256": "9a7ceae3bae1a7e41dc581e353d44e04af8447114748f5b7c75995e26f8819b9",
+      "cantera_extension": "/home/nvoyager/.local/lib/python3.8/site-packages/cantera/_cantera.cpython-38-x86_64-linux-gnu.so",
+      "cantera_extension_sha256": "c57a47c201b0cb8f965b38acc7ebfafbbe95db7464d80359499c64d50555fae8",
+      "execution_scope": "local-offline-reference-generation-only",
+      "network_access": false,
+      "fluent_access": false
+    },
+    "reference_output_status": "generated-but-not-a-fit-or-physical-validation-target"
+  },
+  "protocol": {
+    "reactor": {
+      "model": "IdealGasConstPressureReactor",
+      "energy": "on",
+      "reactor_scope": "high-temperature-gas-only",
+      "sampling": "fixed-output-times-with-adaptive-internal-integrator",
+      "sample_times_s": [
+        0.0,
+        1e-08,
+        3e-08,
+        1e-07,
+        3e-07,
+        1e-06,
+        3e-06,
+        1e-05,
+        3e-05,
+        0.0001,
+        0.0003,
+        0.001,
+        0.003,
+        0.005
+      ]
+    },
+    "protocol_training_case_ids": [
+      "train_phi0p8_diluted",
+      "train_phi1p0",
+      "train_phi1p2"
+    ],
+    "protocol_holdout_case_ids": [
+      "holdout_phi0p6_diluted",
+      "holdout_phi1p1",
+      "holdout_phi1p4"
+    ],
+    "declared_observables": [
+      "ignition_delay",
+      "temperature_history",
+      "C3H8_mass_fraction_history",
+      "O2_mass_fraction_history",
+      "CO_mass_fraction_history",
+      "CO2_mass_fraction_history",
+      "H2O_mass_fraction_history",
+      "Cantera_heat_release_rate_history"
+    ],
+    "common_basis_status": "not-established-for-rfam-vs-cantera-trajectory-comparison",
+    "rfam_0d_runner_status": "not-implemented",
+    "no_posthoc_partition_changes": true
+  },
+  "fit_and_experiment_gates": {
+    "status": "blocked",
+    "detailed_mechanism": {
+      "status": "not-selected",
+      "required_before_fit": [
+        "explicit fit and redistribution terms",
+        "versioned source and independent mechanism review",
+        "declared gas-phase applicability envelope"
+      ]
+    },
+    "experimental_training_dataset": {
+      "status": "unselected",
+      "required_before_fit": [
+        "machine-readable raw data with immutable source hash",
+        "explicit permission for fitting and redistribution",
+        "conditions, units, uncertainty and protocol metadata",
+        "predeclared mapping to protocol training cases"
+      ]
+    },
+    "experimental_holdout_dataset": {
+      "status": "unselected",
+      "required_before_fit": [
+        "machine-readable raw data with immutable source hash",
+        "explicit permission for validation and redistribution",
+        "conditions, units, uncertainty and protocol metadata",
+        "independent and disjoint partition frozen before fitting"
+      ]
+    },
+    "metrics_and_tolerances": {
+      "status": "not-selected",
+      "required_before_fit": [
+        "predeclared ignition-delay metric",
+        "predeclared temperature, major-species and heat-release trajectory metrics",
+        "predeclared objective weights and tolerances",
+        "common rate, thermodynamic and control-volume basis"
+      ]
+    },
+    "fit_parameters": {
+      "status": "not-run",
+      "allowed_after_all_gates": [
+        "R1 pre-exponential factor",
+        "R1 activation energy",
+        "R1 reaction orders",
+        "R2 pre-exponential factor",
+        "R2 activation energy",
+        "R2 reaction orders",
+        "formation-energy basis"
+      ]
+    }
+  },
+  "cross_scope": {
+    "r2_implementation_equivalence": "required-upstream-not-physical-validation",
+    "kij": "not-a-cantera-calibration-input; sensitive-pair-policy-remains-fail-closed",
+    "hem": "rfam-rho-e-y-is-the-only-two-phase-state-owner",
+    "condensed_carbon": "wiring-or-diagnostic-only-no-kinetics-validation",
+    "fluent": "not-invoked-and-not-approved"
+  },
+  "stop_conditions": [
+    "any approval flag true",
+    "local reference mechanism marked fit-eligible or selected",
+    "changed local artifact identity or Cantera version",
+    "overlapping, missing or reordered protocol partitions",
+    "missing experimental rights, raw data, uncertainty, metric or holdout gate",
+    "attempt to treat ideal-gas local trajectories as VLE/HEM evidence",
+    "attempt to treat local reference output as physical R2 validation"
+  ]
+}

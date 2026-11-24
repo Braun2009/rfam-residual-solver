@@ -1,0 +1,460 @@
+{
+  "schema": "rfam.phase-caloric-feasibility-contract/v4",
+  "contract_version": 4,
+  "status": "blocked-offline-design-only",
+  "scope": "typed-phase-caloric-identity-and-lifecycle-design-no-runtime-owner-no-thermodynamic-implementation",
+  "approvals": {
+    "phase_caloric_implementation_approved": false,
+    "two_phase_chemistry_enabled": false,
+    "phase_aware_chemistry_enabled": false,
+    "equilibrium_result_admission_relaxed": false,
+    "solver_consumer_admission": false,
+    "checkpoint_runtime_integration": false,
+    "restart_runtime_integration": false,
+    "numerical_displacement_limits_validated": false,
+    "physical_validation_approved": false,
+    "fluent_execution_approved": false,
+    "reacting_hot_start_approved": false,
+    "production_ready": false
+  },
+  "artifact_binding": {
+    "trust_chain": [
+      "frozen-report-raw-sha256-binds-all-five-artifacts",
+      "focused-test-raw-sha256-constant-binds-validator-before-import",
+      "validator-raw-sha256-constants-bind-contract-oracle-and-docs-before-oracle-import"
+    ],
+    "canonical_relative_paths": {
+      "contract": "tests/reference/phase_caloric_feasibility_contract_v4.json",
+      "lifecycle_oracle": "tools/phase_caloric_lifecycle_oracle_v4.py",
+      "validator": "tools/validate_phase_caloric_feasibility_contract_v4.py",
+      "focused_test": "tests/test_phase_caloric_feasibility_contract_v4.py",
+      "documentation": "docs/phase_caloric_feasibility_contract_v4.md"
+    },
+    "raw_sha256_authorities": {
+      "contract": "validator-constant-and-frozen-report",
+      "lifecycle_oracle": "validator-constant-contract-field-and-frozen-report",
+      "validator": "focused-test-constant-and-frozen-report",
+      "focused_test": "frozen-report",
+      "documentation": "validator-constant-contract-field-and-frozen-report"
+    },
+    "lifecycle_oracle_sha256": "a0630407174dc18a53817fb5eb6e94dd8b68ef1e832eb16c8cf95ee97a434cc3",
+    "documentation_sha256": "892ff0692cfc7650e4ae8676f3a746cb7241a5a1059dcada7a9e6bbdf1596a71",
+    "self_hash_cycle_policy": "no-artifact-contains-its-own-raw-sha256-final-report-is-the-external-root"
+  },
+  "canonical_serialization": {
+    "algorithm": "sha256-domain-separated-canonical-json-v1",
+    "encoding": "ascii",
+    "json_object_keys": "lexicographically-sorted",
+    "json_separators": "comma-colon-no-whitespace",
+    "json_duplicate_keys": "forbidden",
+    "json_nonfinite_numbers": "forbidden",
+    "binary64_encoding": "f64be-16-lowercase-hex-preserve-sign-bit-finite-only",
+    "integer_encoding": "unsigned-decimal-uint64-no-bool-alias",
+    "string_encoding": "json-ascii-with-standard-escapes",
+    "committed_parent_q_fingerprint": {
+      "domain": "rfam.phase-caloric.committed-parent-q/v4",
+      "required_fields": [
+        "energy_convention",
+        "ordered_species_count",
+        "ordered_species_fingerprint",
+        "parent_owner_id",
+        "rho_c_kg_m3_f64be_ordered_scalars",
+        "rho_e_j_m3_f64be",
+        "rho_kg_m3_f64be",
+        "rho_u_kg_m2_s_f64be_xyz",
+        "rho_y_kg_m3_f64be_ordered_species",
+        "rho_z_kg_m3_f64be_ordered_scalars",
+        "schema"
+      ],
+      "field_set_policy": "exact-no-missing-or-extra",
+      "input_object_insertion_order": "ignored-canonical-serialization-sorts-keys-lexicographically"
+    },
+    "parent_phase_payload_fingerprint": {
+      "domain": "rfam.phase-caloric.parent-phase-payload/v4",
+      "required_fields": [
+        "compressibility_z_f64be",
+        "density_kg_m3_f64be",
+        "energy_convention",
+        "mass_fractions_f64be_ordered_species",
+        "model_id",
+        "ordered_species_count",
+        "ordered_species_fingerprint",
+        "parent_owner_id",
+        "parent_phase_identity",
+        "phase_caloric_options_fingerprint",
+        "phase_caloric_schema_id",
+        "pressure_pa_f64be",
+        "root_identity",
+        "schema",
+        "specific_enthalpy_j_kg_f64be",
+        "specific_internal_energy_j_kg_f64be",
+        "temperature_k_f64be"
+      ],
+      "field_set_policy": "exact-no-missing-or-extra",
+      "input_object_insertion_order": "ignored-canonical-serialization-sorts-keys-lexicographically"
+    }
+  },
+  "typed_object_schemas": {
+    "common_object_policy": {
+      "additional_properties": false,
+      "missing_properties": "fail-closed",
+      "bool_integer_alias": "forbidden",
+      "numeric_string_alias": "forbidden",
+      "unknown_state_token_quality_or_publication_alias": "fail-closed"
+    },
+    "request": {
+      "required_fields": [
+        "kind",
+        "parent_owner_id",
+        "committed_parent_q_fingerprint",
+        "parent_phase_payload_fingerprint",
+        "parent_phase_identity",
+        "process_runtime_epoch",
+        "parent_generation",
+        "transaction_id",
+        "phase_caloric_schema_id",
+        "phase_caloric_options_fingerprint",
+        "model_id",
+        "ordered_species_count",
+        "ordered_species_fingerprint",
+        "energy_convention",
+        "phase_density_kg_m3",
+        "phase_specific_internal_energy_j_kg",
+        "phase_mass_fractions",
+        "pressure_seed_pa",
+        "temperature_seed_k",
+        "previous_accepted_root_token"
+      ],
+      "properties": {
+        "kind": {"type": "literal", "value": "PHASE_CALORIC_REQUEST_V4"},
+        "parent_owner_id": {"type": "parent-owner-id"},
+        "committed_parent_q_fingerprint": {"type": "sha256-lower-hex-nonzero"},
+        "parent_phase_payload_fingerprint": {"type": "sha256-lower-hex-nonzero"},
+        "parent_phase_identity": {"type": "enum", "values": ["VAPOR", "SUPERCRITICAL"]},
+        "process_runtime_epoch": {"type": "uint64-positive"},
+        "parent_generation": {"type": "uint64-positive"},
+        "transaction_id": {"type": "sha256-lower-hex-nonzero"},
+        "phase_caloric_schema_id": {"type": "literal", "value": "rfam.phase-caloric/v4"},
+        "phase_caloric_options_fingerprint": {"type": "sha256-lower-hex-nonzero"},
+        "model_id": {"type": "nonblank-ascii-string"},
+        "ordered_species_count": {"type": "uint64-positive"},
+        "ordered_species_fingerprint": {"type": "sha256-lower-hex-nonzero"},
+        "energy_convention": {"type": "literal", "value": "SENSIBLE_INTERNAL_ENERGY_EXPLICIT_CHEMICAL_HEAT"},
+        "phase_density_kg_m3": {"type": "finite-positive-binary64"},
+        "phase_specific_internal_energy_j_kg": {"type": "finite-binary64"},
+        "phase_mass_fractions": {"type": "mass-fraction-vector-ordered-species"},
+        "pressure_seed_pa": {"type": "nullable-finite-positive-binary64"},
+        "temperature_seed_k": {"type": "nullable-finite-positive-binary64"},
+        "previous_accepted_root_token": {"type": "nullable-live-root-token-v4"}
+      }
+    },
+    "success": {
+      "required_fields": [
+        "kind",
+        "status",
+        "parent_owner_id",
+        "committed_parent_q_fingerprint",
+        "parent_phase_payload_fingerprint",
+        "parent_phase_identity",
+        "process_runtime_epoch",
+        "parent_generation",
+        "transaction_id",
+        "transaction_sequence",
+        "phase_caloric_schema_id",
+        "phase_caloric_options_fingerprint",
+        "model_id",
+        "ordered_species_count",
+        "ordered_species_fingerprint",
+        "energy_convention",
+        "pressure_pa",
+        "temperature_k",
+        "compressibility_z",
+        "root_identity",
+        "density_kg_m3",
+        "specific_internal_energy_j_kg",
+        "specific_enthalpy_j_kg",
+        "mass_fractions",
+        "cv_j_kg_k",
+        "dedt_rho_j_kg_k",
+        "dpdt_rho_pa_k",
+        "dpdrho_t_pa_m3_kg",
+        "residuals",
+        "accepted_root_token"
+      ],
+      "properties": {
+        "kind": {"type": "literal", "value": "PHASE_CALORIC_SUCCESS_V4"},
+        "status": {"type": "literal", "value": "SUCCESS"},
+        "parent_owner_id": {"type": "parent-owner-id"},
+        "committed_parent_q_fingerprint": {"type": "sha256-lower-hex-nonzero"},
+        "parent_phase_payload_fingerprint": {"type": "sha256-lower-hex-nonzero"},
+        "parent_phase_identity": {"type": "enum", "values": ["VAPOR", "SUPERCRITICAL"]},
+        "process_runtime_epoch": {"type": "uint64-positive"},
+        "parent_generation": {"type": "uint64-positive"},
+        "transaction_id": {"type": "sha256-lower-hex-nonzero"},
+        "transaction_sequence": {"type": "uint64-positive"},
+        "phase_caloric_schema_id": {"type": "literal", "value": "rfam.phase-caloric/v4"},
+        "phase_caloric_options_fingerprint": {"type": "sha256-lower-hex-nonzero"},
+        "model_id": {"type": "nonblank-ascii-string"},
+        "ordered_species_count": {"type": "uint64-positive"},
+        "ordered_species_fingerprint": {"type": "sha256-lower-hex-nonzero"},
+        "energy_convention": {"type": "literal", "value": "SENSIBLE_INTERNAL_ENERGY_EXPLICIT_CHEMICAL_HEAT"},
+        "pressure_pa": {"type": "finite-positive-binary64"},
+        "temperature_k": {"type": "finite-positive-binary64"},
+        "compressibility_z": {"type": "finite-positive-binary64"},
+        "root_identity": {"type": "phase-compatible-root-identity"},
+        "density_kg_m3": {"type": "finite-positive-binary64"},
+        "specific_internal_energy_j_kg": {"type": "finite-binary64"},
+        "specific_enthalpy_j_kg": {"type": "finite-binary64"},
+        "mass_fractions": {"type": "mass-fraction-vector-ordered-species"},
+        "cv_j_kg_k": {"type": "finite-positive-binary64"},
+        "dedt_rho_j_kg_k": {"type": "finite-positive-binary64"},
+        "dpdt_rho_pa_k": {"type": "finite-binary64"},
+        "dpdrho_t_pa_m3_kg": {"type": "finite-positive-binary64"},
+        "residuals": {"type": "residual-object-v4"},
+        "accepted_root_token": {"type": "live-root-token-v4"}
+      }
+    },
+    "failure": {
+      "required_fields": [
+        "kind",
+        "status",
+        "failure_stage",
+        "parent_binding_digest",
+        "process_runtime_epoch",
+        "parent_generation",
+        "transaction_id",
+        "diagnostic_code",
+        "residual_summary"
+      ],
+      "properties": {
+        "kind": {"type": "literal", "value": "PHASE_CALORIC_FAILURE_V4"},
+        "status": {"type": "enum", "values": ["INVALID_BINDING", "ROOT_LOSS", "ROOT_AMBIGUITY", "OUT_OF_ENVELOPE", "NONFINITE_PROPERTY", "CALORIC_IDENTITY_FAILURE", "DERIVATIVE_FAILURE", "STALE_TOKEN"]},
+        "failure_stage": {"type": "enum", "values": ["PARENT_REPLAY", "INITIAL_RECOVERY", "MID_RHS_RECOVERY", "FINAL_RECOVERY", "TOKEN_ADMISSION", "FINAL_REFLASH_ADMISSION"]},
+        "parent_binding_digest": {"type": "sha256-lower-hex-nonzero"},
+        "process_runtime_epoch": {"type": "uint64-positive"},
+        "parent_generation": {"type": "uint64-positive"},
+        "transaction_id": {"type": "nullable-sha256-lower-hex-nonzero"},
+        "diagnostic_code": {"type": "nonblank-ascii-string"},
+        "residual_summary": {"type": "residual-summary-v4"}
+      },
+      "forbidden_semantic_categories": [
+        "thermodynamic-state",
+        "accepted-or-live-token",
+        "quality-or-phase-fraction",
+        "acoustic-or-sound-speed",
+        "domain-or-solver-publication"
+      ]
+    },
+    "live_root_token": {
+      "required_fields": ["parent_owner_id", "transaction_id", "process_runtime_epoch", "parent_generation", "transaction_sequence", "parent_binding_digest", "root_identity", "token_digest"],
+      "additional_properties": false,
+      "properties": {
+        "parent_owner_id": {"type": "parent-owner-id"},
+        "transaction_id": {"type": "sha256-lower-hex-nonzero"},
+        "process_runtime_epoch": {"type": "uint64-positive"},
+        "parent_generation": {"type": "uint64-positive"},
+        "transaction_sequence": {"type": "uint64-positive"},
+        "parent_binding_digest": {"type": "sha256-lower-hex-nonzero"},
+        "root_identity": {"type": "enum", "values": ["PR_VAPOR_ROOT", "PR_UNIQUE_SUPERCRITICAL_ROOT"]},
+        "token_digest": {"type": "sha256-lower-hex-nonzero"}
+      }
+    },
+    "restart_hint": {
+      "required_fields": ["parent_owner_id", "source_process_runtime_epoch", "source_parent_generation", "committed_parent_q_fingerprint", "parent_phase_payload_fingerprint", "parent_phase_identity", "root_identity", "source_token_digest", "hint_digest"],
+      "additional_properties": false,
+      "accepted_as_live_token": false,
+      "authority": "non-authoritative-numerical-guidance-only",
+      "reuse_policy": "reusable-after-each-exact-current-parent-replay-each-reuse-mints-fresh-sequence-one-live-token",
+      "properties": {
+        "parent_owner_id": {"type": "parent-owner-id"},
+        "source_process_runtime_epoch": {"type": "uint64-positive"},
+        "source_parent_generation": {"type": "uint64-positive"},
+        "committed_parent_q_fingerprint": {"type": "sha256-lower-hex-nonzero"},
+        "parent_phase_payload_fingerprint": {"type": "sha256-lower-hex-nonzero"},
+        "parent_phase_identity": {"type": "enum", "values": ["VAPOR", "SUPERCRITICAL"]},
+        "root_identity": {"type": "phase-compatible-root-identity"},
+        "source_token_digest": {"type": "sha256-lower-hex-nonzero"},
+        "hint_digest": {"type": "sha256-lower-hex-nonzero"}
+      }
+    },
+    "residual_object": {
+      "required_fields": ["pressure_relative", "temperature_relative", "compressibility_relative", "density_relative", "specific_internal_energy_relative", "specific_enthalpy_relative", "mass_fraction_l1", "eos_root", "departure_caloric", "cv_minus_dedt_rho", "root_continuity"],
+      "additional_properties": false,
+      "property_type": "finite-nonnegative-binary64"
+    },
+    "residual_summary": {
+      "required_fields": ["all_finite", "maximum_normalized_residual", "failed_residual"],
+      "additional_properties": false,
+      "properties": {
+        "all_finite": {"type": "bool"},
+        "maximum_normalized_residual": {"type": "nullable-finite-nonnegative-binary64"},
+        "failed_residual": {"type": "nullable-enum", "values": ["pressure_relative", "temperature_relative", "compressibility_relative", "density_relative", "specific_internal_energy_relative", "specific_enthalpy_relative", "mass_fraction_l1", "eos_root", "departure_caloric", "cv_minus_dedt_rho", "root_continuity"]}
+      }
+    }
+  },
+  "lifecycle_ownership": {
+    "process_runtime_epoch": {
+      "owner": "process-runtime-owner",
+      "type": "uint64-positive-monotonic",
+      "scope": "one-running-process-generation",
+      "advance_on": ["runtime-start", "restart-before-any-parent-replay"],
+      "overflow": "fail-closed-no-wrap"
+    },
+    "parent_generation": {
+      "owner": "committed-parent-state-owner-per-parent-owner-id",
+      "type": "uint64-positive-monotonic",
+      "scope": "one-committed-cell-or-box-parent",
+      "advance_exactly_once_on": ["rollback-invalidation", "successful-final-reflash-publication", "restart-restored-parent-revalidation"],
+      "restored_identical_q_policy": "generation-still-advances",
+      "overflow": "fail-closed-no-wrap"
+    },
+    "transaction_sequence": {
+      "owner": "one-phase-caloric-transaction-object",
+      "type": "uint64-positive-monotonic",
+      "scope": "one-active-transaction-for-one-parent",
+      "initial_token_sequence": 1,
+      "advance_on": ["each-successful-initial-mid-rhs-or-final-phase-local-recovery"],
+      "one_active_transaction_per_parent": true,
+      "different_parents_have_independent_sequences": true,
+      "overflow": "fail-closed-no-wrap"
+    }
+  },
+  "event_order": {
+    "initial_parent_replay_and_token": [
+      "validate-complete-parent-and-identity",
+      "open-one-parent-transaction",
+      "replay-p-t-z-rho-e-h-y-root-within-residual-bounds",
+      "issue-sequence-1-live-token"
+    ],
+    "continued_recovery": [
+      "admit-exact-current-live-token",
+      "recover-same-phase-and-root",
+      "validate-residuals-derivatives-and-envelope",
+      "increment-transaction-sequence-and-replace-live-token"
+    ],
+    "rollback": [
+      "close-transaction-and-invalidate-all-its-live-tokens",
+      "advance-parent-generation-exactly-once",
+      "restore-committed-parent-bytes-under-new-generation",
+      "publish-no-phase-local-state-or-token"
+    ],
+    "successful_final_reflash_publication": [
+      "complete-strict-whole-mixture-recover-rho-e",
+      "validate-model-ledger-phase-acoustic-and-topology-admission",
+      "close-transaction-and-invalidate-all-its-live-tokens",
+      "advance-parent-generation-exactly-once",
+      "publish-new-complete-parent-under-new-generation",
+      "require-new-parent-replay-before-any-new-live-token"
+    ],
+    "restart": [
+      "persist-reusable-non-authoritative-numerical-guidance-hint-never-live-token",
+      "advance-process-runtime-epoch-before-any-parent-replay",
+      "restore-parent-and-advance-each-restored-parent-generation-exactly-once",
+      "reject-all-pre-restart-live-tokens",
+      "revalidate-complete-restored-parent-exactly-before-each-hint-reuse",
+      "open-fresh-transaction-and-issue-fresh-sequence-1-token-for-each-reuse"
+    ]
+  },
+  "residual_formulas": {
+    "relative_formula": "abs(actual-reference)/max(abs(actual),abs(reference),scale_floor)",
+    "relative_scale_floors": {
+      "pressure_pa": 1.0,
+      "temperature_k": 1.0,
+      "compressibility_z": 1.0,
+      "density_kg_m3": 1.0,
+      "specific_internal_energy_j_kg": 1.0,
+      "specific_enthalpy_j_kg": 1.0
+    },
+    "mass_fraction_l1_formula": "sum_i(abs(actual_y_i-reference_y_i))",
+    "eos_root_formula": "abs(z3+(b-1)z2+(a-3b2-2b)z-(ab-b2-b3))/max(abs(z3)+abs((b-1)z2)+abs((a-3b2-2b)z)+abs(ab-b2-b3),1e-300)",
+    "departure_caloric_formula": "abs(e-(h-p/rho))/max(abs(e),abs(h),abs(p/rho),1.0-j-kg)",
+    "cv_minus_dedt_rho_formula": "abs(cv-dedt_rho)/max(abs(cv),abs(dedt_rho),1.0-j-kg-k)",
+    "root_continuity_formula": "0.0-if-parent-phase-root-token-lineage-and-root-ordinal-all-exact-otherwise-failure-no-success-result",
+    "required_residuals": ["pressure_relative", "temperature_relative", "compressibility_relative", "density_relative", "specific_internal_energy_relative", "specific_enthalpy_relative", "mass_fraction_l1", "eos_root", "departure_caloric", "cv_minus_dedt_rho", "root_continuity"],
+    "acceptance_max": {
+      "pressure_relative": 1e-8,
+      "temperature_relative": 1e-8,
+      "compressibility_relative": 1e-8,
+      "density_relative": 1e-8,
+      "specific_internal_energy_relative": 1e-8,
+      "specific_enthalpy_relative": 1e-8,
+      "mass_fraction_l1": 1e-10,
+      "eos_root": 1e-8,
+      "departure_caloric": 1e-8,
+      "cv_minus_dedt_rho": 1e-8,
+      "root_continuity": 0.0
+    },
+    "acceptance_policy": "all-required-residuals-finite-nonnegative-and-at-or-below-own-bound-before-token-issuance"
+  },
+  "applicability_envelope": {
+    "chemistry_basis": "isochoric-fixed-phase-density",
+    "phase_density_relative_displacement_max": 0.0,
+    "specific_internal_energy_relative_displacement_max": 0.02,
+    "mass_fraction_l1_displacement_max": 0.02,
+    "numerical_limit_validation_status": "UNVALIDATED_DESIGN_LIMITS_DO_NOT_AUTHORIZE_RUNTIME",
+    "limit_source": "inherited-v3-placeholder-pending-offline-feasibility-and-tolerance-study",
+    "runtime_emission_or_use": "forbidden-until-separately-validated-and-approved",
+    "envelope_exit": "fail-closed-with-exact-whole-transaction-rollback"
+  },
+  "publication_boundary": {
+    "phase_local_result_convertible_to_equilibrium_state": false,
+    "phase_local_result_generic_solver_admission": "forbidden",
+    "phase_local_result_domain_flux_cfl_transport_boundary_checkpoint": "forbidden",
+    "quality_phase_fraction_acoustics_sound_speed_global_stability": "forbidden",
+    "mixture_writeback_basis": "committed-parent-mixture-volume",
+    "parent_vapor_volume_fraction_authority": "committed-parent-phase-payload-only",
+    "species_increment_formula": "delta-rhoY-kg-m3=alpha-parent*rho-phase-kg-m3*delta-Y-phase",
+    "energy_increment_formula": "delta-rhoE-j-m3=alpha-parent*rho-phase-kg-m3*delta-e-phase-j-kg",
+    "only_complete_state_publisher": "final-whole-mixture-EquilibriumThermoModel-recoverRhoE",
+    "unsupported_or_three_phase_topology": "fail-closed",
+    "post_flash_mass_radical_or_energy_fix": "forbidden"
+  },
+  "negative_cases_required": [
+    "request-success-or-failure-missing-extra-or-type-aliased-field",
+    "failure-carries-state-token-quality-acoustic-or-publication-alias",
+    "committed-parent-q-or-phase-payload-fingerprint-field-coverage-drift",
+    "ordered-species-count-or-q-phase-request-success-vector-cardinality-drift",
+    "parent-phase-identity-or-root-identity-mismatch",
+    "restored-identical-q-rollback-reuses-live-token",
+    "final-reflash-publication-reuses-live-token",
+    "restart-hint-is-used-as-live-token-or-reused-without-exact-current-parent-replay-and-fresh-sequence-one-token",
+    "rollback-of-parent-a-invalidates-or-renumbers-parent-b",
+    "two-parent-call-order-changes-per-parent-token-digest",
+    "concurrent-second-transaction-for-same-parent",
+    "uint64-epoch-generation-or-sequence-overflow",
+    "seed-selects-an-alternate-root",
+    "root-loss-spinodal-crossing-or-near-critical-ambiguity",
+    "residual-formula-threshold-or-displacement-policy-drift",
+    "canonical-artifact-path-swap-or-synchronized-payload-and-contract-rehash",
+    "substitute-lifecycle-oracle-is-executed-before-identity-check"
+  ],
+  "evidence_boundary": {
+    "artifact_class": "BLOCKED_OFFLINE_DESIGN_AND_PURE_LIFECYCLE_ORACLE_ONLY",
+    "runtime_phase_caloric_owner_present": false,
+    "thermodynamic_recovery_present": false,
+    "physical_validation_present": false,
+    "two_phase_chemistry_success_claimed": false,
+    "source_files_allowed": [
+      "tests/reference/phase_caloric_feasibility_contract_v4.json",
+      "tools/phase_caloric_lifecycle_oracle_v4.py",
+      "tools/validate_phase_caloric_feasibility_contract_v4.py",
+      "tests/test_phase_caloric_feasibility_contract_v4.py",
+      "docs/phase_caloric_feasibility_contract_v4.md"
+    ]
+  },
+  "stop_conditions": [
+    "any approval becomes true",
+    "any existing v1-v3 runtime source CMake capability or rho-e-feasibility-candidate file changes",
+    "typed request success failure token or hint schema becomes open or type-aliased",
+    "committed_parent_q_fingerprint or parent_phase_identity binding is weakened",
+    "ordered species count is absent malformed or differs from any bound species vector cardinality",
+    "canonical field coverage serialization domain path or artifact identity drifts",
+    "epoch generation transaction sequence ownership or event order becomes ambiguous",
+    "rollback final reflash or restart admits a stale live token",
+    "restart hint becomes authoritative single-use or reusable without exact current-parent replay and a fresh sequence-one token",
+    "one parent lifecycle mutates another parent lifecycle",
+    "residual formula becomes nonreproducible or a numerical displacement limit is called validated",
+    "phase-local output reaches a complete-state or generic solver consumer",
+    "the design-only oracle is represented as thermodynamic implementation physical evidence or production readiness"
+  ]
+}

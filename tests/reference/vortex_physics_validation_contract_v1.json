@@ -1,0 +1,267 @@
+{
+  "schema": "rfam.vortex-physics-validation-contract/v1",
+  "contract_version": 1,
+  "status": "blocked",
+  "production_ready": false,
+  "mapping_freeze_approved": false,
+  "fluent_execution_approved": false,
+  "state_ownership": {
+    "a413_udrgm": "VALIDATED_SINGLE_PHASE_T_P_Y",
+    "rfam_hem": "RFAM_RHO_E_Y_FLASH",
+    "quality_authoritative_uds": false,
+    "condensed_carbon_uds": "A408_DILUTE_ZERO_SLIP_LEDGER_ONLY"
+  },
+  "energy_basis": {
+    "flow_energy": "sensible_internal_energy",
+    "formation_reference": "species_standard_formation_enthalpy_at_298.15_K",
+    "temperature_reference": "298.15 K",
+    "formation_energy_in_flow": false
+  },
+  "artifacts": [
+    {
+      "id": "hotstart_config_review",
+      "path": "docs/v20_hotstart_config_review.md",
+      "sha256": "19069e32891e19e722b9ad7ceb27e74f460275130f6f6d4697597a17d5f57444"
+    },
+    {
+      "id": "injection_snapshot",
+      "path": "tests/reference/vortex_injection_3pintle_estimate_v1.json",
+      "sha256": "e0203881ed58289669b39c4ae510ab997880beb1d68f2662b7741e1749e40488"
+    },
+    {
+      "id": "cantera_generator",
+      "path": "scripts/cantera_reference.py",
+      "sha256": "3fdee3ecbdb8fdcad265f99a368338bac8a8bcd6a527430a1e90a6a066f2cd01"
+    },
+    {
+      "id": "cantera_reference",
+      "path": "tests/reference/cantera_gri30_propane_oxygen_v1.txt",
+      "sha256": "be1216eca314f8b849aa54d8c35815bddd107dd83ec7fbca2449b5a55f87c024"
+    },
+    {
+      "id": "cantera_mechanism",
+      "path": "tests/reference/cantera_gri30_v3_0.yaml",
+      "sha256": "06650b1e0ee0012f6903d5328b1bb218cb6007d07f8ebe375d18f24811039345"
+    },
+    {
+      "id": "two_step_source",
+      "path": "src/combustion/FiniteRate/TwoStepCO.C",
+      "sha256": "013d7af8f055a0ee834a095fa2946abd45214cf769ca5ccd43c3d83d16fd6465"
+    },
+    {
+      "id": "two_step_header",
+      "path": "src/combustion/FiniteRate/TwoStepCO.H",
+      "sha256": "9636dc4b2280af37d0231880a31672557556d5c9ee955bd4c46d373cad46d8c5"
+    },
+    {
+      "id": "arrhenius_rate_header",
+      "path": "src/combustion/FiniteRate/ArrheniusRate.H",
+      "sha256": "d768ea9ef577abd3851837e394e47e343b3b957d4cd7fc2cb7210737a125f20c"
+    },
+    {
+      "id": "dynamic_chemistry_source",
+      "path": "src/combustion/FiniteRate/DynamicChemistry.H",
+      "sha256": "04ad57fc8153982d5cdbe4744dcb873351caeece102e7e3bc3b6f5e39a3c33b6"
+    },
+    {
+      "id": "two_step_yaml",
+      "path": "tests/twostep_co.yaml",
+      "sha256": "f192aee746695a89d7e754b23d3d97a36da0e16fd510824db769e9590b92ae3c"
+    },
+    {
+      "id": "species_registry",
+      "path": "src/thermo/SpeciesRegistry.H",
+      "sha256": "22b3c0e96d5bff8b6ffa6b69ecd7568a4f87422f5188af85de31c50136b27ba7"
+    },
+    {
+      "id": "binary_interaction_source",
+      "path": "src/thermo/MixingRules/BinaryInteractionDB.C",
+      "sha256": "08ab23785c45096105373425f9d2bb19b079fc05f0418b8a81cc6c6eea25e9d7"
+    },
+    {
+      "id": "binary_interaction_header",
+      "path": "src/thermo/MixingRules/BinaryInteractionDB.H",
+      "sha256": "32e49334aa6a7e33ccd782879b6c510a2892311e45683c5834853a695ac9b908"
+    },
+    {
+      "id": "r2_instantaneous_generator",
+      "path": "scripts/generate_r2_instantaneous_reference.py",
+      "sha256": "500ec1b8b3d70f6cbe97f86321548ad19229676ce6f8af6fc572e45f86e9c63f"
+    },
+    {
+      "id": "r2_instantaneous_reference",
+      "path": "tests/reference/r2_instantaneous_reference_v1.json",
+      "sha256": "8bd3f2c05d70bb59af7668aa37c35bab3726c79d5ea8f3b650ba065980c1840a"
+    },
+    {
+      "id": "r2_cantera_mechanism",
+      "path": "tests/reference/rfam_twostep_cantera_v1.yaml",
+      "sha256": "a8e88d5fd0114575afa258720f3b8c3dd6de558ebe00cc3ab82dec32cdb2f171"
+    },
+    {
+      "id": "r2_equivalence_validator",
+      "path": "tools/validate_r2_instantaneous_equivalence.py",
+      "sha256": "f17863c1abfbb1ff4e67f80d636b2e6b1f877ecafae4c03439468e3cdf772044"
+    },
+    {
+      "id": "r2_probe_source",
+      "path": "test_r2_instantaneous_compare.cpp",
+      "sha256": "1bd3967902b7ea1e4eb0d24b5398aed3bc7fbae15074380957fd0d762df3c567"
+    },
+    {
+      "id": "r2_provenance_gate",
+      "path": "tests/r2_instantaneous_provenance_gate.cmake",
+      "sha256": "1065a37430ccf529149c631b94a8264ee90a5a48205648cba35598dccf696839"
+    },
+    {
+      "id": "r2_regeneration_gate",
+      "path": "tests/r2_reference_regeneration_gate.cmake",
+      "sha256": "670ee4c6d20a22e6b51ad99017da726eb9090a8e7b596c06428adcce65950718"
+    },
+    {
+      "id": "r2_mass_action_thermo",
+      "path": "src/combustion/FiniteRate/MassActionThermo.H",
+      "sha256": "7cc012ea2b0bf9e6cee067b40a7590e3e5f3a27819b04fecca3edb8f2fe94d7b"
+    },
+    {
+      "id": "r2_nasa7_thermo",
+      "path": "src/thermo/NASA7Thermo.H",
+      "sha256": "40ca86c9b52ee7332299ae8401680cc8ac84ad0dd035aab1183d4df9b5e5fafc"
+    },
+    {
+      "id": "r2_mechanism_reader",
+      "path": "src/combustion/FiniteRate/MechanismReader.H",
+      "sha256": "be000cfe248889ab9a366282bb2e7a286024306ee1eb939aa6bce2d1f1bbddfe"
+    },
+    {
+      "id": "r2_thermo_provenance_header",
+      "path": "src/thermo/ThermoDataProvenance.H",
+      "sha256": "eaac29b0f0cea543b2a0ae20adb6e570faf16f849ede709ab0e6140f856af2a9"
+    },
+    {
+      "id": "r2_thermo_provenance_source",
+      "path": "src/thermo/ThermoDataProvenance.C",
+      "sha256": "f66f8d496732e3b949dc4803561cc7e90f22304ca60c411ba98c5b9f4d3902b7"
+    }
+  ],
+  "external_origins": [
+    {
+      "id": "vortex_injection_source",
+      "source_path": "F:/Vortex/config/injection_3pintle_estimate.json",
+      "source_sha256": "1e7aefdda8494809ba501cca1668c0e2cf7d292b4825f22a89e0e495ae49251f",
+      "snapshot_artifact": "injection_snapshot",
+      "snapshot_schema": "rfam.external-json-snapshot/v1"
+    }
+  ],
+  "target_envelope": {
+    "status": "incomplete",
+    "known_anchors": {
+      "pressure_pa": [
+        101325.0,
+        4000000.0
+      ],
+      "temperature_k": [
+        130.0,
+        450.0,
+        700.0,
+        2200.0,
+        2800.0
+      ],
+      "mass_flow_kg_s": [
+        0.0449333,
+        0.35,
+        0.9333
+      ]
+    },
+    "required_before_fit": [
+      "pressure bounds and uncertainty",
+      "temperature bounds and uncertainty",
+      "composition and equivalence-ratio bounds",
+      "dilution and residence-time bounds",
+      "single-phase, VLE, near-critical and solid-risk partition"
+    ]
+  },
+  "species": {
+    "registry_order": [
+      "O2",
+      "N2",
+      "H2",
+      "CH4",
+      "C2H6",
+      "C3H8",
+      "H2O",
+      "CO",
+      "CO2"
+    ]
+  },
+  "r2": {
+    "status": "not-validated",
+    "instantaneous_rate_equivalence": "candidate-pass-awaiting-independent-review",
+    "physical_holdout_validation": "not-run",
+    "detailed_mechanism": "unselected",
+    "experimental_dataset": "unselected",
+    "required_observables": [
+      "forward and reverse rates at prescribed T/rho/Y",
+      "reaction orders and rate units",
+      "formation-energy qdot conversion",
+      "ignition delay",
+      "adiabatic temperature",
+      "major-species histories",
+      "heat-release history"
+    ]
+  },
+  "kij": {
+    "status": "incomplete",
+    "missing_pair_policy": "fail-closed",
+    "explicit_zero": {
+      "requires_evidence": true,
+      "required_fields": [
+        "source",
+        "applicability envelope",
+        "uncertainty",
+        "nonlinear sensitivity evidence"
+      ]
+    },
+    "sensitivity_outputs": [
+      "phase envelope",
+      "vapor mass fraction",
+      "phase compositions",
+      "density",
+      "internal energy",
+      "vapor-side O2 and C3H8 concentrations"
+    ]
+  },
+  "hem": {
+    "status": "foundation-only",
+    "production_capability": false,
+    "box_a": "not-run",
+    "box_b": "not-run",
+    "box_c": "not-run",
+    "box_dependencies": {
+      "box_a": "pure O2 reference; no kij or R2 dependency",
+      "box_b": "validated active binary interactions",
+      "box_c": "R2 implementation and holdout gates plus all active binary interactions"
+    }
+  },
+  "condensed_carbon": {
+    "status": "ledger-only",
+    "quantitative_soot_comparison": false,
+    "physics_required": [
+      "nucleation",
+      "surface growth",
+      "oxidation",
+      "wall deposition",
+      "dilute zero-slip applicability"
+    ]
+  },
+  "comparison": {
+    "quantitative_single_phase_only": true,
+    "excluded_quantities": [
+      "quality",
+      "latent_energy",
+      "rhoSoot",
+      "number_density",
+      "wall_carbon"
+    ]
+  }
+}

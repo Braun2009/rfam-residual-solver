@@ -1,0 +1,10 @@
+; Read-only TUI command-path probe for Fluent FMG initialization.
+; Read immutable r58 configuration, print the FMG initialization menu only,
+; then exit.  Do not initialize, iterate, alter mesh, or write artifacts.
+
+(format #t "\nVORTEX_R71_FMG_TUI_PROBE_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_initturb_config_r58/cold_air_sst_init_turbulence_configured.cas.h5
+(format #t "\nVORTEX_R71_SOURCE_CASE_READ_OK\n")
+/solve/initialize/fmg/?
+(format #t "\nVORTEX_R71_FMG_TUI_PROBE_OK\n")
+/exit yes

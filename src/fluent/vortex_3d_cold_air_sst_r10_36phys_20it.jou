@@ -1,0 +1,16 @@
+; Vortex 3D cold-air SST r10: 36-physical-core continuation from r9 (6 iterations).
+; r9 passed 36-core restart and reduced continuity residual from 1.0 to 0.3545.
+; Preserve every prior artifact; write r10 case/data only in this directory.
+
+(format #t "\nVORTEX_R10_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_r9/cold_air_sst_6it.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_r9/cold_air_sst_6it.dat.h5
+(format #t "\nVORTEX_R10_R9_CASE_DATA_READ_OK\n")
+
+; Continue from initialized restart: no re-initialization.
+/solve/iterate 20
+(format #t "\nVORTEX_R10_ITERATE_20_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_r10/cold_air_sst_26it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_r10/cold_air_sst_26it.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R10_36PHYS_OK\n")
+/exit yes

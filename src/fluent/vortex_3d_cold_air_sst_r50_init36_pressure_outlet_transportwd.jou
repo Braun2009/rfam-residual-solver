@@ -1,0 +1,22 @@
+; Vortex 3D cold-air SST r50: open pressure-outlet + transport wall distance.
+; Source r49 differs from r34 only by mesh.wall_distance_method=transport-eqn.
+; Run the same bounded startup as r35: mesh/check, standard initialization,
+; save independent artifacts, then five CFL=1 iterations.  This is strictly an
+; ideal-air commissioning diagnostic, not a real-fluid/reacting computation.
+
+(format #t "\nVORTEX_R50_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_transportwd_config_r49/cold_air_sst_transport_wall_distance_configured.cas.h5
+(format #t "\nVORTEX_R50_CONFIGURED_CASE_READ_OK\n")
+/mesh/check
+(format #t "\nVORTEX_R50_SOLVER_MESH_CHECK_OK\n")
+/solve/initialize/initialize
+(format #t "\nVORTEX_R50_STANDARD_INITIALIZATION_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_transportwd_init36_r50/cold_air_sst_initialized.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_transportwd_init36_r50/cold_air_sst_initialized.dat.h5
+(format #t "\nVORTEX_R50_INITIALIZED_CASE_DATA_WRITTEN\n")
+/solve/iterate 5
+(format #t "\nVORTEX_R50_ITERATE_5_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_transportwd_init36_r50/cold_air_sst_5it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_transportwd_init36_r50/cold_air_sst_5it.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R50_PRESSURE_OUTLET_TRANSPORTWD_INIT36_OK\n")
+/exit yes

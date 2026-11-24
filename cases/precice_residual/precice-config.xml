@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<precice-configuration>
+  <data:scalar name="Heat-Power" />
+  <data:scalar name="Wall-Temperature" />
+  <mesh name="Fluid-Wall" dimensions="2">
+    <use-data name="Heat-Power" />
+    <use-data name="Wall-Temperature" />
+  </mesh>
+  <mesh name="Solid-Wall" dimensions="2">
+    <use-data name="Heat-Power" />
+    <use-data name="Wall-Temperature" />
+  </mesh>
+  <participant name="Fluid">
+    <provide-mesh name="Fluid-Wall" />
+    <write-data name="Heat-Power" mesh="Fluid-Wall" />
+    <read-data name="Wall-Temperature" mesh="Fluid-Wall" />
+  </participant>
+  <participant name="Solid">
+    <receive-mesh name="Fluid-Wall" from="Fluid" />
+    <provide-mesh name="Solid-Wall" />
+    <read-data name="Heat-Power" mesh="Solid-Wall" />
+    <write-data name="Wall-Temperature" mesh="Solid-Wall" />
+    <mapping:nearest-neighbor direction="read" from="Fluid-Wall" to="Solid-Wall" constraint="conservative" />
+    <mapping:nearest-neighbor direction="write" from="Solid-Wall" to="Fluid-Wall" constraint="consistent" />
+  </participant>
+  <m2n:sockets acceptor="Fluid" connector="Solid" />
+  <coupling-scheme:serial-implicit>
+    <participants first="Fluid" second="Solid" />
+    <max-time-windows value="3" />
+    <time-window-size value="1e-6" />
+    <min-iterations value="2" />
+    <max-iterations value="12" />
+    <relative-convergence-measure limit="1e-9" data="Heat-Power" mesh="Fluid-Wall" strict="true" />
+    <absolute-convergence-measure limit="1e-7" data="Wall-Temperature" mesh="Fluid-Wall" strict="true" />
+    <exchange data="Heat-Power" mesh="Fluid-Wall" from="Fluid" to="Solid" />
+    <exchange data="Wall-Temperature" mesh="Fluid-Wall" from="Solid" to="Fluid" initialize="yes" />
+  </coupling-scheme:serial-implicit>
+</precice-configuration>

@@ -1,0 +1,251 @@
+{
+  "schema": "rfam.kij-source-candidate/v1",
+  "contract_version": 1,
+  "status": "blocked-source-candidate",
+  "scope": "offline-o2-c3h8-vle-source-screen-no-fit",
+  "approvals": {
+    "source_selected": false,
+    "fit_approved": false,
+    "kij_value_validated": false,
+    "production_ready": false,
+    "hem_enabled": false,
+    "fluent_execution_approved": false,
+    "hot_start_approved": false
+  },
+  "upstream": [
+    {
+      "id": "wp3_sensitivity_contract",
+      "path": "realFluidAllMach/tests/reference/kij_sensitivity_contract_v1.json",
+      "sha256": "e1501157afdf1d2d51bb6fa0d03413b6da3f4d0cee4a0fbd9b8cfa9a39c99752"
+    },
+    {
+      "id": "wp3_sensitivity_owner_report",
+      "path": "tmp/a408-wp3-o2-c3h8-kij-sensitivity-screen-replacement-v2-20260722.md",
+      "sha256": "142d01fb4cf057885de56c521fb8e504dfa1ae48b68daa81641eb8a85795e851"
+    },
+    {
+      "id": "wp3_sensitivity_independent_review",
+      "path": "tmp/a408-wp3-o2-c3h8-kij-sensitivity-screen-replacement-v2-independent-review-20260722.md",
+      "sha256": "f02c945863f51f69ee6d00f81deefed5afa02b789a372c9283bc67723ddbc1e3"
+    }
+  ],
+  "pair": {
+    "species": [
+      "O2",
+      "C3H8"
+    ],
+    "source_composition_basis": "liquid-phase mole fraction of O2",
+    "fit_model_target": "RFAM Peng-Robinson symmetric kij",
+    "fit_functional_form_selected": false
+  },
+  "citation": {
+    "doi": "10.1021/je100574y",
+    "title": "Equilibrium Data for the Oxygen + Propane Binary System at Temperatures of (110.22, 120.13, 130.58, and 139.95) K",
+    "authors": [
+      "Houssin-Agbomson, D.[Deborah]",
+      "Coquelet, C.[Christophe]",
+      "Arpentinier, P.",
+      "Delcorso, F.[Fabrice]",
+      "Richon, D.[Dominique]"
+    ],
+    "journal": "J. Chem. Eng. Data",
+    "year": 2010,
+    "volume": "55",
+    "pages": "4412-4415"
+  },
+  "source_artifact": {
+    "provider": "NIST Thermodynamics Research Center",
+    "archive": "ThermoML Archive",
+    "url": "https://trc.nist.gov/ThermoML/10.1021/je100574y.xml",
+    "media_type": "application/xml",
+    "thermoml_version": [
+      2,
+      0
+    ],
+    "retrieved_on": "2026-07-22",
+    "last_modified_utc": "2024-05-21T23:20:23Z",
+    "sha256": "e96a620f208243982427805dd2b4194a6a24a54b1e7764382b61e09134decc9a",
+    "byte_count": 26823,
+    "repository_copy": false
+  },
+  "rights": {
+    "classification": "unresolved-artifact-specific-redistribution-and-fit-use",
+    "source_xml_license_marker": "none-observed",
+    "source_xml_copyright_marker": "none-observed",
+    "evidence": [
+      {
+        "id": "nist-general-use",
+        "url": "https://www.nist.gov/copyrights-disclaimers",
+        "accessed_on": "2026-07-22",
+        "observation": "NIST says unmarked public information may be distributed or copied, but product-specific terms can apply."
+      },
+      {
+        "id": "nist-srd-license-policy",
+        "url": "https://www.nist.gov/open/license",
+        "accessed_on": "2026-07-22",
+        "observation": "NIST states that Standard Reference Data compilations can be copyrighted and licensed."
+      },
+      {
+        "id": "trc-public-availability",
+        "url": "https://trc.nist.gov/",
+        "accessed_on": "2026-07-22",
+        "observation": "TRC states that journal-submitted data are publicly available through the ThermoML Archive."
+      },
+      {
+        "id": "crossref-license-metadata",
+        "url": "https://api.crossref.org/works/10.1021%2Fje100574y",
+        "accessed_on": "2026-07-22",
+        "observation": "The Crossref record contains no license entry."
+      },
+      {
+        "id": "openalex-access-metadata",
+        "url": "https://api.openalex.org/works/doi:10.1021/je100574y",
+        "accessed_on": "2026-07-22",
+        "observation": "OpenAlex classifies the article as closed access and reports no best open-access location."
+      },
+      {
+        "id": "hal-access-metadata",
+        "url": "https://api.archives-ouvertes.fr/search/?q=halId_s%3Ahal-00573772",
+        "accessed_on": "2026-07-22",
+        "observation": "HAL record hal-00573772 reports openAccess=false and exposes metadata without an article file."
+      }
+    ],
+    "contract_disposition": "block-fit-and-repository-redistribution-pending-resolution",
+    "required_before_selection": [
+      "determine whether this ThermoML artifact is governed as SRD or non-SRD data",
+      "record explicit terms permitting the intended numerical use and redistribution",
+      "retain attribution and any required modification notice in the selected-data manifest"
+    ]
+  },
+  "experiment": {
+    "method": "static-analytic method coupled to gas chromatograph analysis",
+    "method_source": "ThermoML citation abstract",
+    "components": [
+      {
+        "name": "oxygen",
+        "formula": "O2",
+        "inchi": "InChI=1S/O2/c1-2",
+        "inchi_key": "MYMOFIZGZYHOMD-UHFFFAOYSA-N",
+        "supplier_purity_mol_percent": 99.9995
+      },
+      {
+        "name": "propane",
+        "formula": "C3H8",
+        "inchi": "InChI=1S/C3H8/c1-3-2/h3H2,1-2H3",
+        "inchi_key": "ATUOYWHBWRKTHZ-UHFFFAOYSA-N",
+        "supplier_purity_mol_percent": 99.95
+      }
+    ],
+    "temperature_k": [
+      110.22,
+      120.13,
+      130.58,
+      139.95
+    ],
+    "datasets": [
+      {
+        "dataset_id": 1,
+        "liquid_phase_label": "Liquid mixture 2",
+        "branch": "oxygen-rich",
+        "row_count": 8,
+        "liquid_x_o2_range": [
+          0.9115,
+          0.9776
+        ],
+        "pressure_kpa_range": [
+          535.9,
+          2611.6
+        ],
+        "expanded_pressure_uncertainty_kpa_range": [
+          3.8,
+          16.7
+        ]
+      },
+      {
+        "dataset_id": 2,
+        "liquid_phase_label": "Liquid mixture 1",
+        "branch": "propane-rich",
+        "row_count": 20,
+        "liquid_x_o2_range": [
+          0.0266,
+          0.419
+        ],
+        "pressure_kpa_range": [
+          246.6,
+          2435.3
+        ],
+        "expanded_pressure_uncertainty_kpa_range": [
+          10.8,
+          156.7
+        ]
+      }
+    ],
+    "total_row_count": 28,
+    "reported_variables": [
+      "temperature_k",
+      "liquid_x_o2"
+    ],
+    "reported_property": "vapor or sublimation pressure, kPa",
+    "pressure_uncertainty": {
+      "kind": "expanded",
+      "confidence_percent": 95,
+      "evaluator": "Data file compiler",
+      "method": "Propagation of evaluated standard uncertainties",
+      "present_for_every_row": true
+    },
+    "missing_measurement_fields": [
+      "temperature_uncertainty_k",
+      "liquid_x_o2_uncertainty",
+      "vapor_y_o2"
+    ],
+    "abstract_reports_vlle_visual_confirmation": true,
+    "xml_contains_explicit_vlle_tie_lines": false
+  },
+  "candidate_extraction": {
+    "schema": "rfam.kij-source-candidate-csv/v1",
+    "fields": [
+      "dataset_id",
+      "liquid_phase",
+      "branch",
+      "temperature_k",
+      "temperature_uncertainty_k",
+      "liquid_x_o2",
+      "liquid_x_o2_uncertainty",
+      "vapor_y_o2",
+      "pressure_kpa",
+      "expanded_pressure_uncertainty_kpa",
+      "pressure_uncertainty_confidence_percent"
+    ],
+    "row_count": 28,
+    "canonicalization": "ASCII CSV with LF endings, source lexical numbers, missing fields empty",
+    "sha256": "5e6c646fda6e03c84db4aa30554c927b7e27fe3e4cd28dae7a2a524b1071ccf5",
+    "repository_copy": false,
+    "fit_input": false
+  },
+  "eligibility": {
+    "source_role": "candidate-pressure-liquid-composition-screening-only",
+    "training_eligible": false,
+    "holdout_eligible": false,
+    "fit_performed": false,
+    "validated_kij": false,
+    "blocking_reasons": [
+      "artifact-specific numerical-use and redistribution terms are unresolved",
+      "temperature measurement uncertainty is absent from the ThermoML artifact",
+      "liquid-composition measurement uncertainty is absent from the ThermoML artifact",
+      "vapor-phase composition is absent, so dew and phase-composition validation are unavailable",
+      "no independent holdout dataset is selected"
+    ],
+    "required_next": [
+      "obtain an authorized article or author/source record for measurement accuracies and terms",
+      "identify an independent O2-C3H8 VLE or PVT holdout source",
+      "freeze constant-versus-temperature-dependent kij forms, partition, metrics, and tolerances before fitting"
+    ]
+  },
+  "limitations": [
+    "public URL accessibility is not treated as an artifact-specific license",
+    "the 28 P-x rows do not contain vapor composition or density data",
+    "the candidate CSV is a temporary source audit artifact and is not a fit dataset",
+    "no value including historical kij=0.055 is validated or recommended",
+    "no HEM, R2 physics, soot, Fluent, zero-advance, hot-start, or production capability is enabled"
+  ]
+}

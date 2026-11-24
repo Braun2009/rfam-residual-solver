@@ -1,0 +1,20 @@
+--- a/b/src/Backends/Helmholtz/HelmholtzEOSMixtureBackend.cpp	2026-09-17 23:06:44.268445916 +0800
++++ b/src/Backends/Helmholtz/HelmholtzEOSMixtureBackend.cpp	2026-09-17 23:06:44.336445903 +0800
+@@ -2865,6 +2865,17 @@
+                 return rhomolar;
+             }
+         }
++        // RFAM patch v2 (2026-09-17): stock 7.2.0 has no fallback for mixtures
++        // (or any remaining case) once the local Householder iteration fails,
++        // so a valid two-phase mixture state can abort the PT flash. Reuse the
++        // global bracketed solver with the stationary-point/Gibbs root
++        // selection that the mixture PT flash already relies on (same EOS, same
++        // root criteria; no new thermodynamics).
++        try {
++            const double rho_max = std::max(20000.0, 3.0 * rhomolar_reducing());
++            return solver_rho_Tp_global(T, p, rho_max);
++        } catch (...) {
++        }
+         throw ValueError(format("solver_rho_Tp was unable to find a solution for T=%10Lg, p=%10Lg, with guess value %10Lg with error: %s", T, p,
+                                 rhomolar_guess, e.what()));
+     }

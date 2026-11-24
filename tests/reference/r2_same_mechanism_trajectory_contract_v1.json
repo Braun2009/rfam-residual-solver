@@ -1,0 +1,247 @@
+{
+  "schema": "rfam.r2-same-mechanism-trajectory-contract/v1",
+  "contract_version": 1,
+  "status": "blocked-implementation-equivalence-only",
+  "scope": "same-two-step-mechanism-ideal-gas-constant-pressure-no-fit-no-physical-validation",
+  "approvals": {
+    "detailed_mechanism_selected": false,
+    "experimental_data_selected": false,
+    "r2_fitting_approved": false,
+    "physical_validation_approved": false,
+    "production_ready": false,
+    "reacting_hot_start_approved": false
+  },
+  "artifacts": [
+    {
+      "id": "upstream_0d_contract",
+      "path": "tests/reference/r2_0d_calibration_contract_v1.json",
+      "sha256": "bbf01269ac1af96814446f462696ed62b5b57e80a777afc5a9d0e7fb25f14611"
+    },
+    {
+      "id": "initial_state_reference",
+      "path": "tests/reference/r2_0d_cantera_reference_v1.json",
+      "sha256": "11d1135a0d0beae0138a3b1dbdde9cae6ccdcee092c103d537311e72f497981d"
+    },
+    {
+      "id": "instantaneous_reference",
+      "path": "tests/reference/r2_instantaneous_reference_v1.json",
+      "sha256": "8bd3f2c05d70bb59af7668aa37c35bab3726c79d5ea8f3b650ba065980c1840a"
+    },
+    {
+      "id": "cantera_same_mechanism",
+      "path": "tests/reference/rfam_twostep_cantera_v1.yaml",
+      "sha256": "a8e88d5fd0114575afa258720f3b8c3dd6de558ebe00cc3ab82dec32cdb2f171"
+    },
+    {
+      "id": "rfam_runner_source",
+      "path": "tools/r2_0d_rfam_runner.cpp",
+      "sha256": "2f6acfe72015b4de91fe1ade806ea8f6d30bf8d9049fb7d89dc936e546eeabbb"
+    },
+    {
+      "id": "rfam_two_step_header",
+      "path": "src/combustion/FiniteRate/TwoStepCO.H",
+      "sha256": "9636dc4b2280af37d0231880a31672557556d5c9ee955bd4c46d373cad46d8c5"
+    },
+    {
+      "id": "rfam_two_step_source",
+      "path": "src/combustion/FiniteRate/TwoStepCO.C",
+      "sha256": "013d7af8f055a0ee834a095fa2946abd45214cf769ca5ccd43c3d83d16fd6465"
+    },
+    {
+      "id": "rfam_mass_action_thermo",
+      "path": "src/combustion/FiniteRate/MassActionThermo.H",
+      "sha256": "7cc012ea2b0bf9e6cee067b40a7590e3e5f3a27819b04fecca3edb8f2fe94d7b"
+    },
+    {
+      "id": "rfam_nasa7_thermo",
+      "path": "src/thermo/NASA7Thermo.H",
+      "sha256": "40ca86c9b52ee7332299ae8401680cc8ac84ad0dd035aab1183d4df9b5e5fafc"
+    },
+    {
+      "id": "rfam_species_registry",
+      "path": "src/thermo/SpeciesRegistry.H",
+      "sha256": "22b3c0e96d5bff8b6ffa6b69ecd7568a4f87422f5188af85de31c50136b27ba7"
+    }
+  ],
+  "species_order": [
+    "C3H8",
+    "O2",
+    "CO",
+    "CO2",
+    "H2O",
+    "N2"
+  ],
+  "cases": [
+    {
+      "id": "train_phi0p8_diluted",
+      "partition": "protocol-training",
+      "temperature_k": 1200.0,
+      "pressure_pa": 4000000.0,
+      "mass_fractions": [
+        0.153190979356,
+        0.694747510803,
+        0.0,
+        0.0,
+        0.0,
+        0.152061509841
+      ]
+    },
+    {
+      "id": "train_phi1p0",
+      "partition": "protocol-training",
+      "temperature_k": 1300.0,
+      "pressure_pa": 4000000.0,
+      "mass_fractions": [
+        0.216069617369,
+        0.783930382631,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "train_phi1p2",
+      "partition": "protocol-training",
+      "temperature_k": 1500.0,
+      "pressure_pa": 2000000.0,
+      "mass_fractions": [
+        0.248543021722,
+        0.751456978278,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "holdout_phi0p6_diluted",
+      "partition": "protocol-holdout",
+      "temperature_k": 1250.0,
+      "pressure_pa": 2000000.0,
+      "mass_fractions": [
+        0.103157633716,
+        0.623783546057,
+        0.0,
+        0.0,
+        0.0,
+        0.273058820227
+      ]
+    },
+    {
+      "id": "holdout_phi1p1",
+      "partition": "protocol-holdout",
+      "temperature_k": 1400.0,
+      "pressure_pa": 6000000.0,
+      "mass_fractions": [
+        0.232649725391,
+        0.767350274609,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "holdout_phi1p4",
+      "partition": "protocol-holdout",
+      "temperature_k": 1600.0,
+      "pressure_pa": 1000000.0,
+      "mass_fractions": [
+        0.278433091684,
+        0.721566908316,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "time_grid": {
+    "kind": "zero-plus-base10-logspace",
+    "minimum_positive_time_s": 1e-14,
+    "maximum_time_s": 1e-08,
+    "log_points_including_endpoints": 121,
+    "total_points_per_case": 122
+  },
+  "thermo_envelope": {
+    "shared_minimum_temperature_k": 300.0,
+    "comparison_maximum_temperature_k": 3400.0,
+    "diagnostic_maximum_temperature_k": 3500.0,
+    "eligibility_rule": "max-rfam-cantera-temperature-at-sample-le-3400K",
+    "guard_rule": "3400K-lt-max-rfam-cantera-temperature-le-3500K-diagnostic-only",
+    "outside_rule": "max-rfam-cantera-temperature-gt-3500K-thermo-extrapolation-excluded",
+    "retain_all_samples_in_audit": true
+  },
+  "energy_reference": {
+    "reference_temperature_k": 298.15,
+    "rfam_reference_policy": "nasa7-in-range-else-boundary-cp-linear-tail",
+    "registry_formation_enthalpy_authority": "SpeciesRegistry",
+    "reference_offset_definition": "h_ref_rfam_minus_hf_registry",
+    "cantera_to_rfam_total_enthalpy": "h_total_rfam_equals_h_total_cantera_minus_reference_offset",
+    "lower_linear_tail_species": [
+      "C3H8",
+      "N2"
+    ]
+  },
+  "solver_profiles": {
+    "rfam": {
+      "name": "strict-equivalence-v1",
+      "relative_tolerance": 1e-12,
+      "species_absolute_tolerance": 1e-16,
+      "sensible_enthalpy_absolute_tolerance_j_per_kg": 1e-08,
+      "maximum_internal_step_s": 1e-13
+    },
+    "cantera": {
+      "version": "3.1.0",
+      "reactor": "IdealGasConstPressureReactor",
+      "relative_tolerance": 1e-12,
+      "absolute_tolerance": 1e-18,
+      "maximum_time_step_s": 1e-13
+    }
+  },
+  "acceptance_tolerances": {
+    "trajectory_temperature_absolute_k": 2e-05,
+    "trajectory_mass_fraction_absolute": 2e-09,
+    "ignition_delay_absolute_s": 2e-15,
+    "qdot_relative": 2e-08,
+    "qdot_absolute_w_per_m3": 0.001,
+    "species_derivative_relative": 2e-08,
+    "species_derivative_absolute_per_s": 1e-08,
+    "temperature_derivative_relative": 2e-08,
+    "temperature_derivative_absolute_k_per_s": 1e-06
+  },
+  "expected_counts": {
+    "cases": 6,
+    "total_samples": 732,
+    "eligible_samples": 646,
+    "guard_samples": 0,
+    "outside_samples": 86
+  },
+  "output_contract": {
+    "schema": "rfam.r2-same-mechanism-trajectory-evidence/v1",
+    "required_case_order": [
+      "train_phi0p8_diluted",
+      "train_phi1p0",
+      "train_phi1p2",
+      "holdout_phi0p6_diluted",
+      "holdout_phi1p1",
+      "holdout_phi1p4"
+    ],
+    "score_only_eligible_samples": true,
+    "report_guard_and_outside_samples": true,
+    "allow_sample_truncation": false,
+    "fit_executed": false,
+    "physical_validation_claimed": false,
+    "production_ready": false
+  },
+  "stop_conditions": [
+    "artifact path or sha256 mismatch",
+    "case, species, grid, energy-reference or solver-profile drift",
+    "any approval flag true",
+    "any sample omitted from the audit",
+    "guard or outside sample included in an acceptance metric",
+    "any acceptance tolerance weakened",
+    "attempt to treat implementation equivalence as physical R2 validation"
+  ]
+}

@@ -1,0 +1,14 @@
+; Vortex 3D cold-air SST r18: controlled CFL=5 continuation on 36 physical cores.
+; Source r17 differs from r15 only in solution Courant number (1 -> 5).
+; Do not initialize; preserve r13/r15/r17 artifacts and write r18 separately.
+
+(format #t "\nVORTEX_R18_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_courant5_config_r17/cold_air_sst_courant5_configured.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_courant5_config_r17/cold_air_sst_courant5_configured.dat.h5
+(format #t "\nVORTEX_R18_CFL5_CASE_DATA_READ_OK\n")
+/solve/iterate 25
+(format #t "\nVORTEX_R18_ITERATE_25_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl5_r18/cold_air_sst_55it_cfl5.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl5_r18/cold_air_sst_55it_cfl5.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R18_CFL5_36PHYS_OK\n")
+/exit yes

@@ -1,0 +1,117 @@
+{
+  "schema": "rfam.r2-ucsd-internal-fit-screen-contract/v1",
+  "status": "blocked-internal-route-screen-only",
+  "execution": {
+    "platform_system": "Linux",
+    "platform_machine": "x86_64",
+    "python_version": "3.8.10",
+    "runner_timeout_seconds": 30
+  },
+  "artifacts": {
+    "source_reference_sha256": "ffcf5fb0c88b1cf2a4be465bfe2b53b9b306012154fc74c02b45a2b5a1c3984f",
+    "training_reference": {
+      "logical_path": "internal://a408-r2-ucsd/training-v1.json",
+      "sha256": "bcc2a6251384734f44d5b31cbeb10ebd5a77ae265eacdb0e1aaba82040c6d71d"
+    },
+    "holdout_reference": {
+      "logical_path": "internal://a408-r2-ucsd/holdout-v1.json",
+      "sha256": "856f86914e61607c4a5f3113b72fbb79d3a68562162a2b0bf43a29b4c3865def"
+    },
+    "parameterized_runner": {
+      "logical_path": "build://rfam-r2-0d-fit-runner/linux-x86_64-v1",
+      "sha256": "d080d0ed5a17fb029fc5e01fbad5dbe6f728f88f0686f0292606a8e81344f9ad"
+    },
+    "repository_artifacts": [
+      {"path": "tools/r2_0d_rfam_fit_runner.cpp", "sha256": "ee0accda3f6d414f0757ec3723c24f93a0da7560714ab866682ea9fecf2c2c73"},
+      {"path": "tools/validate_r2_parameterized_runner.py", "sha256": "0a1c89f10f265ccf23c753eaeefec32fcb4c86864ca09504cd8fbd3672fe0271"},
+      {"path": "tools/split_r2_ucsd_internal_reference.py", "sha256": "0372b833453c8d8c479238a426f17bad5564ddaa18765a071d13b09baa421985"},
+      {"path": "tools/run_r2_0d_rfam_protocol.py", "sha256": "5a4642c37ce4b07ca97db82a6af218d39e039b8a73e417d20efb6094d43f58a8"},
+      {"path": "tools/run_r2_joint_fit_synthetic.py", "sha256": "0669e6d7c2d81fc42a71dfd96688fdb13d1c821dbe953c8a6f1f9bbefd40f99d"},
+      {"path": "tools/screen_r2_detailed_candidate.py", "sha256": "6e88e92ebe84db8ae378f95399de4764ca55f122ef9156ffb5c42e48874a14e7"}
+    ]
+  },
+  "case_partition": {
+    "training_case_ids": [
+      "train_phi0p8_diluted",
+      "train_phi1p0",
+      "train_phi1p2"
+    ],
+    "holdout_case_ids": [
+      "holdout_phi0p6_diluted",
+      "holdout_phi1p1",
+      "holdout_phi1p4"
+    ],
+    "holdout_calls_during_selection": 0,
+    "holdout_calls_after_selection": 1
+  },
+  "parameters": [
+    {"name": "R1_A_SI", "transform": "log10", "lower": 100000.0, "upper": 1e20},
+    {"name": "R1_Ea_J_per_mol", "transform": "linear", "lower": 0.0, "upper": 300000.0},
+    {"name": "R1_order_C3H8", "transform": "linear", "lower": 0.0, "upper": 2.0},
+    {"name": "R1_order_O2", "transform": "linear", "lower": 0.0, "upper": 2.5},
+    {"name": "R2_A_SI", "transform": "log10", "lower": 100000.0, "upper": 1e20},
+    {"name": "R2_Ea_J_per_mol", "transform": "linear", "lower": 0.0, "upper": 300000.0}
+  ],
+  "objective": {
+    "observable_order": ["ignition_delay", "qdot", "temperature", "C3H8", "O2", "CO", "CO2", "H2O"],
+    "ignition_delay_definition": "first-time-temperature-minus-initial-temperature-reaches-400-K",
+    "ignition_delay_residual": "natural-log-ratio-divided-by-sigma-log",
+    "history_residual": "prediction-minus-reference-divided-by-fixed-scale",
+    "case_aggregation": "arithmetic-mean-in-frozen-case-order",
+    "reduction": "python-math-fsum-binary64-in-case-observable-sample-order",
+    "nonignition_policy": "invalid-candidate-never-replaces-incumbent",
+    "normalization_scales": {
+      "ignition_delay_sigma_log": 0.1,
+      "qdot_w_m3": 100000000.0,
+      "temperature_k": 20.0,
+      "C3H8_mass_fraction": 0.01,
+      "O2_mass_fraction": 0.01,
+      "CO_mass_fraction": 0.01,
+      "CO2_mass_fraction": 0.01,
+      "H2O_mass_fraction": 0.01
+    },
+    "component_weights": {
+      "ignition_delay": 0.2,
+      "qdot": 0.2,
+      "temperature": 0.15,
+      "C3H8": 0.1,
+      "O2": 0.1,
+      "CO": 0.1,
+      "CO2": 0.075,
+      "H2O": 0.075
+    }
+  },
+  "optimizer": {
+    "algorithm": "bounded-coordinate-pattern-search-v1",
+    "selection_split": "training-only",
+    "starts": {
+      "midpoint_first": true,
+      "halton_indices": [1, 2, 3, 4],
+      "halton_bases": [2, 3, 5, 7, 11, 13]
+    },
+    "initial_normalized_step": 0.25,
+    "step_contraction": 0.5,
+    "minimum_normalized_step": 0.015625,
+    "maximum_objective_evaluations_per_start": 800,
+    "parallel_case_processes": 3,
+    "global_selection": "lowest-training-objective-then-lexicographically-smallest-transformed-vector"
+  },
+  "scope": {
+    "mechanism_role": "ucsd-converted-candidate-internal-route-screen-not-selected-for-fit",
+    "experimental_training_selected": false,
+    "experimental_holdout_selected": false,
+    "mechanism_rights_clear_for_fit": false,
+    "parameter_vector_publishable": false,
+    "physical_validation_approved": false,
+    "production_ready": false,
+    "hem_chemistry_enabled": false,
+    "fluent_execution_approved": false
+  },
+  "required_interpretation": [
+    "optimizer output is an internal model-structure diagnostic only",
+    "protocol training and holdout labels are not experimental validation partitions",
+    "a low objective cannot cure missing radical species or grant mechanism rights",
+    "holdout data cannot be read by the objective during parameter selection",
+    "no parameter may enter runtime defaults or a production manifest"
+  ]
+}

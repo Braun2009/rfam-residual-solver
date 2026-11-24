@@ -1,0 +1,22 @@
+; Vortex 3D cold-air SST r56: pressure-outlet with density-based global pseudo time.
+; Source r55 differs from immutable r34 only by
+; pseudo_time_method.formulation.density_based_solver=global-time-step.
+; Perform mesh/check, standard initialization, and five bounded iterations on
+; 36 physical cores.  No final mesh reread and no source overwrite.
+
+(format #t "\nVORTEX_R56_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_globaltimestep_config_r55/cold_air_sst_global_timestep_configured.cas.h5
+(format #t "\nVORTEX_R56_CONFIGURED_CASE_READ_OK\n")
+/mesh/check
+(format #t "\nVORTEX_R56_SOLVER_MESH_CHECK_OK\n")
+/solve/initialize/initialize
+(format #t "\nVORTEX_R56_STANDARD_INITIALIZATION_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_globaltimestep_init36_r56/cold_air_sst_initialized.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_globaltimestep_init36_r56/cold_air_sst_initialized.dat.h5
+(format #t "\nVORTEX_R56_INITIALIZED_CASE_DATA_WRITTEN\n")
+/solve/iterate 5
+(format #t "\nVORTEX_R56_ITERATE_5_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_globaltimestep_init36_r56/cold_air_sst_5it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_globaltimestep_init36_r56/cold_air_sst_5it.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R56_PRESSURE_OUTLET_GLOBAL_TIMESTEP_INIT36_OK\n")
+/exit yes

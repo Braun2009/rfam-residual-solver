@@ -1,0 +1,58 @@
+{
+  "algorithm": "sha256(path-nul-size-u64be-bytes)",
+  "artifact_count": 8,
+  "artifacts": [
+    {
+      "id": "artifact:realFluidAllMach/docs/r2_lam2010_internal_intake.md",
+      "path": "realFluidAllMach/docs/r2_lam2010_internal_intake.md",
+      "sha256": "288f75456666e35eac5487c77746aebdd61b0a27665228a54189acfb47ff7c0c",
+      "size": 6002
+    },
+    {
+      "id": "artifact:realFluidAllMach/tests/reference/r2_lam2010_proci_intake_v1.csv",
+      "path": "realFluidAllMach/tests/reference/r2_lam2010_proci_intake_v1.csv",
+      "sha256": "e87b042e44d7fefee4fdafbd3842bda284afa0475a2a5430b401d4785510574e",
+      "size": 7122
+    },
+    {
+      "id": "artifact:realFluidAllMach/tests/reference/r2_lam2010_proci_intake_v1.json",
+      "path": "realFluidAllMach/tests/reference/r2_lam2010_proci_intake_v1.json",
+      "sha256": "9323e023667fb8c82ea40628a8cef991be9d45c956c17e1f5cce43c756ee3157",
+      "size": 8546
+    },
+    {
+      "id": "artifact:realFluidAllMach/tests/test_r2_lam2010_intake.py",
+      "path": "realFluidAllMach/tests/test_r2_lam2010_intake.py",
+      "sha256": "5f0529081f9206341fdb81cc700daa2b1cca79dcbd15baed5e3aa524261a9e11",
+      "size": 19201
+    },
+    {
+      "id": "artifact:realFluidAllMach/tools/generate_r2_lam2010_intake.py",
+      "path": "realFluidAllMach/tools/generate_r2_lam2010_intake.py",
+      "sha256": "a6e6cc0c41499d903c0313867a680738325d5f3151b5d9131e3ca91675a2dd72",
+      "size": 11441
+    },
+    {
+      "id": "artifact:realFluidAllMach/tools/validate_r2_lam2010_intake.py",
+      "path": "realFluidAllMach/tools/validate_r2_lam2010_intake.py",
+      "sha256": "f0db466c26b8f07c233aaf60f538b1e3e868c04b4e90ffbad4cbff53374be781",
+      "size": 28055
+    },
+    {
+      "id": "artifact:tmp/crossref-lam-2010.json",
+      "path": "tmp/crossref-lam-2010.json",
+      "sha256": "48cbb63189102c227f2da4818f811b14fe5440fdb585bb8b9c18eec97a88207a",
+      "size": 5986
+    },
+    {
+      "id": "artifact:tmp/lam-2010-proci-supplement-mmc1.doc",
+      "path": "tmp/lam-2010-proci-supplement-mmc1.doc",
+      "sha256": "154b690336f9bd2aa6a56c417386d620d5dc360e5e996a8b41900238bd17f977",
+      "size": 115712
+    }
+  ],
+  "composite_sha256": "c555ffd35cceac75a23b77e1d4c910765ef35f9f8916da2a3a91c474f9272775",
+  "contract_version": 1,
+  "path_encoding": "ascii",
+  "schema": "rfam.artifact-composite/v1"
+}

@@ -1,0 +1,17 @@
+; Vortex 3D cold-air SST r67: bounded hybrid-initialized pressure-outlet continuation.
+; Source r65 is a 36-rank hybrid-initialized, low-initial-turbulence branch.
+; Independent r66 audit at iter5 reports farfield discharge = 94.907% of
+; prescribed inlet flow, relative imbalance = 5.093%, no mu_t/mu limiter,
+; but residuals and local Mach remain too high for acceptance.  Retain CFL=1,
+; do not reinitialize, and advance one 25-iteration diagnostic segment only.
+
+(format #t "\nVORTEX_R67_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid_initturb_continue36_r65/cold_air_sst_hybrid_5it.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid_initturb_continue36_r65/cold_air_sst_hybrid_5it.dat.h5
+(format #t "\nVORTEX_R67_R65_CASE_DATA_READ_OK\n")
+/solve/iterate 25
+(format #t "\nVORTEX_R67_ITERATE_25_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid_initturb_continue36_r67/cold_air_sst_hybrid_30it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid_initturb_continue36_r67/cold_air_sst_hybrid_30it.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R67_PRESSURE_OUTLET_HYBRID_INITTURB_36PHYS_OK\n")
+/exit yes

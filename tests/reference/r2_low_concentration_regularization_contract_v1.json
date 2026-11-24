@@ -1,0 +1,344 @@
+{
+  "schema": "rfam.r2-low-concentration-regularization-contract/v1",
+  "contract_version": 1,
+  "status": "blocked-numerical-characterization-only",
+  "scope": "current-rfam-exact-rhs-composition-and-low-concentration-smoothing-fixed-backgrounds-no-fit-no-physical-validation",
+  "approvals": {
+    "regularization_threshold_selected_for_production": false,
+    "threshold_convergence_validated": false,
+    "detailed_mechanism_validation_complete": false,
+    "experimental_holdout_validation_complete": false,
+    "reacting_hot_start_approved": false,
+    "production_chemistry_ready": false
+  },
+  "artifacts": [
+    {
+      "id": "probe_source",
+      "path": "tools/r2_low_concentration_regularization_probe.cpp",
+      "size": 16071,
+      "sha256": "7727dc47f71dedc1bd973243b89ad668a1dad4ad2c2c30b388c54c3bd7710ae1"
+    },
+    {
+      "id": "arrhenius_rate",
+      "path": "src/combustion/FiniteRate/ArrheniusRate.H",
+      "size": 1814,
+      "sha256": "d768ea9ef577abd3851837e394e47e343b3b957d4cd7fc2cb7210737a125f20c"
+    },
+    {
+      "id": "mass_action_thermo",
+      "path": "src/combustion/FiniteRate/MassActionThermo.H",
+      "size": 4511,
+      "sha256": "7cc012ea2b0bf9e6cee067b40a7590e3e5f3a27819b04fecca3edb8f2fe94d7b"
+    },
+    {
+      "id": "nasa7_thermo",
+      "path": "src/thermo/NASA7Thermo.H",
+      "size": 14091,
+      "sha256": "40ca86c9b52ee7332299ae8401680cc8ac84ad0dd035aab1183d4df9b5e5fafc"
+    },
+    {
+      "id": "species_registry",
+      "path": "src/thermo/SpeciesRegistry.H",
+      "size": 5789,
+      "sha256": "22b3c0e96d5bff8b6ffa6b69ecd7568a4f87422f5188af85de31c50136b27ba7"
+    },
+    {
+      "id": "thermo_provenance_header",
+      "path": "src/thermo/ThermoDataProvenance.H",
+      "size": 660,
+      "sha256": "eaac29b0f0cea543b2a0ae20adb6e570faf16f849ede709ab0e6140f856af2a9"
+    },
+    {
+      "id": "real_fluid_cvode_wrapper",
+      "path": "src/combustion/FiniteRate/RealFluidCVODEWrapper.H",
+      "size": 36186,
+      "sha256": "88ddb4dad7132f5143cf7781a281a599a73d092d8a9321a9c39ad3a028f8b0f2"
+    },
+    {
+      "id": "rhs_composition_preparation",
+      "path": "src/combustion/FiniteRate/RhsCompositionPreparation.H",
+      "size": 3578,
+      "sha256": "ebf7511a90b6fc2a9745d2008da8442973b7fedde99edb54f580091a86fb806a"
+    },
+    {
+      "id": "chemistry_model",
+      "path": "src/combustion/FiniteRate/ChemistryModel.H",
+      "size": 2390,
+      "sha256": "f6fab066c321b3de47148f08705cc640f10a0290928344933239e5d1e47876b1"
+    },
+    {
+      "id": "equilibrium_thermo_model_header",
+      "path": "src/thermo/EquilibriumThermoModel.H",
+      "size": 10136,
+      "sha256": "d6a04013e33b6a34ae23735203be71505ab16b471f9bf01239efc1659141f2e2"
+    },
+    {
+      "id": "state_contract_header",
+      "path": "src/variables/StateContract.H",
+      "size": 2088,
+      "sha256": "4ad881962f93df46aab9024c0a7968dc62bfcbbf367bacfd9800f7747eaad186"
+    },
+    {
+      "id": "real_fluid_state_header",
+      "path": "src/thermo/RealFluidState.H",
+      "size": 3920,
+      "sha256": "c76d35eb5749957444470fe748e3c9055dcef457a39174fd66aaff35bdb3e499"
+    },
+    {
+      "id": "peng_robinson_header",
+      "path": "src/thermo/EquationOfState/PengRobinsonEOS.H",
+      "size": 2966,
+      "sha256": "4dcceec1a615c59c53b86f14c95a6118d94cef8d8e45db121d27c57c906c3e1f"
+    },
+    {
+      "id": "species_critical_db_header",
+      "path": "src/thermo/MixingRules/SpeciesCriticalDB.H",
+      "size": 973,
+      "sha256": "f82fbd6671873d0120baf081d4ec651901151f8050bb03b22e2ef2bf8ea6efde"
+    },
+    {
+      "id": "binary_interaction_db_header",
+      "path": "src/thermo/MixingRules/BinaryInteractionDB.H",
+      "size": 4058,
+      "sha256": "32e49334aa6a7e33ccd782879b6c510a2892311e45683c5834853a695ac9b908"
+    },
+    {
+      "id": "vdw_mixing_header",
+      "path": "src/thermo/MixingRules/VdWOneFluidMixing.H",
+      "size": 3068,
+      "sha256": "9919c59f501a4ec0097dbdac8c9e6fc1df587f44218d8aedbfe43f5fb769d664"
+    },
+    {
+      "id": "species_mapper",
+      "path": "src/combustion/SpeciesMapper.H",
+      "size": 2948,
+      "sha256": "5edb5efb615aac4d011205e87e6f0d6b58b6d3eea63dbdea913aeea0f29afa97"
+    },
+    {
+      "id": "two_step_source",
+      "path": "src/combustion/FiniteRate/TwoStepCO.C",
+      "size": 3538,
+      "sha256": "013d7af8f055a0ee834a095fa2946abd45214cf769ca5ccd43c3d83d16fd6465"
+    },
+    {
+      "id": "two_step_header",
+      "path": "src/combustion/FiniteRate/TwoStepCO.H",
+      "size": 3955,
+      "sha256": "9636dc4b2280af37d0231880a31672557556d5c9ee955bd4c46d373cad46d8c5"
+    },
+    {
+      "id": "dynamic_chemistry",
+      "path": "src/combustion/FiniteRate/DynamicChemistry.H",
+      "size": 15314,
+      "sha256": "04ad57fc8153982d5cdbe4744dcb873351caeece102e7e3bc3b6f5e39a3c33b6"
+    },
+    {
+      "id": "rfam_two_step_yaml",
+      "path": "tests/twostep_co.yaml",
+      "size": 1086,
+      "sha256": "f192aee746695a89d7e754b23d3d97a36da0e16fd510824db769e9590b92ae3c"
+    },
+    {
+      "id": "trajectory_contract",
+      "path": "tests/reference/r2_same_mechanism_trajectory_contract_v1.json",
+      "size": 7259,
+      "sha256": "301649763727d10947473fef504956439a15bb374f70a303bb8d7bda64d25af4"
+    },
+    {
+      "id": "probe_executable",
+      "path": "build-phase-foundation/rfam_r2_low_concentration_regularization_probe",
+      "size": 42304,
+      "sha256": "5541eb0a9a82dfc0f1aeb0ec4d9ca69c2288c7e58631fd3fd3d9093e1e130a21"
+    }
+  ],
+  "toolchain": {
+    "compiler_path": "/usr/bin/g++",
+    "compiler_sha256": "0c0b987719385f8e242819dfef6a3e97b4b2540ce4035dbc11565df2966bd69e",
+    "compiler_version": "g++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0",
+    "compile_command": [
+      "/usr/bin/g++",
+      "-std=c++17",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "-Isrc",
+      "-Isrc/thermo",
+      "-Isrc/framework",
+      "-Isrc/combustion",
+      "-Isrc/combustion/FiniteRate",
+      "-Isrc/variables",
+      "-I/mnt/f/opt/sundials/include",
+      "-Isrc/thermo/EquationOfState",
+      "-Isrc/thermo/MixingRules",
+      "-Isrc/thermo/RootSelection",
+      "-Isrc/numerics/flux",
+      "-Isrc/numerics/preconditioning",
+      "-Isrc/numerics/reconstruction",
+      "-Isrc/mesh",
+      "-Isrc/transport",
+      "-Isrc/turbulence",
+      "-Isrc/combustion/FPV",
+      "tools/r2_low_concentration_regularization_probe.cpp",
+      "-o",
+      "build-phase-foundation/rfam_r2_low_concentration_regularization_probe"
+    ]
+  },
+  "regularization": {
+    "transition_concentration_mol_m3": 1e-6,
+    "state_smoothing": {
+      "source": "RhsCompositionPreparation.regularizedNonnegative",
+      "below_transition_formula": "c0*x^2*(2-x), x=c/c0",
+      "at_or_above_transition": "identity",
+      "nonpositive": "zero"
+    },
+    "irreversible_fractional_power_smoothing": {
+      "source": "MassActionThermo.regularizedConcentrationPower",
+      "below_transition_formula": "c0^a*((3-a)*x^2+(a-2)*x^3), x=c/c0",
+      "at_or_above_transition": "exact-power",
+      "exponent_at_or_above_one": "exact-power",
+      "nonpositive": "zero"
+    },
+    "composition_order": [
+      "state mass fraction is smoothed at the concentration-equivalent threshold",
+      "all mass fractions are renormalized",
+      "chemistry receives the smoothed state",
+      "irreversible fractional concentration powers are smoothed again"
+    ],
+    "current_two_step_policy": {
+      "R1_C3H8_exponent": 0.1,
+      "R1_O2_exponent": 1.65,
+      "R1_reversible": false,
+      "R2_CO_exponent": 1.0,
+      "R2_O2_exponent": 0.5,
+      "R2_reversible": true,
+      "R2_fractional_power_policy": "exact-power-no-regularization"
+    }
+  },
+  "probe_grid": {
+    "exponents": [0.1, 0.5, 1.0, 1.65],
+    "concentration_ratios": [
+      0.0,
+      1e-12,
+      1e-9,
+      1e-6,
+      1e-3,
+      1e-2,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      0.9,
+      0.99,
+      0.999999,
+      1.0,
+      1.000001,
+      10.0
+    ],
+    "power_rows": 64,
+    "state_rows": 16,
+    "pre_normalization_combined_rows": 32,
+    "rhs_composition_rows": 6
+  },
+  "rhs_composition_probe": {
+    "global_species_names": [
+      "O2", "N2", "H2", "CH4", "C2H6", "C3H8", "H2O", "CO", "CO2"
+    ],
+    "chemistry_species_names": ["C3H8", "O2", "CO", "CO2", "H2O", "N2"],
+    "chemistry_to_global": [5, 0, 7, 8, 6, 1],
+    "global_molecular_weights_kg_mol": [
+      0.0319988,
+      0.0280134,
+      0.00201588,
+      0.01604246,
+      0.03006904,
+      0.04409562,
+      0.01801528,
+      0.0280101,
+      0.0440095
+    ],
+    "templates": {
+      "aligned": [0.20, 0.20, 0.00, 0.00, 0.00, 0.20, 0.10, 0.10, 0.20],
+      "trace": [0.20, 0.20, 0.01, 0.02, 0.03, 0.20, 0.10, 0.10, 0.14]
+    },
+    "oxygen_remainder_fraction": 0.23,
+    "nitrogen_remainder_fraction": 0.77,
+    "cases": [
+      {"id": "aligned-rho1-ratio0.001", "rho_kg_m3": 1.0, "fuel_concentration_ratio": 0.001, "template": "aligned"},
+      {"id": "aligned-rho1-ratio0.5", "rho_kg_m3": 1.0, "fuel_concentration_ratio": 0.5, "template": "aligned"},
+      {"id": "trace-rho1-ratio0.5", "rho_kg_m3": 1.0, "fuel_concentration_ratio": 0.5, "template": "trace"},
+      {"id": "trace-rho0.1-ratio0.5", "rho_kg_m3": 0.1, "fuel_concentration_ratio": 0.5, "template": "trace"},
+      {"id": "trace-rho10-ratio0.5", "rho_kg_m3": 10.0, "fuel_concentration_ratio": 0.5, "template": "trace"},
+      {"id": "trace-rho1-ratio0.9", "rho_kg_m3": 1.0, "fuel_concentration_ratio": 0.9, "template": "trace"}
+    ],
+    "scope": "exact RhsCompositionPreparation::prepare path called by rhsFn, fixed diagnostic backgrounds only"
+  },
+  "trajectory_diagnostic_bound": {
+    "temperature_bound_k": 3400.0,
+    "oxygen_bound_rule": "maximum ideal-gas initial O2 concentration over the six frozen trajectory cases",
+    "oxygen_bound_mol_m3": 422.49812895050843,
+    "universal_gas_constant_j_mol_k": 8.314462618,
+    "molecular_weights_kg_mol": [
+      0.04409562,
+      0.0319988,
+      0.0280101,
+      0.0440095,
+      0.01801528,
+      0.0280134
+    ],
+    "r1": {
+      "A": 10000000000.0,
+      "temperature_exponent": 0.0,
+      "activation_energy_j_mol": 125520.0,
+      "fuel_exponent": 0.1,
+      "oxygen_exponent": 1.65,
+      "fuel_molecular_weight_kg_mol": 0.04409562,
+      "reaction_heat_magnitude_j_mol": 1195020.0
+    },
+    "expected": {
+      "k1": 117939056.12065332,
+      "maximum_fuel_factor": 0.251188643150958,
+      "progress_mol_m3_s": 637189412895.9434,
+      "fuel_mass_source_kg_m3_s": 28097262219.08262,
+      "heat_release_w_m3": 7.614540921989102e17,
+      "fuel_inventory_kg_m3": 4.409562e-8,
+      "depletion_time_s": 1.5693920516587516e-18
+    },
+    "scope": "diagnostic rectangle from the frozen same-mechanism case set, not a production envelope"
+  },
+  "acceptance": {
+    "finite_nonnegative": true,
+    "monotone": true,
+    "continuous_at_zero_and_transition": true,
+    "first_derivative_continuous_at_zero_and_transition": true,
+    "exact_at_or_above_transition": true,
+    "exact_for_exponent_at_or_above_one": true,
+    "smoothed_value_not_above_exact_fractional_power": true,
+    "pre_normalization_combined_value_not_above_single_power_smoothing": true,
+    "rhs_composition_matches_independent_reconstruction": true,
+    "review_counterexample_reproduced": true,
+    "transition_derivative_relative_tolerance": 5e-6,
+    "zero_derivative_normalized_maximum": 3e-8,
+    "numeric_relative_tolerance": 5e-13
+  },
+  "holds": [
+    "the finite source bound is too large to serve as a timestep or physical-rate guarantee",
+    "the nominal transition-inventory depletion time is far below any intended production timestep",
+    "threshold convergence across 1e-5, 1e-6, 1e-7 and 1e-8 mol/m3 is not run",
+    "integrated ignition, qdot, temperature, major-species and residual-inventory sensitivity is not run",
+    "the six RHS composition rows are fixed diagnostic backgrounds, not a production rho-Y envelope",
+    "the target production T-p-composition-residence-time envelope is not frozen",
+    "detailed-mechanism and experimental R2 validation remain blocked"
+  ],
+  "stop_conditions": [
+    "artifact path, size or sha256 mismatch",
+    "compiler or compile-command identity mismatch",
+    "any approval flag true",
+    "any non-finite, negative, non-monotone or discontinuous probe result",
+    "state and power transition concentrations differ",
+    "R2 reversible exact-power policy drifts",
+    "diagnostic source bound is presented as a production source cap",
+    "regularization cutoff is tuned as an unreported kinetic fit parameter",
+    "mathematical characterization is presented as physical R2 validation"
+  ]
+}

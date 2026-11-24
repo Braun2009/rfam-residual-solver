@@ -1,0 +1,151 @@
+{
+  "schema": "rfam.r2-c3mech-candidate-screen-plan/v2",
+  "contract_version": 2,
+  "status": "blocked-offline-prefix-diagnostic-only",
+  "scope": "six-case-constant-pressure-full-protocol-out-of-envelope-prefix-only-reference-vs-fixed-rfam-no-fit-no-selection",
+  "repository_provenance": {
+    "tag": "V4.0.1",
+    "annotated_tag_object": "1aebbf130e142b07b0ea8724d08f9a8c4943a98c",
+    "commit": "9d362725c88c27901baf36dd7807cfda5bd82f20",
+    "rights_report_path": "tmp/a408-c3mech-v4.0.1-propane-mechanism-rights-screen-v1-20260728.md",
+    "rights_report_sha256": "6779ae447b8ae27d49f4b1011e91ab0747dc8c91435f44d5effcdf6cad5fd26f",
+    "license_path": "tmp/c3mech-v4.0.1-rights-screen/LICENSE",
+    "license_sha256": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661",
+    "license_identifier": "CC-BY-4.0",
+    "experimental_data_rights_clear": false
+  },
+  "runtime_identity": {
+    "python_executable": "C:\\Users\\guhai\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "python_sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+    "python_size": 104952,
+    "cantera_version": "3.2.0",
+    "cantera_wheel": "F:\\tmp\\cantera-3.2.0-cp312-cp312-win_amd64.whl",
+    "cantera_wheel_sha256": "258b95a4e29f9afd50788eab284e88440174302123c8b3a4a3a493904b40e238",
+    "cantera_wheel_size": 5291378,
+    "cantera_module": "F:\\tmp\\cantera-3.2.0-python312\\cantera\\__init__.py",
+    "cantera_module_sha256": "a793b6d7643cc875ef0e0bbe5e3051f538af08418242aa87eb6cc7f995e34396",
+    "cantera_module_size": 1014,
+    "cantera_extension": "F:\\tmp\\cantera-3.2.0-python312\\cantera\\_cantera.cp312-win_amd64.pyd",
+    "cantera_extension_sha256": "00f00749cc90b76a7266656fd02e6a7d40be82e7d7e1389472ad285123064e9d",
+    "cantera_extension_size": 6564352,
+    "execution_authority": "bound-installed-module-and-extension",
+    "wheel_to_installed_tree_equivalence_proven": false
+  },
+  "protocol": {
+    "reference_generator_path": "realFluidAllMach/scripts/generate_r2_c3mech_candidate_reference.py",
+    "reference_generator_sha256": "d8d4d3ad9cc4207039c49f9d2174d8e28ca8db601bea077a85d955d11d55bb5c",
+    "reference_generator_size": 22366,
+    "training_manifest_path": "realFluidAllMach/tests/reference/r2_c3mech_training_cases_v1.json",
+    "training_manifest_sha256": "2baf34d21180d9b81c2abe841a00ae8bf263f15cd0abbf949ac9ba36f92d6601",
+    "holdout_manifest_path": "realFluidAllMach/tests/reference/r2_c3mech_holdout_cases_v1.json",
+    "holdout_manifest_sha256": "cb63bfd73fdf7cc56eb179ee95d84be185c7397406f25b93183588bb8b4d4785",
+    "training_case_ids": [
+      "train_phi0p8_diluted",
+      "train_phi1p0",
+      "train_phi1p2"
+    ],
+    "holdout_case_ids": [
+      "holdout_phi0p6_diluted",
+      "holdout_phi1p1",
+      "holdout_phi1p4"
+    ],
+    "sample_times_s": [
+      0.0,
+      1e-08,
+      3e-08,
+      1e-07,
+      3e-07,
+      1e-06,
+      3e-06,
+      1e-05,
+      3e-05,
+      0.0001,
+      0.0003,
+      0.001,
+      0.003,
+      0.005
+    ],
+    "reactor": "IdealGasConstPressureReactor",
+    "rtol": 1e-10,
+    "atol": 1e-18,
+    "trajectory_temperature_advance_limit_k": 10.0,
+    "ignition_temperature_advance_limit_k": 1.0,
+    "first_crossing_definition": "10 K advance-limited linear temperature interpolation to the mechanism thermo upper bound; diagnostic only; no chemistry state published",
+    "ignition_definition": "1 K advance-limited linear interpolation to T - T0 = 400 K; threshold at thermo upper bound is unscored"
+  },
+  "role_lock": {
+    "locked": true,
+    "basis": "pre-trajectory rights and intended-scope screen only",
+    "trajectory_based_selection_executed": false,
+    "fit_executed": false,
+    "training_results_may_change_roles": false,
+    "holdout_results_may_change_roles": false,
+    "holdout_access_stage": "after immutable role lock and training comparison completion",
+    "primary_model_id": "44I0",
+    "comparator_model_id": "3R00",
+    "selected_model_id": null
+  },
+  "mechanisms": [
+    {
+      "model_id": "44I0",
+      "role": "primary-lt-ht-reference-candidate-not-selected",
+      "path": "tmp/c3mech-v4.0.1-rights-screen/C3MechV4.0.1_44I0_C0-C3-C4_LT-HT_Cantera.yaml",
+      "sha256": "d5cec179ffbb6221b1b91264e1439ec850658dd97a0298054c8dbc336f3ab148",
+      "size": 2227356,
+      "species_count": 729,
+      "author_header_reaction_count": 3964,
+      "yaml_reaction_entry_count": 4080,
+      "cantera_loaded_reaction_count": 4080,
+      "thermo_min_k": 400.0,
+      "thermo_max_k": 2000.0
+    },
+    {
+      "model_id": "3R00",
+      "role": "bounded-ht-comparator-not-selected",
+      "path": "tmp/c3mech-v4.0.1-rights-screen/C3MechV4.0.1_3R00_C0-C3-C4_HT_Cantera.yaml",
+      "sha256": "e307306e8fe9497ebc5a88f32545936c6f65a12c131c90ec30cff18fdf3a3e9d",
+      "size": 1483615,
+      "species_count": 378,
+      "author_header_reaction_count": 2521,
+      "yaml_reaction_entry_count": 2626,
+      "cantera_loaded_reaction_count": 2626,
+      "thermo_min_k": 300.0,
+      "thermo_max_k": 2000.0
+    }
+  ],
+  "reaction_count_semantics": {
+    "execution_authority": "ordered top-level YAML reaction entries loaded by Cantera",
+    "header_authority": "author provenance text only",
+    "header_and_yaml_counts_interchangeable": false,
+    "discrepancy_status": "explicitly-scoped-not-resolved-to-a-single-count"
+  },
+  "thermo_envelope_policy": {
+    "full_fixed_protocol_status": "OUT_OF_MECHANISM_THERMO_ENVELOPE",
+    "prefix_diagnostic_status": "blocked-valid-prefix-only-no-extrapolation",
+    "eligibility": "detailed mechanism thermo intersection inclusive and paired RFAM temperature within 300-3400 K",
+    "first_detected_exit": "record bound first-crossing estimate but publish no endpoint chemistry state",
+    "first_crossing_publishable_chemistry_state": false,
+    "later_samples": "not evaluated",
+    "outside_samples_scored": false,
+    "extrapolation_approved": false
+  },
+  "rfam_runner": {
+    "source_path": "realFluidAllMach/tools/r2_0d_rfam_runner.cpp",
+    "source_sha256": "2f6acfe72015b4de91fe1ade806ea8f6d30bf8d9049fb7d89dc936e546eeabbb",
+    "executable_path": "realFluidAllMach/build-phase-foundation/rfam_r2_0d_runner",
+    "executable_sha256": "4858ae43b17bec7cccf2f6ba3a75659f0e92ed092635be6d3b61b107e1d8a1d1",
+    "executable_size": 93312,
+    "thermo_comparison_min_k": 300.0,
+    "thermo_comparison_max_k": 3400.0,
+    "status": "fixed-reviewed-two-step-behavior-no-fitting"
+  },
+  "approvals": {
+    "mechanism_selected_for_fit": false,
+    "experimental_data_selected": false,
+    "fit_executed": false,
+    "holdout_used_for_selection": false,
+    "physical_validation_approved": false,
+    "production_ready": false,
+    "reacting_hot_start_approved": false
+  }
+}

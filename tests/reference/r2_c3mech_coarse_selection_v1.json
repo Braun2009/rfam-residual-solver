@@ -1,0 +1,33 @@
+{
+  "schema": "rfam.r2-c3mech-diagnostic-selection/v1",
+  "status": "coarse-grid-training-only-selection-not-publishable",
+  "source_result": {
+    "path": "tmp/a408-r2-c3mech-fit-screen-review-replacement-v2.json",
+    "sha256": "08426f2dadce6b54139d455122858746d40c72ad68166b0b89bf9f9b6f413c04",
+    "size": 10996
+  },
+  "selection_split": "training-only",
+  "holdout_influenced_selection": false,
+  "parameter_names": [
+    "R1_A_SI",
+    "R1_Ea_J_per_mol",
+    "R1_order_C3H8",
+    "R1_order_O2",
+    "R2_A_SI",
+    "R2_Ea_J_per_mol"
+  ],
+  "parameter_vector": [
+    7498942.09332456,
+    133333.333333333,
+    1.06875,
+    0.803571428571428,
+    115856.513372443,
+    298557.692307692
+  ],
+  "coarse_training_objective": 1.63488450935637,
+  "approvals": {
+    "parameter_vector_publishable": false,
+    "physical_validation_approved": false,
+    "production_ready": false
+  }
+}

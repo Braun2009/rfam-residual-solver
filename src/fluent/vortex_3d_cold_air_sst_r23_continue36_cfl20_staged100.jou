@@ -1,0 +1,35 @@
+; Vortex 3D cold-air SST r23: 36 physical-core staged CFL=20 continuation.
+; Source r21 passed a bounded 10-iteration CFL=20 stability test.  Continue
+; from iteration 65 without initialization; preserve every prior branch.
+; Four checkpoints bound recoverable work to 25 iterations each.
+
+(format #t "\nVORTEX_R23_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl20_r21/cold_air_sst_65it_cfl20.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl20_r21/cold_air_sst_65it_cfl20.dat.h5
+(format #t "\nVORTEX_R23_R21_CASE_DATA_READ_OK\n")
+
+; Iterations 66-90
+/solve/iterate 25
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl20_r23/cold_air_sst_90it_cfl20.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl20_r23/cold_air_sst_90it_cfl20.dat.h5
+(format #t "\nVORTEX_R23_CHECKPOINT_90IT_OK\n")
+
+; Iterations 91-115
+/solve/iterate 25
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl20_r23/cold_air_sst_115it_cfl20.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl20_r23/cold_air_sst_115it_cfl20.dat.h5
+(format #t "\nVORTEX_R23_CHECKPOINT_115IT_OK\n")
+
+; Iterations 116-140
+/solve/iterate 25
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl20_r23/cold_air_sst_140it_cfl20.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl20_r23/cold_air_sst_140it_cfl20.dat.h5
+(format #t "\nVORTEX_R23_CHECKPOINT_140IT_OK\n")
+
+; Iterations 141-165
+/solve/iterate 25
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl20_r23/cold_air_sst_165it_cfl20.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl20_r23/cold_air_sst_165it_cfl20.dat.h5
+(format #t "\nVORTEX_R23_CHECKPOINT_165IT_OK\n")
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R23_CFL20_36PHYS_OK\n")
+/exit yes

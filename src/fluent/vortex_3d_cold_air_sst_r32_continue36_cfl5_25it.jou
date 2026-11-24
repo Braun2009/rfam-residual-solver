@@ -1,0 +1,15 @@
+; Vortex 3D cold-air SST r32: stable CFL=5 continuation from r29 iteration 130.
+; r30 audit shows farfield discharge has started to establish (37.5% of inlet)
+; with no thermal limiter or solver fault.  r23 divergent CFL=20 artifacts
+; are explicitly excluded.  Do not initialize or modify the source checkpoint.
+
+(format #t "\nVORTEX_R32_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl5_r29/cold_air_sst_130it_cfl5.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl5_r29/cold_air_sst_130it_cfl5.dat.h5
+(format #t "\nVORTEX_R32_R29_STABLE_CASE_DATA_READ_OK\n")
+/solve/iterate 25
+(format #t "\nVORTEX_R32_ITERATE_25_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl5_r32/cold_air_sst_155it_cfl5.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl5_r32/cold_air_sst_155it_cfl5.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R32_CFL5_36PHYS_OK\n")
+/exit yes

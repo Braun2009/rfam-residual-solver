@@ -1,0 +1,14 @@
+; Vortex 3D cold-air SST r21: bounded CFL=20 stability test on 36 physical cores.
+; r20 changes only Courant number from 5 to 20 on the low-Mach r18 checkpoint.
+; Do not initialize; write all test artifacts in r21 only.
+
+(format #t "\nVORTEX_R21_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_courant20_config_r20/cold_air_sst_courant20_configured.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_courant20_config_r20/cold_air_sst_courant20_configured.dat.h5
+(format #t "\nVORTEX_R21_CFL20_CASE_DATA_READ_OK\n")
+/solve/iterate 10
+(format #t "\nVORTEX_R21_ITERATE_10_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl20_r21/cold_air_sst_65it_cfl20.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl20_r21/cold_air_sst_65it_cfl20.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R21_CFL20_36PHYS_OK\n")
+/exit yes

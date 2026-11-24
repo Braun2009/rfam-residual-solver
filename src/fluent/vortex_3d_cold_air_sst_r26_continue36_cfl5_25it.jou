@@ -1,0 +1,14 @@
+; Vortex 3D cold-air SST r26: stable CFL=5 continuation from r24 iteration 80.
+; r23 CFL=20 branch diverged and is explicitly excluded.
+; No initialization; source state and all prior checkpoints remain immutable.
+
+(format #t "\nVORTEX_R26_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl5_r24/cold_air_sst_80it_cfl5.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl5_r24/cold_air_sst_80it_cfl5.dat.h5
+(format #t "\nVORTEX_R26_R24_STABLE_CASE_DATA_READ_OK\n")
+/solve/iterate 25
+(format #t "\nVORTEX_R26_ITERATE_25_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl5_r26/cold_air_sst_105it_cfl5.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_cfl5_r26/cold_air_sst_105it_cfl5.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R26_CFL5_36PHYS_OK\n")
+/exit yes

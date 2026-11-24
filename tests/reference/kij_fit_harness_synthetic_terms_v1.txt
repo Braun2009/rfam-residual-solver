@@ -1,0 +1,4 @@
+SYNTHETIC NONPHYSICAL TEST FIXTURE TERMS
+These values were generated from unvalidated RFAM sensitivity endpoints only
+to test parser and objective wiring. They are not experimental data and convey
+no physical kij evidence.

@@ -1,0 +1,100 @@
+--- a/b/src/Backends/Helmholtz/FlashRoutines.cpp	2022-11-09 20:37:21.000000000 +0800
++++ b/src/Backends/Helmholtz/FlashRoutines.cpp	2026-09-17 23:18:18.372342108 +0800
+@@ -56,21 +56,91 @@
+         if (HEOS.imposed_phase_index == iphase_not_imposed) {
+             // Blind flash call
+             // Following the strategy of Gernert, 2014
++            // RFAM patch v3 (2026-09-17): the Gernert stability tester can
++            // return a collapsed (x~y) guess in narrow bands near the phase
++            // boundary; PTflash_twophase then converges to the trivial x=y
++            // solution and the quality becomes garbage. Continue from the
++            // previously committed split when available, and validate the
++            // split before accepting it. If no valid split is found, fall
++            // back to the global single-phase density solve (no invented
++            // split; the caller's own phase checks still apply).
++            std::vector<double> rfam_carried_liq, rfam_carried_vap;
++            double rfam_carried_rhoL = -1, rfam_carried_rhoV = -1;
++            if (HEOS.SatL && HEOS.SatV) {
++                rfam_carried_liq = HEOS.SatL->get_mole_fractions();
++                rfam_carried_vap = HEOS.SatV->get_mole_fractions();
++                rfam_carried_rhoL = HEOS.SatL->rhomolar();
++                rfam_carried_rhoV = HEOS.SatV->rhomolar();
++            }
++            const std::size_t rfam_nc = HEOS.get_mole_fractions().size();
++            auto rfam_degenerate = [](const std::vector<double>& a, const std::vector<double>& b) {
++                if (a.size() != b.size() || a.empty()) return true;
++                double d = 0;
++                for (std::size_t i = 0; i < a.size(); ++i) d = std::max(d, std::fabs(a[i] - b[i]));
++                return d < 1e-6;
++            };
+             StabilityRoutines::StabilityEvaluationClass stability_tester(HEOS);
+-            if (!stability_tester.is_stable()) {
++            const bool rfam_stable = stability_tester.is_stable();
++            if (!rfam_stable) {
+                 // There is a phase split and liquid and vapor phases are formed
+                 CoolProp::SaturationSolvers::PTflash_twophase_options o;
+                 stability_tester.get_liq(o.x, o.rhomolar_liq);
+                 stability_tester.get_vap(o.y, o.rhomolar_vap);
++                if (rfam_degenerate(o.x, o.y)) {
++                    if (rfam_carried_liq.size() == rfam_nc
++                        && !rfam_degenerate(rfam_carried_liq, rfam_carried_vap)
++                        && rfam_carried_rhoL > 0 && rfam_carried_rhoV > 0) {
++                        o.x = rfam_carried_liq;
++                        o.y = rfam_carried_vap;
++                        o.rhomolar_liq = rfam_carried_rhoL;
++                        o.rhomolar_vap = rfam_carried_rhoV;
++                    } else {
++                        // No committed split to continue from: restart from the
++                        // Wilson/Rachford-Rice trial compositions (the same
++                        // initialisation the stability tester uses) instead of
++                        // the collapsed SS result.
++                        try {
++                            stability_tester.trial_compositions();
++                            stability_tester.rho_TP_global();
++                            stability_tester.get_liq(o.x, o.rhomolar_liq);
++                            stability_tester.get_vap(o.y, o.rhomolar_vap);
++                        } catch (const std::exception&) {
++                        }
++                    }
++                }
+                 o.z = HEOS.get_mole_fractions();
+                 o.T = HEOS.T();
+                 o.p = HEOS.p();
+                 o.omega = 1.0;
+-                CoolProp::SaturationSolvers::PTflash_twophase solver(HEOS, o);
+-                solver.solve();
+-                HEOS._phase = iphase_twophase;
+-                HEOS._Q = (o.z[0] - o.x[0]) / (o.y[0] - o.x[0]);  // All vapor qualities are the same (these are the residuals in the solver)
+-                HEOS._rhomolar = 1 / (HEOS._Q / HEOS.SatV->rhomolar() + (1 - HEOS._Q) / HEOS.SatL->rhomolar());
++                bool rfam_solved = true;
++                try {
++                    CoolProp::SaturationSolvers::PTflash_twophase solver(HEOS, o);
++                    solver.solve();
++                } catch (const std::exception&) {
++                    rfam_solved = false;
++                }
++                double rfam_Q = std::numeric_limits<double>::quiet_NaN();
++                if (rfam_solved) {
++                    const double rfam_den = o.y[0] - o.x[0];
++                    if (std::fabs(rfam_den) > 1e-12) rfam_Q = (o.z[0] - o.x[0]) / rfam_den;
++                }
++                const double rfam_rhoL = HEOS.SatL ? HEOS.SatL->rhomolar() : -1;
++                const double rfam_rhoV = HEOS.SatV ? HEOS.SatV->rhomolar() : -1;
++                const bool rfam_valid = rfam_solved
++                    && !rfam_degenerate(o.x, o.y)
++                    && std::isfinite(rfam_Q) && rfam_Q >= -1e-6 && rfam_Q <= 1 + 1e-6
++                    && std::isfinite(rfam_rhoL) && std::isfinite(rfam_rhoV)
++                    && std::fabs(rfam_rhoL - rfam_rhoV) > 1e-9 * std::max(std::fabs(rfam_rhoL), std::fabs(rfam_rhoV));
++                if (rfam_valid) {
++                    HEOS._phase = iphase_twophase;
++                    HEOS._Q = std::min(1.0, std::max(0.0, rfam_Q));
++                    HEOS._rhomolar = 1 / (HEOS._Q / rfam_rhoV + (1 - HEOS._Q) / rfam_rhoL);
++                } else {
++                    const double rho = HEOS.solver_rho_Tp_global(HEOS.T(), HEOS.p(), 20000);
++                    HEOS.update_DmolarT_direct(rho, HEOS.T());
++                    HEOS._Q = -1;
++                    HEOS._phase = iphase_liquid;
++                }
+             } else {
+                 // It's single-phase
+                 double rho = HEOS.solver_rho_Tp_global(HEOS.T(), HEOS.p(), 20000);

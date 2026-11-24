@@ -1,0 +1,109 @@
+{
+  "schema": "rfam.kij-fit-objective-contract/v1",
+  "contract_version": 1,
+  "status": "synthetic-objective-scaffold-no-fit",
+  "scope": "offline-rfam-pr-pxy-rho-e-objective-training-holdout-dry-run",
+  "approvals": {
+    "physical_data_selected": false,
+    "fit_execution_approved": false,
+    "kij_value_validated": false,
+    "runtime_kij_emission_approved": false,
+    "binary_interaction_db_write_approved": false,
+    "hem_enabled": false,
+    "fluent_execution_approved": false,
+    "hot_start_approved": false,
+    "production_ready": false
+  },
+  "upstream": [
+    {
+      "id": "kij_fit_harness_validator",
+      "path": "realFluidAllMach/tools/kij_fit_harness.py",
+      "sha256": "e22ae302b485fb7075f5149538a4ad9889de5f46b7ef284f67910b6fad316726"
+    },
+    {
+      "id": "kij_fit_harness_synthetic_manifest",
+      "path": "realFluidAllMach/tests/reference/kij_fit_harness_synthetic_manifest_v1.json",
+      "sha256": "a60d3adf8a02e6fae57af37f49f1c8652737bb58a156c5785c7e117dadfd8480"
+    }
+  ],
+  "source_bundle": {
+    "algorithm": "sha256(path-nul-size-u64be-bytes)",
+    "files": [
+      "realFluidAllMach/tools/kij_fit_objective_probe.cpp",
+      "realFluidAllMach/src/thermo/ThermoDataProvenance.C",
+      "realFluidAllMach/src/thermo/ThermoDataProvenance.H",
+      "realFluidAllMach/src/thermo/SpeciesRegistry.H",
+      "realFluidAllMach/src/thermo/NASA7Thermo.H",
+      "realFluidAllMach/src/thermo/PengRobinsonAlpha.H",
+      "realFluidAllMach/src/thermo/EquationOfState/PengRobinsonEOS.C",
+      "realFluidAllMach/src/thermo/EquationOfState/PengRobinsonEOS.H",
+      "realFluidAllMach/src/thermo/MixingRules/VdWOneFluidMixing.C",
+      "realFluidAllMach/src/thermo/MixingRules/VdWOneFluidMixing.H",
+      "realFluidAllMach/src/thermo/MixingRules/SpeciesCriticalDB.C",
+      "realFluidAllMach/src/thermo/MixingRules/SpeciesCriticalDB.H",
+      "realFluidAllMach/src/thermo/MixingRules/BinaryInteractionDB.C",
+      "realFluidAllMach/src/thermo/MixingRules/BinaryInteractionDB.H",
+      "realFluidAllMach/src/thermo/RootSelection/CubicRoots.C",
+      "realFluidAllMach/src/thermo/RootSelection/CubicRoots.H",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/ConservedPhaseMixture.H",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRMixtureKernel.C",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRMixtureKernel.H",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRTPFlash.C",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRTPFlash.H",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/TabulatedIdealCaloric.C",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/TabulatedIdealCaloric.H",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRPhaseCaloric.C",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRPhaseCaloric.H"
+    ],
+    "sha256": "b92f91407de2395f323a28f629233a32627fb7d8dec671dbd994b151d87fef9f"
+  },
+  "objective": {
+    "data_class": "synthetic-nonphysical-test-only",
+    "reference_test_kij": -0.05,
+    "trial_test_kij": 0.15,
+    "test_values_role": "unvalidated-endpoints-from-prior-offline-sensitivity-screen",
+    "vapor_mole_fraction_for_reconstructed_feed": 0.5,
+    "phase_equilibrium_residual": "log(x_i*phi_i_liquid)-log(y_i*phi_i_vapor)-at-observed-p-t-x-y",
+    "phase_equilibrium_standard_scale": "pressure_standard_uncertainty_pa/pressure_pa",
+    "liquid_x_standard_scale": "liquid_x_o2_standard_uncertainty",
+    "vapor_y_standard_scale": "vapor_y_o2_standard_uncertainty",
+    "density_relative_standard_uncertainty": 0.02,
+    "energy_standard_uncertainty_j_kg": 5000.0,
+    "aggregation": "sum-of-squared-normalized-residuals",
+    "split_reporting": "training-and-holdout-separate-no-selection-from-holdout",
+    "fit_executed": false,
+    "parameter_values_publishable": false
+  },
+  "reference": {
+    "path": "realFluidAllMach/tests/reference/kij_fit_objective_synthetic_v1.csv",
+    "sha256": "252264a87412ca974273841c838c7ad7b268e8d18269c28c27e533eb479ae6c4",
+    "byte_count": 2481,
+    "rows": 3
+  },
+  "build": {
+    "platform": "WSL-Ubuntu-20.04-x86_64",
+    "compiler_path": "/usr/bin/x86_64-linux-gnu-g++-9",
+    "compiler_version": "g++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0",
+    "language": "c++17",
+    "optimization": "-O2",
+    "openmp": "-fopenmp",
+    "expected_executable_sha256": "f60beb66957ed5c7dac6420b249941b297509a2686094b933341c1e495614edd"
+  },
+  "acceptance": {
+    "required_training_records": 2,
+    "required_holdout_records": 1,
+    "maximum_reference_tie_line_absolute_residual": 5e-09,
+    "maximum_material_residual": 1e-08,
+    "maximum_energy_identity_residual": 1e-08,
+    "require_finite_nonnegative_objective_components": true,
+    "require_byte_identical_regeneration": true
+  },
+  "limitations": [
+    "all input rows and both test kij values are synthetic or unvalidated test-only quantities",
+    "the pressure-uncertainty-to-log-fugacity scale is a scaffold convention, not a validated statistical model",
+    "no optimizer, parameter covariance, physical training data, independent physical holdout, or fit acceptance threshold is provided",
+    "the probe mutates only local in-memory BinaryInteractionDB copies and cannot publish a runtime entry",
+    "Cantera is not used and cannot supply PR kij evidence",
+    "no HEM, Fluent, zero-advance, hot-start, or production capability is enabled"
+  ]
+}

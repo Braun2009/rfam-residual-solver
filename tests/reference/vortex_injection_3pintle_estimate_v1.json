@@ -1,0 +1,63 @@
+{
+  "schema": "rfam.external-json-snapshot/v1",
+  "source_path": "F:/Vortex/config/injection_3pintle_estimate.json",
+  "source_sha256": "1e7aefdda8494809ba501cca1668c0e2cf7d292b4825f22a89e0e495ae49251f",
+  "payload": {
+    "version": "3pintle-48mm-injection-estimate-v1",
+    "note": "LOW-FIDELITY estimate; swirl-massFlow BC is area-independent, refine later if needed",
+    "totals_kg_s": {
+      "LOX": 2.8,
+      "C3H8_main": 1.05,
+      "torch": 0.1348
+    },
+    "n_pintles": 3,
+    "bolt_circle_R_mm": 12.5,
+    "pintle_OD_mm": 21.0,
+    "plate_R_mm": 24.0,
+    "per_pintle": {
+      "LOX_core": {
+        "type": "disk",
+        "r_mm": 3.0,
+        "area_mm2": 28.27,
+        "mdot_kg_s": 0.9333,
+        "v_ax_m_s": 35.3,
+        "radialRatio": 0.933,
+        "tangentialRatio": 0.4
+      },
+      "C3H8_ring": {
+        "type": "annulus",
+        "r_in_mm": 6.0,
+        "r_out_mm": 7.5,
+        "area_mm2": 63.62,
+        "mdot_kg_s": 0.35,
+        "v_ax_m_s": 82.6,
+        "n_holes": 20,
+        "hole_dia_mm": 2.0,
+        "tangentialRatio": 0.4
+      }
+    },
+    "torch_center": {
+      "type": "disk",
+      "r_mm": 2.0,
+      "area_mm2": 12.57,
+      "mdot_kg_s": 0.1348,
+      "on_axis": true
+    },
+    "wall_zones_per_pintle": [
+      {
+        "name": "pintle_post",
+        "annulus_mm": [
+          3.0,
+          6.0
+        ]
+      },
+      {
+        "name": "pintle_outer",
+        "annulus_mm": [
+          7.5,
+          10.5
+        ]
+      }
+    ]
+  }
+}

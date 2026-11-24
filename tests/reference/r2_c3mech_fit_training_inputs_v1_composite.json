@@ -1,0 +1,112 @@
+{
+  "algorithm": "sha256(path-nul-size-u64be-bytes)",
+  "artifact_count": 17,
+  "artifacts": [
+    {
+      "id": "artifact:realFluidAllMach/scripts/generate_r2_c3mech_candidate_reference.py",
+      "path": "realFluidAllMach/scripts/generate_r2_c3mech_candidate_reference.py",
+      "sha256": "d8d4d3ad9cc4207039c49f9d2174d8e28ca8db601bea077a85d955d11d55bb5c",
+      "size": 22366
+    },
+    {
+      "id": "artifact:realFluidAllMach/src/combustion/FiniteRate/MassActionThermo.H",
+      "path": "realFluidAllMach/src/combustion/FiniteRate/MassActionThermo.H",
+      "sha256": "7cc012ea2b0bf9e6cee067b40a7590e3e5f3a27819b04fecca3edb8f2fe94d7b",
+      "size": 4511
+    },
+    {
+      "id": "artifact:realFluidAllMach/src/thermo/NASA7Thermo.H",
+      "path": "realFluidAllMach/src/thermo/NASA7Thermo.H",
+      "sha256": "40ca86c9b52ee7332299ae8401680cc8ac84ad0dd035aab1183d4df9b5e5fafc",
+      "size": 14091
+    },
+    {
+      "id": "artifact:realFluidAllMach/src/thermo/SpeciesRegistry.H",
+      "path": "realFluidAllMach/src/thermo/SpeciesRegistry.H",
+      "sha256": "22b3c0e96d5bff8b6ffa6b69ecd7568a4f87422f5188af85de31c50136b27ba7",
+      "size": 5789
+    },
+    {
+      "id": "artifact:realFluidAllMach/tests/reference/r2_c3mech_training_cases_v1.json",
+      "path": "realFluidAllMach/tests/reference/r2_c3mech_training_cases_v1.json",
+      "sha256": "2baf34d21180d9b81c2abe841a00ae8bf263f15cd0abbf949ac9ba36f92d6601",
+      "size": 895
+    },
+    {
+      "id": "artifact:realFluidAllMach/tools/artifact_composite.py",
+      "path": "realFluidAllMach/tools/artifact_composite.py",
+      "sha256": "15dff1addf9adc0adfcb167467663e68a11871fa944601e1d25df361ee14922d",
+      "size": 21759
+    },
+    {
+      "id": "artifact:realFluidAllMach/tools/r2_0d_rfam_fit_runner.cpp",
+      "path": "realFluidAllMach/tools/r2_0d_rfam_fit_runner.cpp",
+      "sha256": "ee0accda3f6d414f0757ec3723c24f93a0da7560714ab866682ea9fecf2c2c73",
+      "size": 6858
+    },
+    {
+      "id": "artifact:realFluidAllMach/tools/r2_0d_rfam_runner.cpp",
+      "path": "realFluidAllMach/tools/r2_0d_rfam_runner.cpp",
+      "sha256": "2f6acfe72015b4de91fe1ade806ea8f6d30bf8d9049fb7d89dc936e546eeabbb",
+      "size": 27822
+    },
+    {
+      "id": "artifact:realFluidAllMach/tools/run_r2_0d_rfam_protocol.py",
+      "path": "realFluidAllMach/tools/run_r2_0d_rfam_protocol.py",
+      "sha256": "5a4642c37ce4b07ca97db82a6af218d39e039b8a73e417d20efb6094d43f58a8",
+      "size": 20748
+    },
+    {
+      "id": "artifact:realFluidAllMach/tools/run_r2_joint_fit_synthetic.py",
+      "path": "realFluidAllMach/tools/run_r2_joint_fit_synthetic.py",
+      "sha256": "0669e6d7c2d81fc42a71dfd96688fdb13d1c821dbe953c8a6f1f9bbefd40f99d",
+      "size": 71874
+    },
+    {
+      "id": "artifact:tmp/a408-c3mech-v4.0.1-propane-mechanism-rights-screen-v1-20260728.md",
+      "path": "tmp/a408-c3mech-v4.0.1-propane-mechanism-rights-screen-v1-20260728.md",
+      "sha256": "6779ae447b8ae27d49f4b1011e91ab0747dc8c91435f44d5effcdf6cad5fd26f",
+      "size": 9722
+    },
+    {
+      "id": "artifact:tmp/a408-r2-c3mech-44i0-training-v2.json",
+      "path": "tmp/a408-r2-c3mech-44i0-training-v2.json",
+      "sha256": "a1298082963b4adafc5d02de38450e663f2483704847bc827c1f4585939ee853",
+      "size": 16668
+    },
+    {
+      "id": "artifact:tmp/c3mech-v4.0.1-rights-screen/C3MechV4.0.1_44I0_C0-C3-C4_LT-HT_Cantera.yaml",
+      "path": "tmp/c3mech-v4.0.1-rights-screen/C3MechV4.0.1_44I0_C0-C3-C4_LT-HT_Cantera.yaml",
+      "sha256": "d5cec179ffbb6221b1b91264e1439ec850658dd97a0298054c8dbc336f3ab148",
+      "size": 2227356
+    },
+    {
+      "id": "artifact:tmp/c3mech-v4.0.1-rights-screen/LICENSE",
+      "path": "tmp/c3mech-v4.0.1-rights-screen/LICENSE",
+      "sha256": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661",
+      "size": 18650
+    },
+    {
+      "id": "artifact:tmp/cantera-3.2.0-python312/cantera/__init__.py",
+      "path": "tmp/cantera-3.2.0-python312/cantera/__init__.py",
+      "sha256": "a793b6d7643cc875ef0e0bbe5e3051f538af08418242aa87eb6cc7f995e34396",
+      "size": 1014
+    },
+    {
+      "id": "artifact:tmp/cantera-3.2.0-python312/cantera/_cantera.cp312-win_amd64.pyd",
+      "path": "tmp/cantera-3.2.0-python312/cantera/_cantera.cp312-win_amd64.pyd",
+      "sha256": "00f00749cc90b76a7266656fd02e6a7d40be82e7d7e1389472ad285123064e9d",
+      "size": 6564352
+    },
+    {
+      "id": "artifact:tmp/rfam_r2_0d_fit_runner",
+      "path": "tmp/rfam_r2_0d_fit_runner",
+      "sha256": "d080d0ed5a17fb029fc5e01fbad5dbe6f728f88f0686f0292606a8e81344f9ad",
+      "size": 97816
+    }
+  ],
+  "composite_sha256": "375cc1071029ad2ea8792964cdf1e63de3dc89de4897797a3387b1fdc506a971",
+  "contract_version": 1,
+  "path_encoding": "ascii",
+  "schema": "rfam.artifact-composite/v1"
+}

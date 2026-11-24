@@ -1,0 +1,127 @@
+{
+  "schema": "rfam.kij-fit-harness-manifest/v1",
+  "contract_version": 1,
+  "status": "input-candidate-dry-run-only",
+  "scope": "offline-o2-c3h8-input-validation-and-fit-plan-no-fit-no-runtime",
+  "data_class": "synthetic-nonphysical-test-only",
+  "watermark": "SYNTHETIC NONPHYSICAL TEST FIXTURE - NEVER USE FOR FIT OR RUNTIME",
+  "pair": {
+    "components": [
+      "C3H8",
+      "O2"
+    ],
+    "canonical_pair_key": "C3H8|O2",
+    "canonical_order": "lexicographic-component-name",
+    "eos": "Peng-Robinson",
+    "mixing_rule": "van-der-Waals-one-fluid",
+    "parameter": "symmetric-binary-interaction-kij"
+  },
+  "units": {
+    "composition_basis": "mole-fraction",
+    "temperature": "K",
+    "pressure": "Pa",
+    "mass_density": "kg/m3",
+    "uncertainty_basis": "one-standard-uncertainty"
+  },
+  "rights": {
+    "status": "synthetic-test-fixture-author-rights",
+    "numerical_fit_use_permitted": true,
+    "repository_redistribution_permitted": true,
+    "external_no_copy_workflow": false,
+    "terms_artifact": {
+      "path": "realFluidAllMach/tests/reference/kij_fit_harness_synthetic_terms_v1.txt",
+      "sha256": "1af8aaeea818b8d56aa4f768df36f2a7f80ed7bd613218bbf414aa28c41f2552",
+      "byte_count": 223
+    },
+    "attribution": "Repository-authored synthetic harness fixture; no experimental source.",
+    "modification_notice": "Values are generated from unvalidated RFAM sensitivity endpoints solely for parser and objective-wiring tests.",
+    "confirmed_by": "repository-test-fixture-author",
+    "confirmed_on": "2026-07-22"
+  },
+  "artifacts": [
+    {
+      "artifact_id": "SYNTHETIC_NONPHYSICAL_TRAINING_ARTIFACT",
+      "path": "realFluidAllMach/tests/reference/kij_fit_harness_synthetic_training_v1.csv",
+      "sha256": "940b70b680e09d95414aa5df9d0fe4a871c610d3e41a5b118b9d174b16c2dff8",
+      "byte_count": 1025,
+      "media_type": "text/csv",
+      "split": "training",
+      "dataset_id": "SYNTHETIC_NONPHYSICAL_TRAINING_DATASET",
+      "campaign_id": "SYNTHETIC_NONPHYSICAL_TRAINING_CAMPAIGN"
+    },
+    {
+      "artifact_id": "SYNTHETIC_NONPHYSICAL_HOLDOUT_ARTIFACT",
+      "path": "realFluidAllMach/tests/reference/kij_fit_harness_synthetic_holdout_v1.csv",
+      "sha256": "53580d007ee18dc8a3facc870425794ef4389d9a405a2652854000113722f259",
+      "byte_count": 705,
+      "media_type": "text/csv",
+      "split": "holdout",
+      "dataset_id": "SYNTHETIC_NONPHYSICAL_HOLDOUT_DATASET",
+      "campaign_id": "SYNTHETIC_NONPHYSICAL_HOLDOUT_CAMPAIGN"
+    }
+  ],
+  "partition": {
+    "training_dataset_ids": [
+      "SYNTHETIC_NONPHYSICAL_TRAINING_DATASET"
+    ],
+    "holdout_dataset_ids": [
+      "SYNTHETIC_NONPHYSICAL_HOLDOUT_DATASET"
+    ],
+    "record_identity": "dataset_id+record_id",
+    "authority_independence_policy": "canonical-source-and-campaign-disjoint-or-reviewed-nonoverlap-justification",
+    "same_authority_nonoverlap_justification": null,
+    "frozen_before_fit": true
+  },
+  "envelope": {
+    "temperature_k": {
+      "minimum": 160.0,
+      "maximum": 280.0
+    },
+    "pressure_pa": {
+      "minimum": 1500000.0,
+      "maximum": 2500000.0
+    },
+    "overall_z_o2": {
+      "minimum": 0.1,
+      "maximum": 0.9
+    },
+    "liquid_x_o2": {
+      "minimum": 0.05,
+      "maximum": 0.45
+    },
+    "vapor_y_o2": {
+      "minimum": 0.75,
+      "maximum": 0.999
+    },
+    "allowed_phase_labels": [
+      "vapor-liquid-equilibrium"
+    ],
+    "near_critical_policy": "exclude-and-fail-closed",
+    "solid_risk_policy": "exclude-and-fail-closed",
+    "outside_envelope_policy": "fail-closed-no-extrapolation"
+  },
+  "fit_plan": {
+    "mode": "validate-inputs-and-build-plan-only",
+    "functional_form_id": "reduced-temperature-linear",
+    "parameter_names": [
+      "c0",
+      "c1"
+    ],
+    "reference_temperature_k": 240.0,
+    "objective": "uncertainty-aware-vle-pvt-residual-plan",
+    "model_backend": "not-connected-dry-run-scaffold",
+    "fit_execution_enabled": false,
+    "emit_runtime_kij": false,
+    "write_binary_interaction_db": false
+  },
+  "approvals": {
+    "fit_execution_approved": false,
+    "kij_value_validated": false,
+    "runtime_kij_emission_approved": false,
+    "binary_interaction_db_write_approved": false,
+    "hem_enabled": false,
+    "fluent_execution_approved": false,
+    "hot_start_approved": false,
+    "production_ready": false
+  }
+}

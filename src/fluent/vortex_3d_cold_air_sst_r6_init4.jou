@@ -1,0 +1,25 @@
+; Vortex 3D cold-air SST: r6 initialization from r5b transport-wall-distance case.
+; Purpose: perform Solver mesh check and standard initialization on the same
+; 4-way partition used to write r5b.  No mesh file or prior case is overwritten.
+
+(format #t "\nVORTEX_R6_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_transport_wall_distance_r5b/cold_air_sst_transport_wall_distance_configured.cas.h5
+(format #t "\nVORTEX_R6_TRANSPORT_CASE_READ_OK\n")
+
+/mesh/check
+(format #t "\nVORTEX_R6_SOLVER_MESH_CHECK_OK\n")
+
+; r5b stores standard initialization and transport-equation wall distance.
+/solve/initialize/initialize
+(format #t "\nVORTEX_R6_STANDARD_INITIALIZATION_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_init4_r6/cold_air_sst_transport_initialized.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_init4_r6/cold_air_sst_transport_initialized.dat.h5
+(format #t "\nVORTEX_R6_INITIALIZED_CASE_DATA_WRITTEN\n")
+
+; One conservative iteration verifies the initialized solver chain.
+/solve/iterate 1
+(format #t "\nVORTEX_R6_ITERATE_1_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_init4_r6/cold_air_sst_transport_1it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_init4_r6/cold_air_sst_transport_1it.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R6_INIT4_OK\n")
+/exit yes

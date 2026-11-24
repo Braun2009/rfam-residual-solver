@@ -1,0 +1,141 @@
+{
+  "schema": "rfam.r2-ucsd-internal-screen-provenance/v1",
+  "contract_version": 1,
+  "status": "blocked-internal-screening-only",
+  "scope": "provenance-recovery-only-no-fit-no-physical-validation",
+  "approvals": {
+    "mechanism_selected_for_fit": false,
+    "experimental_data_selected": false,
+    "r1_r2_fitting_approved": false,
+    "physical_validation_approved": false,
+    "production_ready": false,
+    "reacting_hot_start_approved": false
+  },
+  "artifacts": [
+    {
+      "id": "ucsd_chemkin_mechanism",
+      "path": "Vortex/tools/openfoam/sandiego20161214_mechCK.txt",
+      "sha256": "728aa95e372aa71c59528850ac35511bf4c5f457954b9803c6ef823996163c73",
+      "size": 24206,
+      "kind": "official-chemkin-mechanism-local-copy"
+    },
+    {
+      "id": "ucsd_chemkin_thermo",
+      "path": "Vortex/tools/openfoam/sandiego20160815_therm.txt",
+      "sha256": "ba9518b7007d007353ca6ac927f881b05d6b302bbb56bc32c9e1ee80d3333d92",
+      "size": 34813,
+      "kind": "official-chemkin-thermo-local-copy"
+    },
+    {
+      "id": "ucsd_chemkin_transport",
+      "path": "Vortex/tools/openfoam/sandiego20160815_trans.txt",
+      "sha256": "dc8134f2c62cd54c7999d2428ac1de22743e2e331caef2da8286763bedd5ce94",
+      "size": 75848,
+      "kind": "official-chemkin-transport-local-copy"
+    },
+    {
+      "id": "ucsd_converted_yaml",
+      "path": "Vortex/tools/openfoam/sandiego2016_c3h8.yaml",
+      "sha256": "fbdbf6ce0bdbe85448229395f42096b59eb08828e92416d0f026bb6ae5040eaa",
+      "size": 66674,
+      "kind": "cantera-converted-mechanism-candidate"
+    },
+    {
+      "id": "conversion_provenance_contract",
+      "path": "realFluidAllMach/tests/reference/r2_physics_candidate_v1.json",
+      "sha256": "cdd6046bab363ca5c9b0c637d341b9ff4ca3501b6e0f9dd142fdca1d17ba59d5",
+      "size": 14673,
+      "kind": "blocked-conversion-provenance-contract"
+    },
+    {
+      "id": "cantera_reference_generator",
+      "path": "realFluidAllMach/scripts/generate_r2_0d_calibration_reference.py",
+      "sha256": "43ad404b9eb63a1fb6dd343023a6f726cb5efd4f3e84229c9a50336fb460ed49",
+      "size": 9428,
+      "kind": "cantera-0d-reference-generator"
+    },
+    {
+      "id": "detailed_reference",
+      "path": "tmp/a408-r2-ucsd-internal-screen-v1.json",
+      "sha256": "ffcf5fb0c88b1cf2a4be465bfe2b53b9b306012154fc74c02b45a2b5a1c3984f",
+      "size": 28443,
+      "kind": "generated-internal-detailed-trajectory"
+    },
+    {
+      "id": "comparison_tool",
+      "path": "realFluidAllMach/tools/screen_r2_detailed_candidate.py",
+      "sha256": "6e88e92ebe84db8ae378f95399de4764ca55f122ef9156ffb5c42e48874a14e7",
+      "size": 12960,
+      "kind": "internal-screen-comparator"
+    },
+    {
+      "id": "comparison_protocol_module",
+      "path": "realFluidAllMach/tools/run_r2_0d_rfam_protocol.py",
+      "sha256": "5a4642c37ce4b07ca97db82a6af218d39e039b8a73e417d20efb6094d43f58a8",
+      "size": 20748,
+      "kind": "internal-screen-transitive-protocol-module"
+    },
+    {
+      "id": "rfam_runner_source",
+      "path": "realFluidAllMach/tools/r2_0d_rfam_runner.cpp",
+      "sha256": "2f6acfe72015b4de91fe1ade806ea8f6d30bf8d9049fb7d89dc936e546eeabbb",
+      "size": 27822,
+      "kind": "rfam-two-step-runner-source"
+    },
+    {
+      "id": "rfam_runner_executable",
+      "path": "realFluidAllMach/build-phase-foundation/rfam_r2_0d_runner",
+      "sha256": "4858ae43b17bec7cccf2f6ba3a75659f0e92ed092635be6d3b61b107e1d8a1d1",
+      "size": 93312,
+      "kind": "frozen-linux-elf-behavior"
+    },
+    {
+      "id": "comparison_output",
+      "path": "tmp/a408-r2-ucsd-vs-rfam-screen-v1.json",
+      "sha256": "feaf8f280d4f92ef1d37d480a4d0e8bb2e32a47f48f2a2b201b5b9af55ac21b5",
+      "size": 5241,
+      "kind": "compact-internal-screen-result"
+    }
+  ],
+  "runtime_identity": {
+    "python_executable": "/usr/bin/python3.8",
+    "python_sha256": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06",
+    "cantera_version": "3.1.0",
+    "cantera_module": "/home/nvoyager/.local/lib/python3.8/site-packages/cantera/__init__.py",
+    "cantera_module_sha256": "9a7ceae3bae1a7e41dc581e353d44e04af8447114748f5b7c75995e26f8819b9",
+    "cantera_extension": "/home/nvoyager/.local/lib/python3.8/site-packages/cantera/_cantera.cpython-38-x86_64-linux-gnu.so",
+    "cantera_extension_sha256": "c57a47c201b0cb8f965b38acc7ebfafbbe95db7464d80359499c64d50555fae8"
+  },
+  "reference_binding": {
+    "mechanism_artifact_id": "ucsd_converted_yaml",
+    "generator_artifact_id": "cantera_reference_generator",
+    "output_artifact_id": "detailed_reference",
+    "schema": "rfam.r2-0d-cantera-reference/v1",
+    "status": "local-cantera-reference-not-fit-eligible",
+    "case_count": 6,
+    "major_species": ["C3H8", "O2", "CO", "CO2", "H2O", "N2"]
+  },
+  "comparison_binding": {
+    "tool_artifact_id": "comparison_tool",
+    "protocol_module_artifact_id": "comparison_protocol_module",
+    "runner_source_artifact_id": "rfam_runner_source",
+    "runner_artifact_id": "rfam_runner_executable",
+    "reference_artifact_id": "detailed_reference",
+    "output_artifact_id": "comparison_output",
+    "schema": "rfam.r2-detailed-candidate-screen/v1",
+    "status": "internal-screening-only-no-fit-no-physical-validation"
+  },
+  "conversion_rights": {
+    "provenance_contract_artifact_id": "conversion_provenance_contract",
+    "mechanism_status": "candidate-only",
+    "license_status": "unverified",
+    "fit_use_allowed": false,
+    "redistribution_rights_clear": false
+  },
+  "limitations": [
+    "internal deterministic route screen only",
+    "no mechanism selection or fit authority",
+    "no experimental training or holdout authority",
+    "no physical validation or production chemistry authority"
+  ]
+}

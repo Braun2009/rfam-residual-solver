@@ -1,0 +1,108 @@
+{
+  "schema": "rfam.o2-c3h8-topology-model-risk/v1",
+  "status": "possible-three-phase-model-risk-only",
+  "pair": [
+    "O2",
+    "C3H8"
+  ],
+  "classification": {
+    "name": "possible-three-phase-model-risk",
+    "physical_vlle_validated": false,
+    "overall_z_scope": "conservative-zero-through-one-until-validated-localization"
+  },
+  "backend": {
+    "probe_source_path": "realFluidAllMach/tools/pr_binary_phase_topology_probe.cpp",
+    "probe_source_sha256": "a0e9f8499775dc32f597ca455d8580ec397b5484240c22a8651dd2321cb8b746",
+    "regression_path": "realFluidAllMach/tests/test_pr_binary_phase_topology_probe.py",
+    "regression_sha256": "857dca5af09200aa75dda022e547e8f00dbcb9d7a7de8f24c40a55814f590043",
+    "regression_byte_count": 16404,
+    "pr_tp_source_path": "realFluidAllMach/src/thermo/PhaseEquilibrium/PRTPFlash.C",
+    "pr_tp_source_sha256": "e16a747f84c6d6891c3154bb385cad8ce39c6233952d8b8e1ce4fee0e07130dc",
+    "composition_intervals": 20000,
+    "expected_executable_sha256": "e48518f7bc36a24f28ec8b67bd8d83e0858c4bb50143c42a1371b281664a9ddc"
+  },
+  "approach_guard_offsets": {
+    "pressure_pa_offset": [
+      -50000.0,
+      50000.0
+    ],
+    "temperature_k_offset": [
+      -0.05,
+      0.05
+    ],
+    "kij_offset": [
+      -0.001,
+      0.001
+    ],
+    "overall_z_o2_offset": [
+      0.0,
+      0.0
+    ]
+  },
+  "records": [
+    {
+      "id": "risk-5mpa-kij-0.055",
+      "pressure_pa": 5000000.0,
+      "temperature_k": 156.37717703,
+      "kij": 0.055,
+      "overall_z_o2_interval": [
+        0.0,
+        1.0
+      ],
+      "tie_segments": 2,
+      "three_phase_tangent_pairs": 1,
+      "three_phase_tie_segments": 2,
+      "possible_three_phase": true,
+      "physical_vlle_validated": false,
+      "production_ready": false
+    },
+    {
+      "id": "risk-5mpa-kij-0.10",
+      "pressure_pa": 5000000.0,
+      "temperature_k": 155.6846784,
+      "kij": 0.1,
+      "overall_z_o2_interval": [
+        0.0,
+        1.0
+      ],
+      "tie_segments": 2,
+      "three_phase_tangent_pairs": 1,
+      "three_phase_tie_segments": 2,
+      "possible_three_phase": true,
+      "physical_vlle_validated": false,
+      "production_ready": false
+    },
+    {
+      "id": "risk-5mpa-kij-0.15",
+      "pressure_pa": 5000000.0,
+      "temperature_k": 155.1625280618,
+      "kij": 0.15,
+      "overall_z_o2_interval": [
+        0.0,
+        1.0
+      ],
+      "tie_segments": 2,
+      "three_phase_tangent_pairs": 1,
+      "three_phase_tie_segments": 2,
+      "possible_three_phase": true,
+      "physical_vlle_validated": false,
+      "production_ready": false
+    }
+  ],
+  "approvals": {
+    "physical_vlle_validated": false,
+    "kij_fitted": false,
+    "three_phase_owner_implemented": false,
+    "hem_enabled": false,
+    "fluent_execution_approved": false,
+    "hot_start_approved": false,
+    "production_ready": false
+  },
+  "limitations": [
+    "the registry records possible-three-phase model risk, not physical VLLE",
+    "overall composition is conservatively unlocalized and therefore spans zero through one",
+    "the declared intervals are screening inputs and are not fitted parameter or measurement uncertainty",
+    "a clear screen does not prove global phase-topology uniqueness or physical validity",
+    "no kij fit, three-phase owner, HEM capability, Fluent execution, hot-start, or production flag is enabled"
+  ]
+}

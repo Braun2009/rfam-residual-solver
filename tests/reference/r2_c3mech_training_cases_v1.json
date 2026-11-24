@@ -1,0 +1,47 @@
+{
+  "schema": "rfam.r2-c3mech-case-partition/v1",
+  "partition": "protocol-training",
+  "partition_locked": true,
+  "sample_times_s": [
+    0.0,
+    1e-08,
+    3e-08,
+    1e-07,
+    3e-07,
+    1e-06,
+    3e-06,
+    1e-05,
+    3e-05,
+    0.0001,
+    0.0003,
+    0.001,
+    0.003,
+    0.005
+  ],
+  "cases": [
+    {
+      "id": "train_phi0p8_diluted",
+      "temperature_k": 1200.0,
+      "pressure_pa": 4000000.0,
+      "equivalence_ratio": 0.8,
+      "fuel": "C3H8:1.0",
+      "oxidizer": "O2:1.0,N2:0.25"
+    },
+    {
+      "id": "train_phi1p0",
+      "temperature_k": 1300.0,
+      "pressure_pa": 4000000.0,
+      "equivalence_ratio": 1.0,
+      "fuel": "C3H8:1.0",
+      "oxidizer": "O2:1.0"
+    },
+    {
+      "id": "train_phi1p2",
+      "temperature_k": 1500.0,
+      "pressure_pa": 2000000.0,
+      "equivalence_ratio": 1.2,
+      "fuel": "C3H8:1.0",
+      "oxidizer": "O2:1.0"
+    }
+  ]
+}

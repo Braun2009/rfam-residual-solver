@@ -1,0 +1,70 @@
+{
+  "algorithm": "sha256(path-nul-size-u64be-bytes)",
+  "artifact_count": 10,
+  "artifacts": [
+    {
+      "id": "artifact:realFluidAllMach/docs/r2_experimental_sciexpem_intake.md",
+      "path": "realFluidAllMach/docs/r2_experimental_sciexpem_intake.md",
+      "sha256": "5c249b6ae0ad3691567f18df0987bb7ebbdbdebabcc3607dfdf2ef2a00be2713",
+      "size": 4058
+    },
+    {
+      "id": "artifact:realFluidAllMach/tests/reference/r2_experimental_sciexpem_intake_v1.json",
+      "path": "realFluidAllMach/tests/reference/r2_experimental_sciexpem_intake_v1.json",
+      "sha256": "240a7c1d0ccaea65f029ecd7e90f7ab329ddb8f25df346c0fba7902dc8a7c7a5",
+      "size": 7667
+    },
+    {
+      "id": "artifact:realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639716.xml",
+      "path": "realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639716.xml",
+      "sha256": "efba3accb488551674d242b48996ece4aacbeda8788b26c9ca6269e2da187a0c",
+      "size": 2328
+    },
+    {
+      "id": "artifact:realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639727.xml",
+      "path": "realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639727.xml",
+      "sha256": "14b1b1728de3ac1a6341c8b684b07dc6bcb2292e842597b59f1db46f8402d23b",
+      "size": 2327
+    },
+    {
+      "id": "artifact:realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639733.xml",
+      "path": "realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639733.xml",
+      "sha256": "06120c83868b48cd4fc5e828864e0b7b0e8bbda53d674c91bc4c3283cac64f58",
+      "size": 2249
+    },
+    {
+      "id": "artifact:realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639741.xml",
+      "path": "realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639741.xml",
+      "sha256": "c751adafa3090a8775c0e39c0f8e97be4c4627617fb57cf61cb53ce8163bfcbd",
+      "size": 2092
+    },
+    {
+      "id": "artifact:realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639751.xml",
+      "path": "realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639751.xml",
+      "sha256": "25a28bd2d0c566c382e6c84ef088bc446c4e33801d9ed121da735ba58ae42209",
+      "size": 2171
+    },
+    {
+      "id": "artifact:realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639759.xml",
+      "path": "realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639759.xml",
+      "sha256": "71cf410dcf41ab32e1f342a5d8989e37d1967cf17ec6f3e37d0a775896e45bde",
+      "size": 2331
+    },
+    {
+      "id": "artifact:realFluidAllMach/tests/test_r2_experimental_intake.py",
+      "path": "realFluidAllMach/tests/test_r2_experimental_intake.py",
+      "sha256": "85e9590f7f12e1c95286ea9fb5ca11f492bd8946d871a09b130531c2cb438d9b",
+      "size": 14057
+    },
+    {
+      "id": "artifact:realFluidAllMach/tools/validate_r2_experimental_intake.py",
+      "path": "realFluidAllMach/tools/validate_r2_experimental_intake.py",
+      "sha256": "6d7238452eb7eb08ea59c777514246db950b7a9c484714a6aa45573ee9b42de2",
+      "size": 28014
+    }
+  ],
+  "composite_sha256": "821f9f7e87b971f9c79c0d7b3aa98b267bf53c7c371be0a676897826e84d6bb0",
+  "contract_version": 1,
+  "path_encoding": "ascii",
+  "schema": "rfam.artifact-composite/v1"
+}

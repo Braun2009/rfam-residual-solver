@@ -1,0 +1,311 @@
+{
+  "schema": "rfam.phase-caloric-feasibility-contract/v2",
+  "contract_version": 2,
+  "status": "blocked-offline-phase-caloric-feasibility-contract",
+  "scope": "phase-local-vapor-or-supercritical-caloric-feasibility-no-runtime-implementation-no-two-phase-chemistry-success",
+  "approvals": {
+    "phase_caloric_implementation_approved": false,
+    "two_phase_chemistry_enabled": false,
+    "phase_aware_chemistry_enabled": false,
+    "equilibrium_result_admission_relaxed": false,
+    "solver_consumer_admission": false,
+    "checkpoint_runtime_integration": false,
+    "restart_runtime_integration": false,
+    "physical_validation_approved": false,
+    "fluent_execution_approved": false,
+    "reacting_hot_start_approved": false,
+    "production_ready": false
+  },
+  "phase_caloric_schema": {
+    "id": "rfam.phase-caloric/v2",
+    "result_type": "PhaseCaloricResult",
+    "result_is_equilibrium_state": false,
+    "conversion_to_equilibrium_state": "forbidden",
+    "forbidden_result_fields": [
+      "quality",
+      "phase_fraction",
+      "vapor_volume_fraction",
+      "hem_acoustic_closure",
+      "sound_speed",
+      "global_stability",
+      "generic_solver_admission"
+    ],
+    "required_success_result_fields": [
+      "pressure_pa",
+      "temperature_k",
+      "compressibility_z",
+      "root_identity",
+      "density_kg_m3",
+      "specific_internal_energy_j_kg",
+      "specific_enthalpy_j_kg",
+      "mass_fractions",
+      "cv_j_kg_k",
+      "dedt_rho_j_kg_k",
+      "dpdt_rho_pa_k",
+      "dpdrho_t_pa_m3_kg",
+      "model_id",
+      "ordered_species",
+      "energy_convention",
+      "phase_caloric_schema_id",
+      "phase_caloric_options_fingerprint",
+      "parent_q_fingerprint",
+      "parent_phase_payload_fingerprint",
+      "parent_generation",
+      "runtime_epoch",
+      "accepted_root_token",
+      "residuals"
+    ],
+    "failure_result_policy": {
+      "result_kind": "diagnostics-only-no-state-no-token",
+      "forbidden_on_failure": [
+        "pressure_pa",
+        "temperature_k",
+        "compressibility_z",
+        "root_identity",
+        "density_kg_m3",
+        "specific_internal_energy_j_kg",
+        "specific_enthalpy_j_kg",
+        "mass_fractions",
+        "cv_j_kg_k",
+        "dedt_rho_j_kg_k",
+        "dpdt_rho_pa_k",
+        "dpdrho_t_pa_m3_kg",
+        "accepted_root_token"
+      ],
+      "required_diagnostics": [
+        "status",
+        "failure_stage",
+        "parent_binding_digest",
+        "finite_residual_summary"
+      ]
+    }
+  },
+  "parent_binding_schema": {
+    "required_parent_fields": [
+      "committed_parent_q_fingerprint",
+      "parent_phase_payload_fingerprint",
+      "parent_generation",
+      "runtime_epoch",
+      "model_id",
+      "phase_caloric_schema_id",
+      "phase_caloric_options_fingerprint",
+      "ordered_species",
+      "energy_convention",
+      "parent_phase_identity",
+      "parent_phase_pressure_pa",
+      "parent_phase_temperature_k",
+      "parent_phase_compressibility_z",
+      "parent_phase_density_kg_m3",
+      "parent_phase_specific_internal_energy_j_kg",
+      "parent_phase_specific_enthalpy_j_kg",
+      "parent_phase_mass_fractions",
+      "parent_phase_root_identity"
+    ],
+    "generation_identity": {
+      "type": "uint64-monotonic-accepted-generation",
+      "advance_on": [
+        "accepted-parent-publication",
+        "rollback-invalidation",
+        "final-whole-mixture-reflash-invalidation",
+        "restored-parent-revalidation"
+      ],
+      "restore_policy": "restored-q-bytes-must-not-restore-live-generation-or-token-validity"
+    },
+    "runtime_epoch": {
+      "type": "uint64-monotonic-runtime-epoch",
+      "advance_on": [
+        "runtime-start",
+        "restart-restore-before-parent-revalidation"
+      ],
+      "restore_policy": "persisted-values-are-hints-not-live-epoch-authority"
+    },
+    "required_phase_identities": [
+      "VAPOR",
+      "SUPERCRITICAL"
+    ],
+    "automatic_phase_transition": "forbidden",
+    "automatic_vapor_to_supercritical": "forbidden",
+    "automatic_vapor_to_liquid": "forbidden",
+    "multi_root_fallback": "forbidden"
+  },
+  "root_token_schema": {
+    "seed_role": "numerical-hint-only-never-branch-authority",
+    "accepted_live_token_type": "opaque-parent-bound-runtime-epoch-root-continuity-token",
+    "token_issue_sequence_type": "uint64-monotonic-per-runtime-epoch",
+    "token_binds": [
+      "committed_parent_q_fingerprint",
+      "parent_phase_payload_fingerprint",
+      "parent_generation",
+      "runtime_epoch",
+      "token_issue_sequence",
+      "model_id",
+      "phase_caloric_schema_id",
+      "phase_caloric_options_fingerprint",
+      "ordered_species",
+      "energy_convention",
+      "parent_phase_identity",
+      "root_identity"
+    ],
+    "previous_accepted_root_token_required_after_first": true,
+    "root_continuity_required": true,
+    "token_revalidation_against_parent_required": true,
+    "invalidation_policy": "rollback-restart-final-reflash-or-parent-binding-drift-invalidates-live-token",
+    "rollback_policy": "advance-generation-and-invalidate-live-token-even-when-q-bytes-are-restored",
+    "restart_hint": {
+      "persistence": "opaque-hint-only",
+      "never_accepted_as_live_token": true,
+      "required_revalidation": [
+        "complete-parent-replay",
+        "fresh-runtime-epoch",
+        "fresh-parent-generation",
+        "fresh-live-token-issuance"
+      ],
+      "direct_reuse_across_restart": "fail-closed"
+    }
+  },
+  "first_recovery_and_residuals": {
+    "must_reproduce_parent_payload": true,
+    "replay_required_fields": [
+      "pressure_pa",
+      "temperature_k",
+      "compressibility_z",
+      "density_kg_m3",
+      "specific_internal_energy_j_kg",
+      "specific_enthalpy_j_kg",
+      "mass_fractions",
+      "root_identity"
+    ],
+    "relative_residual_max": {
+      "pressure_pa": 1e-8,
+      "temperature_k": 1e-8,
+      "compressibility_z": 1e-8,
+      "density_kg_m3": 1e-8,
+      "specific_internal_energy_j_kg": 1e-8,
+      "specific_enthalpy_j_kg": 1e-8
+    },
+    "mass_fraction_l1_residual_max": 1e-10,
+    "root_identity_must_match": true,
+    "residual_schema": {
+      "all_finite_required": true,
+      "units": "dimensionless-normalized-residuals-except-mass-fraction-l1",
+      "required_residuals": [
+        "pressure_relative",
+        "temperature_relative",
+        "compressibility_relative",
+        "density_relative",
+        "specific_internal_energy_relative",
+        "specific_enthalpy_relative",
+        "mass_fraction_l1",
+        "eos_root",
+        "departure_caloric",
+        "cv_minus_dedt_rho",
+        "root_continuity"
+      ],
+      "acceptance_max": {
+        "pressure_relative": 1e-8,
+        "temperature_relative": 1e-8,
+        "compressibility_relative": 1e-8,
+        "density_relative": 1e-8,
+        "specific_internal_energy_relative": 1e-8,
+        "specific_enthalpy_relative": 1e-8,
+        "mass_fraction_l1": 1e-10,
+        "eos_root": 1e-8,
+        "departure_caloric": 1e-8,
+        "cv_minus_dedt_rho": 1e-8,
+        "root_continuity": 0.0
+      },
+      "acceptance": "each-residual-must-meet-its-declared-finite-bound-before-token-issuance"
+    }
+  },
+  "phase_local_validity": {
+    "positive_cv_required": true,
+    "positive_dedt_rho_required": true,
+    "positive_dpdrho_t_required": true,
+    "finite_pressure_temperature_density_energy_derivatives_required": true,
+    "composition_sum_absolute_tolerance": 1e-12,
+    "composition_nonnegative_required": true,
+    "departure_caloric_consistency_required": true,
+    "root_loss": "fail-closed",
+    "spinodal_crossing": "fail-closed",
+    "near_critical_ambiguity": "fail-closed",
+    "metastable_vapor_statement": "bounded-phase-local-transient-closure-only-not-global-equilibrium"
+  },
+  "chemistry_substep": {
+    "basis": "isochoric-fixed-phase-density-vapor-or-supercritical-chemistry",
+    "constant_pressure_chemistry": "forbidden",
+    "phase_density_relative_displacement_max": 0.0,
+    "specific_internal_energy_relative_displacement_max": 0.02,
+    "mass_fraction_l1_displacement_max": 0.02,
+    "envelope_exit": "fail-closed-with-exact-rollback",
+    "initial_mid_rhs_final_recovery_required": true,
+    "concurrent_reentrant_determinism_required": true
+  },
+  "conservative_writeback_and_publication": {
+    "mixture_volume_basis": "committed-parent-mixture-volume",
+    "parent_vapor_volume_fraction_authority": "committed-parent-phase-payload-only-not-recomputed-during-substep",
+    "species_increment_formula": "delta-rhoY-kg-m3=alpha-parent-vapor-volume-fraction*rho-phase-kg-m3*delta-Y-phase",
+    "energy_increment_formula": "delta-rhoE-j-m3=alpha-parent-vapor-volume-fraction*rho-phase-kg-m3*delta-e-phase-j-kg",
+    "vapor_volume_to_mixture_volume_rhoY_and_rhoE_required": true,
+    "post_flash_radical_or_energy_fix": "forbidden",
+    "only_publisher": "final-whole-mixture-EquilibriumThermoModel-recoverRhoE",
+    "final_reflash_requirements": [
+      "same-model-schema-options-species-energy-identity",
+      "complete-rho-e-y-input-and-conservative-ledger-closure",
+      "complete-equilibrium-state",
+      "phase-and-acoustic-closure",
+      "topology-admission",
+      "final-parent-fingerprint-generation-and-token-invalidation"
+    ],
+    "three_phase_or_unsupported_topology": "fail-closed"
+  },
+  "generic_solver_exclusion": {
+    "phase_caloric_result_domain_publication": "forbidden",
+    "phase_caloric_result_flux_cfl_transport_boundary": "forbidden",
+    "phase_caloric_result_generic_solver_admission": "forbidden",
+    "phase_caloric_result_checkpoint_as_equilibrium_state": "forbidden"
+  },
+  "negative_cases_required": [
+    "liquid-payload-under-vapor-request",
+    "vapor-supercritical-identity-mismatch",
+    "seed-forced-alternate-root",
+    "root-disappearance-or-spinodal-crossing",
+    "near-critical-root-ambiguity",
+    "composition-normalization-drift",
+    "energy-reference-or-departure-caloric-drift",
+    "parent-q-phase-payload-generation-or-runtime-epoch-mismatch",
+    "live-token-reuse-across-rollback-restart-or-final-reflash",
+    "restart-hint-direct-use-without-parent-revalidation-and-fresh-token",
+    "initial-mid-rhs-or-final-failure-diagnostics-only-exact-rollback",
+    "final-whole-mixture-reflash-enters-unsupported-three-phase-topology",
+    "generic-solver-conversion-or-admission-attempt",
+    "concurrent-or-reentrant-nondeterminism"
+  ],
+  "evidence_boundary": {
+    "artifact_class": "OFFLINE_SCHEMA_AND_TEST_CONTRACT_ONLY",
+    "physical_pre_validation": false,
+    "runtime_implementation_present": false,
+    "two_phase_chemistry_success_claimed": false,
+    "source_files_allowed": [
+      "tests/reference/phase_caloric_feasibility_contract_v2.json",
+      "tools/validate_phase_caloric_feasibility_contract_v2.py",
+      "tests/test_phase_caloric_feasibility_contract_v2.py",
+      "docs/phase_caloric_feasibility_contract_v2.md"
+    ]
+  },
+  "stop_conditions": [
+    "any approval flag becomes true",
+    "PhaseCaloricResult becomes convertible to EquilibriumState",
+    "quality acoustics sound-speed or global stability are added to phase-local result",
+    "a failure result exposes state or an accepted live token",
+    "parent-Q phase-payload generation runtime-epoch model schema options species energy or root binding drifts",
+    "rollback or final reflash restores live-token validity from restored Q bytes",
+    "restart hint is treated as an accepted live token or avoids fresh parent revalidation",
+    "first recovery does not reproduce p T Z rho e h Y and root within declared residuals",
+    "seed becomes branch authority or alternate-root fallback occurs",
+    "vapor and supercritical branches auto-transition or liquid branch is admitted",
+    "phase density basis silently becomes constant pressure or alpha authority changes",
+    "phase-local result reaches Domain flux CFL transport checkpoint-equilibrium or generic solver admission",
+    "final whole-mixture reflash is bypassed or unsupported topology is coerced",
+    "the offline contract is represented as physical or production evidence"
+  ]
+}

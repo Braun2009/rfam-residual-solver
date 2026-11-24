@@ -1,0 +1,36 @@
+<experiment>
+    <fileAuthor>Politecnico di Milano, Italy</fileAuthor>
+    <fileDOI>10.5281/zenodo.4639741</fileDOI>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <bibliographyLink>
+        <description>"Further study on the ignition delay times of propane–hydrogen–oxygen– argon mixtures: Effect of equivalence ratio" Chenglong Tang, Xingjia Man, Liangjie Wei, Lun Pan, Zuohua Huang</description>
+        <referenceDOI>10.1016/j.combustflame.2013.05.012</referenceDOI>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"             sourcetype="reported"  units="atm"           ><value>10.0000000000</value></property>
+        <property name="initial composition"  sourcetype="reported" >
+            <component><speciesLink preferredKey="H2" /><amount units="mole fraction">0.0433900000</amount></component>
+            <component><speciesLink preferredKey="O2" /><amount units="mole fraction">0.0433900000</amount></component>
+            <component><speciesLink preferredKey="AR" /><amount units="mole fraction">0.9132200000</amount></component>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="experimental_data">
+        <property name="ignition delay"  id="x1"   sourcetype="digitized"  units="us" />
+        <property name="temperature"     id="x2"   sourcetype="digitized"  units="K"  />
+
+        <dataPoint><x1>190.0000000000</x1><x2>1116.0000000000</x2></dataPoint>
+        <dataPoint><x1>32.0000000000</x1><x2>1239.0000000000</x2></dataPoint>
+        <dataPoint><x1>61.0000000000</x1><x2>1155.0000000000</x2></dataPoint>
+        <dataPoint><x1>91.0000000000</x1><x2>1137.0000000000</x2></dataPoint>
+        <dataPoint><x1>824.0000000000</x1><x2>1071.0000000000</x2></dataPoint>
+        <dataPoint><x1>1806.0000000000</x1><x2>1045.0000000000</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH" type="d/dt max"/>
+</experiment>

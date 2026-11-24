@@ -1,0 +1,137 @@
+{
+  "schema": "rfam.r2-joint-fit-synthetic-execution-contract/v1",
+  "contract_version": 1,
+  "status": "blocked-synthetic-optimizer-execution-only",
+  "scope": "fixture-backed-affine-runner-and-deterministic-protocol-execution-no-physical-fit",
+  "approvals": {
+    "detailed_mechanism_selected_for_fit": false,
+    "experimental_training_data_selected": false,
+    "experimental_holdout_data_selected": false,
+    "physical_right_to_fit_resolved": false,
+    "physical_right_to_redistribute_resolved": false,
+    "parameter_publication_approved": false,
+    "physical_validation_approved": false,
+    "hem_chemistry_enabled": false,
+    "fluent_execution_approved": false,
+    "reacting_hot_start_approved": false,
+    "production_ready": false
+  },
+  "frozen_v3_authorities": {
+    "objective_contract": {
+      "path": "tests/reference/r2_joint_fit_objective_contract_v1.json",
+      "sha256": "4e15ed2c7cca709b5bd54f04faa6cd2db50347e31dacc9676213b3fe375679e7",
+      "byte_count": 15830
+    },
+    "synthetic_fixture": {
+      "path": "tests/reference/r2_joint_fit_synthetic_fixture_v1.json",
+      "sha256": "6cef95b7fd3d56eee4a009214a5205d539c69681712e3088be6b7418a1b2199c",
+      "byte_count": 6652
+    },
+    "objective_validator": {
+      "path": "tools/validate_r2_joint_fit_objective.py",
+      "sha256": "7e04bc983e3f3312b0fed1afb3433ca83fcdb4d93e88fd0c73fa526d1ce5bb50",
+      "byte_count": 35024
+    },
+    "objective_test": {
+      "path": "tests/test_r2_joint_fit_objective_contract.py",
+      "sha256": "ec0005ccba7715dd00d6eddeaa9b5297ef9a2c3bea9a446c87cfff37fab5c3a8",
+      "byte_count": 13622
+    },
+    "objective_documentation": {
+      "path": "docs/r2_joint_fit_objective_contract.md",
+      "sha256": "cece29648591d19f498608dee9bf0f3510d82199f710ec506b56a4cf77197538",
+      "byte_count": 6529
+    }
+  },
+  "synthetic_runner": {
+    "adapter_id": "fixture-anchored-affine-response-v1",
+    "input_class": "SYNTHETIC_NONPHYSICAL_TEST_ONLY",
+    "anchor_parameter_vector": "synthetic_fixture.synthetic_trial_parameter_vector",
+    "anchor_prediction": "synthetic_fixture.cases[].prediction",
+    "parameter_coordinate": "optimizer-normalized-transformed-coordinate-u",
+    "runner_call_scope": "one-parameter-vector-and-one-explicit-split-per-call",
+    "training_response_entries": [
+      {
+        "parameter": "R1_A_SI",
+        "case_id": "SYNTHETIC_TRAIN_001",
+        "observable": "qdot_w_m3",
+        "sample_index": 1,
+        "raw_slope_per_normalized_coordinate": 100000000.0
+      },
+      {
+        "parameter": "R1_Ea_J_per_mol",
+        "case_id": "SYNTHETIC_TRAIN_001",
+        "observable": "qdot_w_m3",
+        "sample_index": 2,
+        "raw_slope_per_normalized_coordinate": 100000000.0
+      },
+      {
+        "parameter": "R1_order_C3H8",
+        "case_id": "SYNTHETIC_TRAIN_001",
+        "observable": "qdot_w_m3",
+        "sample_index": 3,
+        "raw_slope_per_normalized_coordinate": 100000000.0
+      },
+      {
+        "parameter": "R1_order_O2",
+        "case_id": "SYNTHETIC_TRAIN_001",
+        "observable": "temperature_k",
+        "sample_index": 1,
+        "raw_slope_per_normalized_coordinate": 20.0
+      },
+      {
+        "parameter": "R2_A_SI",
+        "case_id": "SYNTHETIC_TRAIN_001",
+        "observable": "temperature_k",
+        "sample_index": 2,
+        "raw_slope_per_normalized_coordinate": 20.0
+      },
+      {
+        "parameter": "R2_Ea_J_per_mol",
+        "case_id": "SYNTHETIC_TRAIN_001",
+        "observable": "temperature_k",
+        "sample_index": 3,
+        "raw_slope_per_normalized_coordinate": 20.0
+      }
+    ],
+    "holdout_parameter_response": "none-return-frozen-fixture-prediction",
+    "initial_state_authority": "frozen-fixture-ordered-initial-mass-fraction-vector",
+    "invalid_output_policy": "nonfinite-missing-misaligned-or-out-of-range-output-invalidates-objective-point",
+    "physical_interpretation": "none-affine-response-exists-only-to-exercise-software-protocol"
+  },
+  "execution_protocol": {
+    "optimizer_source": "frozen-v3-objective-contract.optimizer_protocol",
+    "training_partition_source": "frozen-v3-objective-contract.partitions.training_case_ids",
+    "holdout_partition_source": "frozen-v3-objective-contract.partitions.holdout_case_ids",
+    "holdout_runner_calls_during_selection": 0,
+    "holdout_runner_calls_after_selection": 1,
+    "residual_and_identifiability_source": "frozen-v3-objective-contract.identifiability_uncertainty",
+    "sensitivity_runner_cache": "separate-from-optimizer-no-cross-point-cache",
+    "linear_algebra": "deterministic-symmetric-gram-jacobi-v1",
+    "jacobi_pair_order": "cyclic-p-ascending-then-q-ascending",
+    "jacobi_relative_offdiagonal_tolerance": 1e-15,
+    "jacobi_maximum_sweeps": 100,
+    "eigenpair_order": "descending-eigenvalue-then-original-column-index",
+    "result_float_serialization": "finite-binary64-rounded-to-15-significant-decimal-digits",
+    "canonical_json": "utf8-indent-2-preserve-schema-order-trailing-newline"
+  },
+  "claims": {
+    "synthetic_optimizer_may_execute": true,
+    "physical_optimizer_executed": false,
+    "physical_fit_executed": false,
+    "parameters_publishable": false,
+    "synthetic_identifiability_is_physical_evidence": false,
+    "physical_uncertainty_claimed": false,
+    "runner_equivalent_to_rfam_or_cantera": false
+  },
+  "stop_conditions": [
+    "any frozen-v3 authority path hash or byte count mismatch",
+    "execution contract duplicate key unknown field nonfinite value or byte drift",
+    "any holdout runner call before global training selection is frozen",
+    "any nonfinite invalid or out-of-bound parameter runner residual sensitivity or covariance value",
+    "optimizer protocol cache budget order bound or tie-break drift",
+    "rank condition covariance or correlation protocol drift",
+    "synthetic runner represented as mechanism experiment physical fit validation or production evidence",
+    "attempt to enable HEM Fluent hot-start parameter publication or production capability"
+  ]
+}

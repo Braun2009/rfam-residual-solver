@@ -1,0 +1,14 @@
+; Vortex 3D cold-air SST r15: 36 physical-core continuation from r13 iteration 5.
+; Low farfield Mach=1e-6 has been independently audited: it avoids the r11
+; imposed 0.01-Mach free-stream artifact.  Do not initialize again.
+
+(format #t "\nVORTEX_R15_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_init36_mach1e6_r13/cold_air_sst_5it.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_init36_mach1e6_r13/cold_air_sst_5it.dat.h5
+(format #t "\nVORTEX_R15_R13_CASE_DATA_READ_OK\n")
+/solve/iterate 25
+(format #t "\nVORTEX_R15_ITERATE_25_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_mach1e6_r15/cold_air_sst_30it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_continue36_mach1e6_r15/cold_air_sst_30it.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R15_36PHYS_OK\n")
+/exit yes

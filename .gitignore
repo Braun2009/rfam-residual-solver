@@ -1,0 +1,21 @@
+# build trees
+build/
+build_*/
+cmake-build-*/
+*.o
+*.a
+*.so
+*.so.*
+
+# run products
+dumps/
+runs/
+work/
+tmp_scp/
+*.rfamtet
+*.bin
+*.log
+
+# python
+__pycache__/
+*.pyc

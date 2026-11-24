@@ -1,0 +1,222 @@
+{
+  "schema": "rfam.r2-lam2010-internal-intake/v1",
+  "contract_version": 1,
+  "status": "blocked-internal-screening-only",
+  "scope": "six-table-lam2010-propane-idt-offline-intake-no-fit-no-redistribution",
+  "citation": {
+    "doi": "10.1016/j.proci.2010.06.131",
+    "pii": "S1540748910002609",
+    "title": "Shock tube ignition delay time measurements in propane/O2/argon mixtures at near-constant-volume conditions",
+    "authors": [
+      "K.-Y. Lam",
+      "Z. Hong",
+      "D. F. Davidson",
+      "R. K. Hanson"
+    ],
+    "journal": "Proceedings of the Combustion Institute",
+    "volume": "33",
+    "year": 2011
+  },
+  "source": {
+    "provider": "Elsevier",
+    "artifact_role": "article-supplementary-data",
+    "url": "https://ars.els-cdn.com/content/image/1-s2.0-S1540748910002609-mmc1.doc",
+    "local_path": "tmp/lam-2010-proci-supplement-mmc1.doc",
+    "media_type": "application/msword",
+    "container": "OLE Compound Document Word 97-2003",
+    "byte_count": 115712,
+    "sha256": "154b690336f9bd2aa6a56c417386d620d5dc360e5e996a8b41900238bd17f977",
+    "retrieved_on": "2026-07-28",
+    "repository_copy": false
+  },
+  "extraction": {
+    "generator_path": "realFluidAllMach/tools/generate_r2_lam2010_intake.py",
+    "generator_sha256": "a6e6cc0c41499d903c0313867a680738325d5f3151b5d9131e3ca91675a2dd72",
+    "runtime": "Microsoft Word COM read-only table API",
+    "csv_path": "realFluidAllMach/tests/reference/r2_lam2010_proci_intake_v1.csv",
+    "csv_byte_count": 7122,
+    "csv_sha256": "e87b042e44d7fefee4fdafbd3842bda284afa0475a2a5430b401d4785510574e",
+    "canonicalization": "ASCII RFC4180-compatible CSV LF final newline source lexical decimals",
+    "fields": [
+      "table_id",
+      "row_in_table",
+      "facility_mode",
+      "t5_k",
+      "p5_atm",
+      "dp5_dt_percent_per_ms",
+      "dp5_dt_status",
+      "idt_ms"
+    ],
+    "regeneration_count": 2,
+    "regenerations_byte_identical": true
+  },
+  "experiment": {
+    "apparatus": "shock tube",
+    "reported_initial_mixture": "0.8% C3H8/ 8% O2/ Ar",
+    "reported_composition_basis": "not-stated-in-supplement",
+    "reported_species_values": {
+      "C3H8": "0.8%",
+      "O2": "8%",
+      "Ar": "balance-unspecified"
+    },
+    "normalized_composition_available": false,
+    "equivalence_ratio_reported": false,
+    "nominal_pressure_atm": ["6", "24", "60"],
+    "table_count": 6,
+    "row_count": 95,
+    "conventional_pressure_rise_rows": 46,
+    "near_constant_volume_rows": 49,
+    "field_contract": {
+      "t5_k": "post-reflected-shock temperature in K",
+      "p5_atm": "post-reflected-shock pressure in atm",
+      "idt_ms": "ignition delay time in milliseconds with event definition absent from supplement",
+      "dp5_dt_percent_per_ms": "reported per-row dP5/dt in percent per millisecond when present",
+      "dp5_dt_status": "reported not-available-cell or not-tabulated-caption-approximately-zero"
+    },
+    "tables": [
+      {
+        "table_id": "S1",
+        "row_count": 17,
+        "source_column_count": 4,
+        "facility_mode": "conventional-pressure-rise",
+        "caption_dp5_dt": "1.2-3.5%/ms",
+        "t5_k_range": ["991", "1405"],
+        "p5_atm_range": ["5.46", "7.44"],
+        "idt_ms_range": ["0.083", "17.79"],
+        "reported_dp5_dt_rows": 6,
+        "reported_dp5_dt_range": ["1.2", "3.5"]
+      },
+      {
+        "table_id": "S2",
+        "row_count": 18,
+        "source_column_count": 3,
+        "facility_mode": "near-constant-volume",
+        "caption_dp5_dt": "approximately-0%/ms",
+        "t5_k_range": ["1021", "1381"],
+        "p5_atm_range": ["5.26", "6.82"],
+        "idt_ms_range": ["0.15", "21.23"],
+        "reported_dp5_dt_rows": 0,
+        "reported_dp5_dt_range": null
+      },
+      {
+        "table_id": "S3",
+        "row_count": 19,
+        "source_column_count": 4,
+        "facility_mode": "conventional-pressure-rise",
+        "caption_dp5_dt": "5.9-8.0%/ms",
+        "t5_k_range": ["950", "1289"],
+        "p5_atm_range": ["21.1", "29.5"],
+        "idt_ms_range": ["0.20", "6.79"],
+        "reported_dp5_dt_rows": 11,
+        "reported_dp5_dt_range": ["5.9", "8.0"]
+      },
+      {
+        "table_id": "S4",
+        "row_count": 18,
+        "source_column_count": 3,
+        "facility_mode": "near-constant-volume",
+        "caption_dp5_dt": "approximately-0%/ms",
+        "t5_k_range": ["988", "1273"],
+        "p5_atm_range": ["22.8", "31.1"],
+        "idt_ms_range": ["0.26", "9.28"],
+        "reported_dp5_dt_rows": 0,
+        "reported_dp5_dt_range": null
+      },
+      {
+        "table_id": "S5",
+        "row_count": 10,
+        "source_column_count": 4,
+        "facility_mode": "conventional-pressure-rise",
+        "caption_dp5_dt": "6.2-8.5%/ms",
+        "t5_k_range": ["980", "1244"],
+        "p5_atm_range": ["54.6", "66.8"],
+        "idt_ms_range": ["0.17", "3.26"],
+        "reported_dp5_dt_rows": 6,
+        "reported_dp5_dt_range": ["6.2", "8.5"]
+      },
+      {
+        "table_id": "S6",
+        "row_count": 13,
+        "source_column_count": 3,
+        "facility_mode": "near-constant-volume",
+        "caption_dp5_dt": "approximately-0%/ms",
+        "t5_k_range": ["994", "1247"],
+        "p5_atm_range": ["53.7", "67.8"],
+        "idt_ms_range": ["0.20", "4.75"],
+        "reported_dp5_dt_rows": 0,
+        "reported_dp5_dt_range": null
+      }
+    ],
+    "overall_ranges": {
+      "t5_k": ["950", "1405"],
+      "p5_atm": ["5.26", "67.8"],
+      "idt_ms": ["0.083", "21.23"],
+      "reported_dp5_dt_percent_per_ms": ["1.2", "8.5"]
+    }
+  },
+  "uncertainty": {
+    "t5_available": false,
+    "p5_available": false,
+    "idt_available": false,
+    "composition_available": false,
+    "facility_repeatability_available": false,
+    "classification": "not-present-in-supplement-tables"
+  },
+  "rights_evidence": {
+    "provider": "Crossref REST API",
+    "artifact_role": "rights-metadata-screen-not-license",
+    "url": "https://api.crossref.org/works/10.1016/j.proci.2010.06.131",
+    "local_path": "tmp/crossref-lam-2010.json",
+    "media_type": "application/json",
+    "byte_count": 5986,
+    "sha256": "48cbb63189102c227f2da4818f811b14fe5440fdb585bb8b9c18eec97a88207a",
+    "retrieved_on": "2026-07-28",
+    "observed_license_content_version": "tdm",
+    "observed_license_url": "https://www.elsevier.com/tdm/userlicense/1.0/",
+    "authorization_effect": "none"
+  },
+  "rights": {
+    "status": "unresolved",
+    "publicly_reachable": true,
+    "crossref_open_content_license_observed": false,
+    "crossref_metadata_is_authorization": false,
+    "crossref_license_url": "https://www.elsevier.com/tdm/userlicense/1.0/",
+    "crossref_content_version": "tdm",
+    "internal_screening_only": true,
+    "fit_eligible": false,
+    "redistribution": false,
+    "commercial_or_production_use_authorized": false,
+    "derived_csv_storage_scope": "internal-workspace-only-do-not-redistribute",
+    "required_resolution": "rights-holder terms or permission covering fit retention derived outputs and intended production use"
+  },
+  "eligibility": {
+    "training_eligible": false,
+    "holdout_eligible": false,
+    "fit_performed": false,
+    "candidate_role_if_resolved": "propane-o2-argon-idt-screen-candidate",
+    "blocking_reasons": [
+      "fit and retained-derived-output rights are unresolved",
+      "the supplement does not state the composition basis Ar fraction or equivalence ratio",
+      "the supplement does not state the ignition-delay event definition or timing origin",
+      "measurement uncertainties and facility repeatability are absent",
+      "training and independent holdout campaigns have not been frozen"
+    ]
+  },
+  "approvals": {
+    "experimental_training_data_selected": false,
+    "experimental_holdout_data_selected": false,
+    "r2_physical_fit_approved": false,
+    "r2_parameter_installation_approved": false,
+    "hem_chemistry_enabled": false,
+    "fluent_execution_approved": false,
+    "production_ready": false
+  },
+  "limitations": [
+    "composition basis Ar balance and equivalence ratio are not source-stated and no normalized composition is installed",
+    "near-constant-volume captions state approximately zero dP5/dt but do not tabulate per-row zero values",
+    "N.A. dP5/dt cells remain missing and are not imputed",
+    "Crossref TDM metadata is screening evidence and not an open-content or production-use license",
+    "the canonical CSV is an internal screening derivative and not a redistributable fit dataset",
+    "no chemistry parameter capability Fluent action or production status is changed"
+  ]
+}

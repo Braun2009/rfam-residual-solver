@@ -1,0 +1,43 @@
+/*---------------------------------------------------------------------------*\
+  realFluidAllMach - 2D Transcritical O2 Injection
+\*---------------------------------------------------------------------------*/
+
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <fstream>
+#include <iomanip>
+#include <sstream>
+#include "../mesh/Mesh2D.H"
+#include "../variables/ConservedVars.H"
+#include "../numerics/flux/AUSMPlusUpFlux.H"
+#include "../thermo/RealFluidState.H"
+#include "../thermo/EquationOfState/PengRobinsonEOS.H"
+#include "../thermo/MixingRules/SpeciesCriticalDB.H"
+#include "../thermo/MixingRules/BinaryInteractionDB.H"
+
+using namespace Foam;
+using namespace std;
+
+class Solver2D
+{
+private:
+    Mesh2D mesh_;
+    vector<vector<ConservedVars>> U_;
+    vector<vector<PrimitiveVars>> W_;
+    AUSMPlusUpFlux fluxScheme_;
+    SpeciesCriticalDB criticalDB_;
+    BinaryInteractionDB kijDB_;
+    PengRobinsonEOS eos_;
+    double t_;
+    int iter_;
+
+public:
+    Solver2D(int Nx, int Ny, double Lx, double Ly);
+    void initialize();
+    double computeTimestep(double CFL);
+    void step(double dt);
+    void applyBoundaryConditions(vector<vector<ConservedVars>>& U);
+    void writeVTK(const string& filename);
+    void run(double t_end, double CFL, int write_interval);
+};

@@ -1,0 +1,16 @@
+; Vortex 3D cold-air SST r75: low-CFL hybrid-initialized pressure-outlet diagnostic.
+; Source r74 is an immutable-source restart from r65/iter5 with only Courant
+; number changed from 1.0 to 0.2.  r66 had 5.09% mass imbalance without a
+; turbulence limiter, while the CFL=1 continuation degraded by iter30.  Run
+; exactly five further iterations, no initialization, then save r75-only data.
+
+(format #t "\nVORTEX_R75_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid_initturb_cflp2_config_r74/cold_air_sst_courant0p2_configured.cas.h5
+/file/read-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid_initturb_cflp2_config_r74/cold_air_sst_courant0p2_configured.dat.h5
+(format #t "\nVORTEX_R75_R74_CASE_DATA_READ_OK\n")
+/solve/iterate 5
+(format #t "\nVORTEX_R75_ITERATE_5_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid_initturb_cflp2_probe36_r75/cold_air_sst_hybrid_10it_cflp2.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid_initturb_cflp2_probe36_r75/cold_air_sst_hybrid_10it_cflp2.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R75_PRESSURE_OUTLET_HYBRID_INITTURB_CFLP2_36PHYS_OK\n")
+/exit yes

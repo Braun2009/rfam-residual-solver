@@ -1,0 +1,163 @@
+{
+  "schema": "rfam.o2-c3h8-topology-uncertainty-tube-contract/v1",
+  "contract_version": 1,
+  "status": "offline-trial-model-risk-gate-blocked",
+  "scope": "current-rfam-pr-o2-c3h8-predicted-trajectory-explicit-uncertainty-tube-no-physical-vlle",
+  "authorities": {
+    "base_topology_envelope_validator": {
+      "id": "base-topology-envelope-validator",
+      "path": "realFluidAllMach/tools/validate_o2_c3h8_topology_envelope.py",
+      "sha256": "bb4284f0eae6b7da1d85594d22391a431f3bf7608e81cf85a421a49995eec284",
+      "byte_count": 38931
+    },
+    "base_topology_envelope_contract": {
+      "id": "base-topology-envelope-contract",
+      "path": "realFluidAllMach/tests/reference/o2_c3h8_topology_envelope_contract_v1.json",
+      "sha256": "cf5c8855b3afe7fd1e5c4d67366e046d4b7b3515a381be4e78af4281e18763ca",
+      "byte_count": 8890
+    },
+    "trajectory_reference": {
+      "id": "predicted-trajectory",
+      "path": "realFluidAllMach/tests/reference/o2_c3h8_predicted_trajectory_512_v1.csv",
+      "sha256": "a6d498887225a685b2f7b5d40248913ad2e7ba93158e12bbe64963a01783cdc0",
+      "byte_count": 37328
+    },
+    "model_risk_registry": {
+      "id": "model-risk-registry",
+      "path": "realFluidAllMach/tests/reference/o2_c3h8_topology_model_risk_v1.json",
+      "sha256": "3ef2f001f56af5cbdb8fa851992736ec517cb17c5ed1656f32b85d9946d072b2",
+      "byte_count": 3361
+    }
+  },
+  "tube_components": {
+    "trial_kij_interval": {
+      "basis": "per-anchor-trial-kij-offset-not-fit-posterior",
+      "nominal_anchor_kij_range": [
+        -0.05,
+        0.15
+      ],
+      "kij_offset": [
+        -0.005,
+        0.005
+      ],
+      "kij_fitted": false,
+      "physical_validation": false
+    },
+    "inlet_condition_error": {
+      "basis": "declared-screening-input-error-not-measurement-confidence",
+      "pressure_pa_offset": [
+        -50000.0,
+        50000.0
+      ],
+      "temperature_k_offset": [
+        -0.2,
+        0.2
+      ],
+      "overall_z_o2_offset": [
+        -0.002,
+        0.002
+      ]
+    },
+    "numerical_interpolation_error": {
+      "basis": "absolute-bounds-added-by-minkowski-sum",
+      "pressure_pa_offset": [
+        -1000.0,
+        1000.0
+      ],
+      "temperature_k_offset": [
+        -0.01,
+        0.01
+      ],
+      "overall_z_o2_offset": [
+        -0.00001,
+        0.00001
+      ],
+      "kij_offset": [
+        -0.00001,
+        0.00001
+      ]
+    },
+    "topology_detector_margin": {
+      "basis": "risk-box-expansion-from-bound-model-risk-registry",
+      "registry_field": "approach_guard_offsets",
+      "pressure_pa_offset": [
+        -50000.0,
+        50000.0
+      ],
+      "temperature_k_offset": [
+        -0.05,
+        0.05
+      ],
+      "overall_z_o2_offset": [
+        0.0,
+        0.0
+      ],
+      "kij_offset": [
+        -0.001,
+        0.001
+      ]
+    }
+  },
+  "interval_policy": {
+    "anchor_bound": "nominal-plus-trial-kij-plus-inlet-error-plus-numerical-interpolation-error",
+    "risk_bound": "registered-risk-box-plus-topology-detector-margin",
+    "segment_bound": "axis-aligned-hull-of-adjacent-effective-anchor-boxes",
+    "intersection": "closed-interval-all-axes",
+    "admission_rule": "if-any-realization-contacts-any-risk-box-return-three-phase-required",
+    "sampling_role": "diagnostic-only-never-admission-authority",
+    "uncertainty_widening_must_be_monotone": true
+  },
+  "supported_screen_envelope": {
+    "pressure_pa": [
+      4000000.0,
+      6000000.0
+    ],
+    "temperature_k": [
+      110.0,
+      300.0
+    ],
+    "kij": [
+      -0.05,
+      0.15
+    ],
+    "overall_z_o2": [
+      0.0,
+      1.0
+    ]
+  },
+  "risk_policy": {
+    "pair": [
+      "O2",
+      "C3H8"
+    ],
+    "intersection_status": "THREE_PHASE_REQUIRED",
+    "outside_or_uncommittable_status": "OUT_OF_ENVELOPE",
+    "clear_status": "SCREEN_ONLY_NO_MODEL_RISK_DETECTED",
+    "status_precedence": [
+      "THREE_PHASE_REQUIRED",
+      "OUT_OF_ENVELOPE",
+      "SCREEN_ONLY_NO_MODEL_RISK_DETECTED"
+    ],
+    "physical_vlle_claim": false,
+    "z_localization_policy": "conservative-all-compositions-until-validated"
+  },
+  "approvals": {
+    "trial_kij_only": true,
+    "physical_validation": false,
+    "kij_fitted": false,
+    "three_phase_owner_implemented": false,
+    "hem_enabled": false,
+    "fluent_execution_approved": false,
+    "hot_start_approved": false,
+    "production_ready": false
+  },
+  "limitations": [
+    "the kij interval is a trial screening offset and is not a fitted posterior or confidence interval",
+    "inlet and numerical intervals are declared screen inputs and are not validated measurement or model-form uncertainty",
+    "the detector margin expands model-risk boxes and does not prove physical VLLE",
+    "the possible-three-phase registry is PR model-risk evidence and overall composition remains conservatively unlocalized",
+    "axis-aligned Minkowski bounds discard correlation and may over-reject but are not a joint probability model",
+    "a clear finite tube does not prove global topology uniqueness or physical validity",
+    "no TP or PH runtime gate, three-phase owner, HEM capability, Fluent execution, hot-start, or production flag is enabled"
+  ]
+}

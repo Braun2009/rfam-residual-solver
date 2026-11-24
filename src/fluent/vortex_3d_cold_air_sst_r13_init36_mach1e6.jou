@@ -1,0 +1,22 @@
+; Vortex 3D cold-air SST r13: independent low-farfield-Mach initialization.
+; Configuration is derived from immutable r2 (not from r11), with identical
+; ideal-air/SST/energy/inlet/wall settings but strictly-positive farfield Mach=1e-6.
+; This retains Fluent pressure-far-field initialization validity while reducing
+; imposed ambient through-flow by 10,000 versus the r11 Mach=0.01 diagnostic.
+
+(format #t "\nVORTEX_R13_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_farfield_mach1e6_r13/cold_air_sst_mach1e-06_configured.cas.h5
+(format #t "\nVORTEX_R13_CONFIGURED_CASE_READ_OK\n")
+/mesh/check
+(format #t "\nVORTEX_R13_SOLVER_MESH_CHECK_OK\n")
+/solve/initialize/initialize
+(format #t "\nVORTEX_R13_STANDARD_INITIALIZATION_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_init36_mach1e6_r13/cold_air_sst_initialized.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_init36_mach1e6_r13/cold_air_sst_initialized.dat.h5
+(format #t "\nVORTEX_R13_INITIALIZED_CASE_DATA_WRITTEN\n")
+/solve/iterate 5
+(format #t "\nVORTEX_R13_ITERATE_5_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_init36_mach1e6_r13/cold_air_sst_5it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_init36_mach1e6_r13/cold_air_sst_5it.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R13_INIT36_MACH1E6_OK\n")
+/exit yes

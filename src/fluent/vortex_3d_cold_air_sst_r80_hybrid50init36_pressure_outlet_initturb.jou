@@ -1,0 +1,17 @@
+; Vortex 3D cold-air SST r80: hybrid initialization with iter_count=50.
+; Source r79 derives from immutable r58 and changes only hybrid-init internal
+; iteration count 10 -> 50.  All hybrid flags remain default false/true as
+; documented in r79 configuration.  Perform mesh/check and hybrid initialization
+; only; do not run flow iterations.  Save new artifacts in r80 directory.
+
+(format #t "\nVORTEX_R80_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid50_config_r79/cold_air_sst_hybrid_options_configured.cas.h5
+(format #t "\nVORTEX_R80_CONFIGURED_CASE_READ_OK\n")
+/mesh/check
+(format #t "\nVORTEX_R80_SOLVER_MESH_CHECK_OK\n")
+/solve/initialize/hyb-initialization
+(format #t "\nVORTEX_R80_HYBRID50_INITIALIZATION_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid50_initturb_init36_r80/cold_air_sst_hybrid50_initialized.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_hybrid50_initturb_init36_r80/cold_air_sst_hybrid50_initialized.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R80_PRESSURE_OUTLET_HYBRID50_INIT36_OK\n")
+/exit yes

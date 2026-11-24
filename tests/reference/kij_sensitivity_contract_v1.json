@@ -1,0 +1,272 @@
+{
+  "schema": "rfam.kij-sensitivity-contract/v1",
+  "contract_version": 1,
+  "status": "screening-only",
+  "scope": "offline-o2-c3h8-kij-priority-screen-no-fit",
+  "approvals": {
+    "kij_value_validated": false,
+    "production_ready": false,
+    "hem_enabled": false,
+    "fluent_execution_approved": false,
+    "hot_start_approved": false
+  },
+  "upstream": [
+    {
+      "id": "wp0_contract",
+      "path": "realFluidAllMach/tests/reference/vortex_physics_validation_contract_v1.json",
+      "sha256": "34b15eae9c89d3c44638748e3283fed59429912f16faa33a224f70f78710439a"
+    },
+    {
+      "id": "wp0_owner_report",
+      "path": "tmp/a408-wp0-wp2-replacement-v4-20260722.md",
+      "sha256": "05ddf8a971cc79ca76196505ead2be37258cf7797a5f404eb14ec72fd5067420"
+    },
+    {
+      "id": "wp0_independent_review",
+      "path": "tmp/a408-wp0-wp2-replacement-v4-independent-review-20260722.md",
+      "sha256": "b05980810f2db2eaddfa48839479e9cf5cf2abd80940f700e9f1db986541d626"
+    }
+  ],
+  "pair": {
+    "species": [
+      "O2",
+      "C3H8"
+    ],
+    "species_order": [
+      "O2",
+      "C3H8"
+    ],
+    "composition_basis": "mass_fraction",
+    "symmetry_required": true
+  },
+  "model": {
+    "eos": "Peng-Robinson",
+    "mixing_rule": "van-der-Waals-one-fluid",
+    "kij_form": "constant-symmetric",
+    "historical_value": 0.055,
+    "historical_value_status": "legacy-unprovenanced-not-validated",
+    "sweep": [
+      -0.05,
+      0.0,
+      0.055,
+      0.1,
+      0.15
+    ]
+  },
+  "state_grid": [
+    {
+      "case_id": "o2_rich_low_2mpa",
+      "pressure_pa": 2000000.0,
+      "temperature_k": 180.0,
+      "y_o2": 0.9,
+      "y_c3h8": 0.1,
+      "role": "pair-sensitivity",
+      "expected_region": "TWO_PHASE"
+    },
+    {
+      "case_id": "global_low_2mpa",
+      "pressure_pa": 2000000.0,
+      "temperature_k": 220.0,
+      "y_o2": 0.7272727272727272,
+      "y_c3h8": 0.2727272727272728,
+      "role": "pair-sensitivity",
+      "expected_region": "TWO_PHASE"
+    },
+    {
+      "case_id": "fuel_rich_low_2mpa",
+      "pressure_pa": 2000000.0,
+      "temperature_k": 260.0,
+      "y_o2": 0.2,
+      "y_c3h8": 0.8,
+      "role": "pair-sensitivity",
+      "expected_region": "TWO_PHASE"
+    },
+    {
+      "case_id": "global_transition_4mpa",
+      "pressure_pa": 4000000.0,
+      "temperature_k": 300.0,
+      "y_o2": 0.7272727272727272,
+      "y_c3h8": 0.2727272727272728,
+      "role": "pair-sensitivity",
+      "expected_region": "SINGLE_VAPOR"
+    },
+    {
+      "case_id": "global_inlet_mix_4mpa",
+      "pressure_pa": 4000000.0,
+      "temperature_k": 450.0,
+      "y_o2": 0.7272727272727272,
+      "y_c3h8": 0.2727272727272728,
+      "role": "pair-sensitivity",
+      "expected_region": "SINGLE_VAPOR"
+    },
+    {
+      "case_id": "global_background_4mpa",
+      "pressure_pa": 4000000.0,
+      "temperature_k": 700.0,
+      "y_o2": 0.7272727272727272,
+      "y_c3h8": 0.2727272727272728,
+      "role": "pair-sensitivity",
+      "expected_region": "SINGLE_VAPOR"
+    },
+    {
+      "case_id": "global_ignition_4mpa",
+      "pressure_pa": 4000000.0,
+      "temperature_k": 1200.0,
+      "y_o2": 0.7272727272727272,
+      "y_c3h8": 0.2727272727272728,
+      "role": "pair-sensitivity",
+      "expected_region": "SINGLE_VAPOR"
+    },
+    {
+      "case_id": "global_pilot_4mpa",
+      "pressure_pa": 4000000.0,
+      "temperature_k": 2400.0,
+      "y_o2": 0.7272727272727272,
+      "y_c3h8": 0.2727272727272728,
+      "role": "pair-sensitivity",
+      "expected_region": "SINGLE_VAPOR"
+    },
+    {
+      "case_id": "o2_supercritical_control_6mpa",
+      "pressure_pa": 6000000.0,
+      "temperature_k": 200.0,
+      "y_o2": 1.0,
+      "y_c3h8": 0.0,
+      "role": "phase-semantics-control",
+      "expected_region": "SINGLE_SUPERCRITICAL"
+    },
+    {
+      "case_id": "global_dense_6mpa",
+      "pressure_pa": 6000000.0,
+      "temperature_k": 220.0,
+      "y_o2": 0.7272727272727272,
+      "y_c3h8": 0.2727272727272728,
+      "role": "pair-sensitivity",
+      "expected_region": "TWO_PHASE"
+    }
+  ],
+  "outputs": [
+    "case_id",
+    "kij",
+    "pressure_pa",
+    "temperature_k",
+    "y_o2",
+    "y_c3h8",
+    "status",
+    "region",
+    "quality_defined",
+    "vapor_mass_fraction",
+    "vapor_volume_fraction",
+    "rho_kg_m3",
+    "e_j_kg",
+    "liquid_x_o2",
+    "vapor_x_o2",
+    "vapor_y_o2",
+    "vapor_y_c3h8",
+    "vapor_rho_o2_kg_m3",
+    "vapor_rho_c3h8_kg_m3",
+    "single_rho_o2_kg_m3",
+    "single_rho_c3h8_kg_m3",
+    "material_residual",
+    "energy_identity_residual"
+  ],
+  "tolerances": {
+    "material_residual_abs": 2e-12,
+    "energy_identity_residual_abs": 2e-12,
+    "sensitivity_thresholds": {
+      "global_low_2mpa": {
+        "minimum_quality_span": 0.01,
+        "minimum_density_relative_span": 0.02
+      },
+      "global_dense_6mpa": {
+        "minimum_quality_span": 0.05,
+        "minimum_density_relative_span": 0.08
+      }
+    }
+  },
+  "source_bundle": {
+    "algorithm": "sha256(path-nul-size-u64be-bytes)",
+    "files": [
+      "realFluidAllMach/tools/kij_sensitivity_probe.cpp",
+      "realFluidAllMach/src/thermo/ThermoDataProvenance.C",
+      "realFluidAllMach/src/thermo/ThermoDataProvenance.H",
+      "realFluidAllMach/src/thermo/SpeciesRegistry.H",
+      "realFluidAllMach/src/thermo/NASA7Thermo.H",
+      "realFluidAllMach/src/thermo/PengRobinsonAlpha.H",
+      "realFluidAllMach/src/thermo/EquationOfState/PengRobinsonEOS.C",
+      "realFluidAllMach/src/thermo/EquationOfState/PengRobinsonEOS.H",
+      "realFluidAllMach/src/thermo/MixingRules/VdWOneFluidMixing.C",
+      "realFluidAllMach/src/thermo/MixingRules/VdWOneFluidMixing.H",
+      "realFluidAllMach/src/thermo/MixingRules/SpeciesCriticalDB.C",
+      "realFluidAllMach/src/thermo/MixingRules/SpeciesCriticalDB.H",
+      "realFluidAllMach/src/thermo/MixingRules/BinaryInteractionDB.C",
+      "realFluidAllMach/src/thermo/MixingRules/BinaryInteractionDB.H",
+      "realFluidAllMach/src/thermo/RootSelection/CubicRoots.C",
+      "realFluidAllMach/src/thermo/RootSelection/CubicRoots.H",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/ConservedPhaseMixture.H",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRMixtureKernel.C",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRMixtureKernel.H",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRTPFlash.C",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRTPFlash.H",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/TabulatedIdealCaloric.C",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/TabulatedIdealCaloric.H",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRPhaseCaloric.C",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRPhaseCaloric.H"
+    ],
+    "sha256": "86dc5403aaf7f1178f4fd9df2249dbb3c8daa23058d10dc4caeb622fd7cada58"
+  },
+  "reference": {
+    "path": "realFluidAllMach/tests/reference/kij_sensitivity_o2_c3h8_v1.csv",
+    "sha256": "f8885eaf252ee8f040dfd9678d30be01cb5ce7748c4480df414696d702cf9797",
+    "schema": "rfam.kij-sensitivity-probe/v1",
+    "row_count": 50
+  },
+  "build": {
+    "platform": "WSL-x86_64-linux-gnu",
+    "compiler_path": "/usr/bin/x86_64-linux-gnu-g++-9",
+    "compiler_version": "g++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0",
+    "compiler_sha256": "0c0b987719385f8e242819dfef6a3e97b4b2540ce4035dbc11565df2966bd69e",
+    "flags": [
+      "-std=c++17",
+      "-O2",
+      "-fopenmp"
+    ],
+    "include_directories": [
+      "realFluidAllMach/src",
+      "realFluidAllMach/src/thermo",
+      "realFluidAllMach/src/thermo/MixingRules",
+      "realFluidAllMach/src/thermo/EquationOfState",
+      "realFluidAllMach/src/thermo/RootSelection",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium"
+    ],
+    "translation_units": [
+      "realFluidAllMach/tools/kij_sensitivity_probe.cpp",
+      "realFluidAllMach/src/thermo/ThermoDataProvenance.C",
+      "realFluidAllMach/src/thermo/EquationOfState/PengRobinsonEOS.C",
+      "realFluidAllMach/src/thermo/MixingRules/VdWOneFluidMixing.C",
+      "realFluidAllMach/src/thermo/MixingRules/SpeciesCriticalDB.C",
+      "realFluidAllMach/src/thermo/MixingRules/BinaryInteractionDB.C",
+      "realFluidAllMach/src/thermo/RootSelection/CubicRoots.C",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRMixtureKernel.C",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRTPFlash.C",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/TabulatedIdealCaloric.C",
+      "realFluidAllMach/src/thermo/PhaseEquilibrium/PRPhaseCaloric.C"
+    ],
+    "expected_executable_sha256": "b97c65f5c4857cd3e32b2a9eb0b70edfa5e971d0f965bf3da5df8a90a6832f26"
+  },
+  "conclusion": {
+    "pair_priority": "high-data-priority",
+    "sensitivity_detected": true,
+    "fit_performed": false,
+    "external_data_selected": false,
+    "validated_kij": false,
+    "missing_pair_policy": "fail-closed-until-sourced-and-validated"
+  },
+  "limitations": [
+    "screening states are conservative anchors, not a completed Vortex trajectory envelope",
+    "no VLE/PVT data source, fit, holdout, uncertainty, or validated kij is supplied",
+    "the historical kij=0.055 value remains legacy unprovenanced diagnostic input",
+    "CoolProp and REFPROP parameters are not PR kij values and are not copied here",
+    "no HEM, Fluent, zero-advance, hot-start, or production capability is enabled"
+  ]
+}

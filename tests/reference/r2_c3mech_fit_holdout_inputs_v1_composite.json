@@ -1,0 +1,34 @@
+{
+  "algorithm": "sha256(path-nul-size-u64be-bytes)",
+  "artifact_count": 4,
+  "artifacts": [
+    {
+      "id": "artifact:realFluidAllMach/tests/reference/r2_c3mech_candidate_screen_contract_v2.json",
+      "path": "realFluidAllMach/tests/reference/r2_c3mech_candidate_screen_contract_v2.json",
+      "sha256": "4ffbaa735277cab1c1d2257887692fba75db3e5703ea762a0a54718099633f29",
+      "size": 10167
+    },
+    {
+      "id": "artifact:realFluidAllMach/tests/reference/r2_c3mech_holdout_cases_v1.json",
+      "path": "realFluidAllMach/tests/reference/r2_c3mech_holdout_cases_v1.json",
+      "sha256": "cb63bfd73fdf7cc56eb179ee95d84be185c7397406f25b93183588bb8b4d4785",
+      "size": 899
+    },
+    {
+      "id": "artifact:tmp/a408-r2-c3mech-44i0-holdout-v2.json",
+      "path": "tmp/a408-r2-c3mech-44i0-holdout-v2.json",
+      "sha256": "4961e2e76f0a7fe4b54ba1ea67d9dace7896416ed2b8633b56474a7046f342ac",
+      "size": 16323
+    },
+    {
+      "id": "artifact:tmp/a408-r2-c3mech-candidate-screen-v2-independent-review-20260728.md",
+      "path": "tmp/a408-r2-c3mech-candidate-screen-v2-independent-review-20260728.md",
+      "sha256": "1b42cf10712b948d062cd54db3dc5be734b5367a09b82866af597fa3cac5905a",
+      "size": 5170
+    }
+  ],
+  "composite_sha256": "6e526134f88f57692e19017f9e73a37aaf48f4bf3fa1db493f4a11edb209ba20",
+  "contract_version": 1,
+  "path_encoding": "ascii",
+  "schema": "rfam.artifact-composite/v1"
+}

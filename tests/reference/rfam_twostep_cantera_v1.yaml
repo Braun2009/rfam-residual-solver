@@ -1,0 +1,38 @@
+description: |-
+  Cantera encoding of the current RFAM TwoStepCO candidate. This file is for
+  instantaneous implementation-equivalence checks only. It is not a validated
+  propane mechanism and does not authorize production chemistry.
+
+generator: rfam-wp2-r2-instantaneous-v1
+cantera-version: 3.1.0
+
+units: {length: m, time: s, quantity: mol, activation-energy: J/mol}
+
+elements:
+- symbol: C
+  atomic-weight: 12.0107
+- symbol: H
+  atomic-weight: 1.00794
+- symbol: O
+  atomic-weight: 15.9994
+- symbol: N
+  atomic-weight: 14.0067
+
+phases:
+- name: rfam-two-step
+  thermo: ideal-gas
+  kinetics: gas
+  transport: none
+  elements: [O, H, C, N]
+  species:
+  - cantera_gri30_v3_0.yaml/species: [C3H8, O2, CO, CO2, H2O, N2]
+  reactions: all
+  state: {T: 1200.0 K, P: 4.0 MPa}
+
+reactions:
+- equation: C3H8 + 3.5 O2 => 3 CO + 4 H2O
+  rate-constant: {A: 1.0e10, b: 0.0, Ea: 125520.0}
+  orders: {C3H8: 0.1, O2: 1.65}
+
+- equation: CO + 0.5 O2 <=> CO2
+  rate-constant: {A: 2.0e12, b: 0.0, Ea: 167360.0}

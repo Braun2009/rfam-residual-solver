@@ -1,0 +1,119 @@
+{
+  "schema": "rfam.r2-c3mech-fit-screen-contract/v1",
+  "contract_version": 1,
+  "status": "blocked-detailed-mechanism-candidate-fit-screen-only",
+  "scope": "c3mech-44i0-valid-prefix-training-fit-and-post-selection-holdout-no-experiment-no-publication",
+  "input_composites": {
+    "training_and_shared": {
+      "manifest_path": "realFluidAllMach/tests/reference/r2_c3mech_fit_training_inputs_v1_composite.json",
+      "manifest_sha256": "b2379dc8617afb070ba329e20475223ded25eec08f4486acae3266d86274ac1e",
+      "external_composite_sha256": "375cc1071029ad2ea8792964cdf1e63de3dc89de4897797a3387b1fdc506a971",
+      "artifact_count": 17,
+      "verified_before_selection": true
+    },
+    "holdout": {
+      "manifest_path": "realFluidAllMach/tests/reference/r2_c3mech_fit_holdout_inputs_v1_composite.json",
+      "manifest_sha256": "aef881cb31309a8b5af40dc2507e4100a085eec0246c0a44d9d4fdab8a12a6a6",
+      "external_composite_sha256": "6e526134f88f57692e19017f9e73a37aaf48f4bf3fa1db493f4a11edb209ba20",
+      "artifact_count": 4,
+      "verified_only_after_training_selection_frozen": true
+    }
+  },
+  "execution": {
+    "platform": "WSL-Linux-x86_64",
+    "python_major_minor": "3.8",
+    "runner_timeout_seconds": 30,
+    "parallel_case_processes": 3
+  },
+  "mechanism_reference": {
+    "model_id": "C3Mech-V4.0.1-44I0",
+    "role": "rights-cleared-detailed-reference-candidate-not-selected-for-production",
+    "license": "CC-BY-4.0",
+    "training_reference_path": "tmp/a408-r2-c3mech-44i0-training-v2.json",
+    "holdout_reference_path": "tmp/a408-r2-c3mech-44i0-holdout-v2.json",
+    "thermo_min_k": 400.0,
+    "thermo_max_k": 2000.0,
+    "eligible_history_policy": "score-only-samples-with-status-eligible-within-mechanism-thermo-intersection",
+    "outside_endpoint_and_later_samples_scored": false,
+    "runner_horizon_policy": "append-reference-thermo-envelope-first-crossing-time-as-unscored-terminal-only-when-reference-ignition-delay-is-active",
+    "runner_terminal_sentinel_history_scored": false
+  },
+  "runner": {
+    "path": "tmp/rfam_r2_0d_fit_runner",
+    "parameter_schema": "rfam.r2-joint-fit-parameters/v1",
+    "species_order": ["C3H8", "O2", "CO", "CO2", "H2O", "N2"],
+    "energy_basis": "sensible-enthalpy-plus-explicit-formation-heat",
+    "phase": "ideal-gas-constant-pressure-rfam-runner"
+  },
+  "partitions": {
+    "training_case_ids": ["train_phi0p8_diluted", "train_phi1p0", "train_phi1p2"],
+    "holdout_case_ids": ["holdout_phi0p6_diluted", "holdout_phi1p1", "holdout_phi1p4"],
+    "holdout_opened_during_selection": false,
+    "holdout_objective_calls_after_selection": 1
+  },
+  "parameters": [
+    {"name": "R1_A_SI", "transform": "log10", "lower": 100000.0, "upper": 1e20},
+    {"name": "R1_Ea_J_per_mol", "transform": "linear", "lower": 0.0, "upper": 300000.0},
+    {"name": "R1_order_C3H8", "transform": "linear", "lower": 0.0, "upper": 2.0},
+    {"name": "R1_order_O2", "transform": "linear", "lower": 0.0, "upper": 2.5},
+    {"name": "R2_A_SI", "transform": "log10", "lower": 100000.0, "upper": 1e20},
+    {"name": "R2_Ea_J_per_mol", "transform": "linear", "lower": 0.0, "upper": 300000.0}
+  ],
+  "objective": {
+    "observable_order": ["ignition_delay", "qdot", "temperature", "C3H8", "O2", "CO", "CO2", "H2O"],
+    "component_weights": {
+      "ignition_delay": 0.30,
+      "qdot": 0.15,
+      "temperature": 0.20,
+      "C3H8": 0.10,
+      "O2": 0.10,
+      "CO": 0.05,
+      "CO2": 0.05,
+      "H2O": 0.05
+    },
+    "ignition_delay_residual": "log-prediction-over-reference-divided-by-0.25",
+    "history_component": "mean-over-eligible-samples-of-square-of-(prediction-minus-reference)-divided-by-scale",
+    "qdot_scale": "maximum-absolute-eligible-reference-or-1e8-W-m3-floor",
+    "temperature_scale_k": 50.0,
+    "species_mass_fraction_scale": 0.02,
+    "missing_reference_component_policy": "omit-and-renormalize-active-component-weights-per-case",
+    "case_objective": "math-fsum-of-active-component-weight-times-component-divided-by-math-fsum-of-active-component-weights",
+    "case_aggregation": "arithmetic-mean-in-frozen-case-order",
+    "reduction": "python-math-fsum-binary64-in-case-observable-sample-order",
+    "invalid_candidate_policy": "invalid-point-never-replaces-incumbent"
+  },
+  "optimizer": {
+    "algorithm": "bounded-coordinate-pattern-search-v1",
+    "selection_split": "training-only",
+    "starts": {
+      "midpoint_first": true,
+      "halton_indices": [1, 2, 3, 4],
+      "halton_bases": [2, 3, 5, 7, 11, 13]
+    },
+    "initial_normalized_step": 0.25,
+    "step_contraction": 0.5,
+    "minimum_normalized_step": 0.015625,
+    "maximum_objective_evaluations_per_start": 800,
+    "global_selection": "lowest-training-objective-then-lexicographically-smallest-transformed-vector"
+  },
+  "approvals": {
+    "diagnostic_optimizer_execution_allowed": true,
+    "mechanism_selected_for_runtime": false,
+    "experimental_training_data_selected": false,
+    "experimental_holdout_data_selected": false,
+    "parameter_vector_publishable": false,
+    "physical_validation_approved": false,
+    "hem_chemistry_enabled": false,
+    "fluent_execution_approved": false,
+    "reacting_hot_start_approved": false,
+    "production_ready": false
+  },
+  "stop_conditions": [
+    "training or holdout input composite or manifest raw hash mismatch",
+    "duplicate key unknown field nonfinite number or schema drift",
+    "holdout composite verified or any holdout artifact opened before the training selection is frozen",
+    "any reference outside-envelope endpoint or later sample is scored",
+    "any nonfinite out-of-bound or invalid runner result replaces an incumbent",
+    "fit result represented as experimental validation parameter publication HEM Fluent or production authority"
+  ]
+}

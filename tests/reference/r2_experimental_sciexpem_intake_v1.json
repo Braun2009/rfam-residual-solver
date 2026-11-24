@@ -1,0 +1,176 @@
+{
+  "schema": "rfam.r2-experimental-intake/v1",
+  "contract_version": 1,
+  "status": "blocked-no-propane-curves",
+  "scope": "offline-six-record-sciexpem-source-intake-no-fit-no-parameter-change",
+  "campaign": {
+    "dataset_family": "SciExpeM-ReSpecTh",
+    "publication_doi": "10.1016/j.combustflame.2013.05.012",
+    "publication_title": "Further study on the ignition delay times of propane-hydrogen-oxygen-argon mixtures: Effect of equivalence ratio",
+    "dataset_author": "Politecnico di Milano, Italy",
+    "experiment_type": "ignition delay measurement",
+    "apparatus": "shock tube",
+    "record_count": 6,
+    "independent_campaign_count": 1
+  },
+  "license": {
+    "provider": "Zenodo",
+    "record_metadata_observed_on": "2026-07-28",
+    "record_license_id": "cc-by-4.0",
+    "spdx_id": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution_required": true,
+    "legal_review_performed": false,
+    "disposition": "record-metadata-declares-cc-by-4.0-retain-attribution"
+  },
+  "sources": [
+    {
+      "record_id": 4639716,
+      "record_doi": "10.5281/zenodo.4639716",
+      "record_api_url": "https://zenodo.org/api/records/4639716",
+      "source_url": "https://zenodo.org/api/records/4639716/files/10.5281/zenodo.4639716.xml/content",
+      "repository_path": "realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639716.xml",
+      "media_type": "application/xml",
+      "license_id": "cc-by-4.0",
+      "retrieved_on": "2026-07-28",
+      "byte_count": 2328,
+      "sha256": "efba3accb488551674d242b48996ece4aacbeda8788b26c9ca6269e2da187a0c",
+      "zenodo_md5": "f6ada662e1ae2348678b05e8b84baccd"
+    },
+    {
+      "record_id": 4639727,
+      "record_doi": "10.5281/zenodo.4639727",
+      "record_api_url": "https://zenodo.org/api/records/4639727",
+      "source_url": "https://zenodo.org/api/records/4639727/files/10.5281/zenodo.4639727.xml/content",
+      "repository_path": "realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639727.xml",
+      "media_type": "application/xml",
+      "license_id": "cc-by-4.0",
+      "retrieved_on": "2026-07-28",
+      "byte_count": 2327,
+      "sha256": "14b1b1728de3ac1a6341c8b684b07dc6bcb2292e842597b59f1db46f8402d23b",
+      "zenodo_md5": "0f5fe91186cb91806c34400645d11c7e"
+    },
+    {
+      "record_id": 4639733,
+      "record_doi": "10.5281/zenodo.4639733",
+      "record_api_url": "https://zenodo.org/api/records/4639733",
+      "source_url": "https://zenodo.org/api/records/4639733/files/10.5281/zenodo.4639733.xml/content",
+      "repository_path": "realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639733.xml",
+      "media_type": "application/xml",
+      "license_id": "cc-by-4.0",
+      "retrieved_on": "2026-07-28",
+      "byte_count": 2249,
+      "sha256": "06120c83868b48cd4fc5e828864e0b7b0e8bbda53d674c91bc4c3283cac64f58",
+      "zenodo_md5": "3b1d6e25a1c8285fdf0301f136064c96"
+    },
+    {
+      "record_id": 4639741,
+      "record_doi": "10.5281/zenodo.4639741",
+      "record_api_url": "https://zenodo.org/api/records/4639741",
+      "source_url": "https://zenodo.org/api/records/4639741/files/10.5281/zenodo.4639741.xml/content",
+      "repository_path": "realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639741.xml",
+      "media_type": "application/xml",
+      "license_id": "cc-by-4.0",
+      "retrieved_on": "2026-07-28",
+      "byte_count": 2092,
+      "sha256": "c751adafa3090a8775c0e39c0f8e97be4c4627617fb57cf61cb53ce8163bfcbd",
+      "zenodo_md5": "9fa7b6c05939afe99e118ce4d3b19aed"
+    },
+    {
+      "record_id": 4639751,
+      "record_doi": "10.5281/zenodo.4639751",
+      "record_api_url": "https://zenodo.org/api/records/4639751",
+      "source_url": "https://zenodo.org/api/records/4639751/files/10.5281/zenodo.4639751.xml/content",
+      "repository_path": "realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639751.xml",
+      "media_type": "application/xml",
+      "license_id": "cc-by-4.0",
+      "retrieved_on": "2026-07-28",
+      "byte_count": 2171,
+      "sha256": "25a28bd2d0c566c382e6c84ef088bc446c4e33801d9ed121da735ba58ae42209",
+      "zenodo_md5": "e61f6213cadf2e482036f0ba3e5ae227"
+    },
+    {
+      "record_id": 4639759,
+      "record_doi": "10.5281/zenodo.4639759",
+      "record_api_url": "https://zenodo.org/api/records/4639759",
+      "source_url": "https://zenodo.org/api/records/4639759/files/10.5281/zenodo.4639759.xml/content",
+      "repository_path": "realFluidAllMach/tests/reference/r2_experimental_sciexpem_v1/10.5281-zenodo.4639759.xml",
+      "media_type": "application/xml",
+      "license_id": "cc-by-4.0",
+      "retrieved_on": "2026-07-28",
+      "byte_count": 2331,
+      "sha256": "71cf410dcf41ab32e1f342a5d8989e37d1967cf17ec6f3e37d0a775896e45bde",
+      "zenodo_md5": "ea26dd07ba6bb21e7bd8d3d7fac86157"
+    }
+  ],
+  "observed_structure": {
+    "respec_th_version": "2.3",
+    "pressure_units": "atm",
+    "pressure_source_type": "reported",
+    "composition_units": "mole fraction",
+    "composition_source_type": "reported",
+    "temperature_units": "K",
+    "temperature_source_type": "digitized",
+    "ignition_delay_units": "us",
+    "ignition_delay_source_type": "digitized",
+    "ignition_target": "OH",
+    "ignition_method": "d/dt max",
+    "species_set": [
+      "AR",
+      "H2",
+      "O2"
+    ],
+    "pressure_values_atm": [
+      "1.2000000000",
+      "10.0000000000"
+    ],
+    "curve_count": 6,
+    "point_count": 48,
+    "c3h8_curve_count": 0
+  },
+  "uncertainty_availability": {
+    "pressure": false,
+    "temperature": false,
+    "composition": false,
+    "ignition_delay": false,
+    "classification": "none-present-in-six-xml-artifacts"
+  },
+  "extraction": {
+    "result_schema": "rfam.r2-experimental-intake-result/v1",
+    "canonicalization": "ASCII JSON indent=2 LF final newline lexical source decimals",
+    "expected_byte_count": 14874,
+    "expected_sha256": "79b74c88c78222246c489b3e3e66609131616bae4aebd3e975c201b53a527ab8"
+  },
+  "eligibility": {
+    "source_role": "open-data-discovery-negative-for-propane",
+    "training_eligible": false,
+    "holdout_eligible": false,
+    "fit_performed": false,
+    "blocking_reasons": [
+      "none of the six initial compositions contains C3H8",
+      "temperature and ignition-delay values are digitized rather than reported raw measurements",
+      "pressure temperature composition and ignition-delay uncertainties are absent",
+      "all six records cite one publication and cannot provide an independent campaign holdout"
+    ],
+    "required_next": [
+      "continue the official-source search for C3H8-containing ignition-delay records",
+      "obtain a separate rights-cleared experimental campaign for holdout",
+      "freeze facility corrections uncertainties partitions metrics and tolerances before physical fitting"
+    ]
+  },
+  "approvals": {
+    "experimental_training_data_selected": false,
+    "experimental_holdout_data_selected": false,
+    "r2_physical_fit_approved": false,
+    "r2_parameter_publication_approved": false,
+    "hem_chemistry_enabled": false,
+    "fluent_execution_approved": false,
+    "production_ready": false
+  },
+  "limitations": [
+    "the six-record list is a bounded source screen and is not a complete search of SciExpeM or Zenodo",
+    "the publication title mentioning propane does not establish propane in any individual data artifact",
+    "CC BY 4.0 record metadata does not repair missing scientific observables or uncertainty fields",
+    "no chemistry parameter model capability Fluent action or production status is changed"
+  ]
+}

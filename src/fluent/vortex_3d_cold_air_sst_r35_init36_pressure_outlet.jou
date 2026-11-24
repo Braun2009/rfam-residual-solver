@@ -1,0 +1,22 @@
+; Vortex 3D cold-air SST r35: open pressure-outlet farfield commissioning.
+; Source r34 is an independent configured case derived from immutable r2.
+; Only farfield type differs: pressure-outlet (0 Pa gauge; allowed 300 K backflow).
+; Perform Solver mesh/check, standard initialization and a bounded 5-iteration
+; startup on 36 physical cores.  Do not reread final mesh or overwrite source.
+
+(format #t "\nVORTEX_R35_JOURNAL_BEGIN\n")
+/file/read-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_config_r34/cold_air_sst_pressure_outlet_configured.cas.h5
+(format #t "\nVORTEX_R35_CONFIGURED_CASE_READ_OK\n")
+/mesh/check
+(format #t "\nVORTEX_R35_SOLVER_MESH_CHECK_OK\n")
+/solve/initialize/initialize
+(format #t "\nVORTEX_R35_STANDARD_INITIALIZATION_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_init36_r35/cold_air_sst_initialized.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_init36_r35/cold_air_sst_initialized.dat.h5
+(format #t "\nVORTEX_R35_INITIALIZED_CASE_DATA_WRITTEN\n")
+/solve/iterate 5
+(format #t "\nVORTEX_R35_ITERATE_5_OK\n")
+/file/write-case /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_init36_r35/cold_air_sst_5it.cas.h5
+/file/write-data /root/vortex_fluent/gmsh_fixed_v2/solver_cold_air_sst_pressure_outlet_init36_r35/cold_air_sst_5it.dat.h5
+(format #t "\nVORTEX_3D_COLD_AIR_SST_R35_PRESSURE_OUTLET_INIT36_OK\n")
+/exit yes
